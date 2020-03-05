@@ -380,5 +380,3 @@ main/migrations
 # Pyre type checker
 
 # End of https://www.gitignore.io/api/django,python,pycharm,pycharm+all,pycharm+iml
-
-Dark_Render/settings.py
