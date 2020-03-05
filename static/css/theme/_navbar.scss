@@ -1,0 +1,28 @@
+nav {
+	margin: 5vh 5vw;
+	.nav-buttons {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0;
+		margin: 0;
+
+		//visuals
+		list-style: none;
+
+		.nav-phone-number{
+			color: var(--dark-grey);
+			font-size: .9em;
+		}
+
+		.nav-link {
+			color: var(--black);
+			font-size: 1.3em;
+			text-transform: uppercase;
+			text-decoration: none;
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+}

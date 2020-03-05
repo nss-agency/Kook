@@ -1,0 +1,30 @@
+.btn{
+	padding: .4em 1.5em;
+	font-size: 1.5em;
+	text-transform: uppercase;
+	text-decoration: none;
+
+	transition: background-color .3s, color .3s;
+}
+
+.btn-black{
+	color: var(--white);
+	background-color: var(--black);
+	border: 3px var(--black) solid;
+
+	&:hover{
+		color: var(--black);
+		background-color: var(--white);
+	}
+}
+
+.btn-outline{
+	color: var(--black);
+	background-color: var(--white);
+	border: 3px var(--black) solid;
+
+	&:hover{
+		color: var(--white);
+		background-color: var(--black);
+	}
+}

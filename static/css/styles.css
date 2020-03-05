@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700&display=swap");
+:root {
+  --black: #141414;
+  --white: #ffffff;
+  --grey: #ececec;
+  --dark-grey: #838383;
+  --accent: #892d15;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: "Oswald", sans-serif;
+  color: var(--black);
+}
+
+.container {
+  margin: 5vw;
+}
+
+.btn {
+  padding: 0.4em 1.5em;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-black {
+  color: var(--white);
+  background-color: var(--black);
+  border: 3px var(--black) solid;
+}
+.btn-black:hover {
+  color: var(--black);
+  background-color: var(--white);
+}
+
+.btn-outline {
+  color: var(--black);
+  background-color: var(--white);
+  border: 3px var(--black) solid;
+}
+.btn-outline:hover {
+  color: var(--white);
+  background-color: var(--black);
+}
+
+nav {
+  margin: 5vh 5vw;
+}
+nav .nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+nav .nav-buttons .nav-phone-number {
+  color: var(--dark-grey);
+  font-size: 0.9em;
+}
+nav .nav-buttons .nav-link {
+  color: var(--black);
+  font-size: 1.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+nav .nav-buttons .nav-link:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=styles.css.map */
