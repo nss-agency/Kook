@@ -375,7 +375,7 @@ modules.xml
 
 style.css
 
-main/migrations
+core/migrations
 
 # Pyre type checker
 

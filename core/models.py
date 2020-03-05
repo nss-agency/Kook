@@ -32,7 +32,7 @@ class Booking(models.Model):
 
 
 class MenuItem(models.Model):
-    image = models.ImageField('Зображення', upload_to='menu_images')
+    image = models.ImageField('Зображення', blank=True, upload_to='menu_images')
     title = models.CharField('Назва страви', max_length=225)
     description = models.TextField('Опис')
     price = models.IntegerField('Ціна')
