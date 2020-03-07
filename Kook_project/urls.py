@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('jet_api/', include('jet_django.urls')),
     path('', views.index, name='index'),
+    path('form/', views.form, name='form'),
 ]
 
 if settings.DEBUG:
