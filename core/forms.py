@@ -4,6 +4,9 @@ from .models import Booking
 
 
 class BookingForm(ModelForm):
+    """
+    Add Bokking object form
+    """
     phone = forms.CharField(label='Номер телефону',
                                 widget=forms.TextInput,
                                 max_length=100,

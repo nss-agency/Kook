@@ -11,6 +11,9 @@ def index(request):
 
 
 def form(request):
+    """
+     Create object by form via Booking model
+    """
     if request.method == 'POST':
         f = BookingForm(request.POST)
         if f.is_valid():

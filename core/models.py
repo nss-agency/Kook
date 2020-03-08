@@ -8,18 +8,22 @@ from datetime import datetime
 # Create your models here.
 
 class Booking(models.Model):
+    """
+    Boking model
+    """
     ROOM_CHOICES = (
         ('Стандарт', 'Стандарт'),
         ('Комфорт', 'Комфорт'),
         ('Комфорт Плюс', 'Комфорт Плюс'),
-        ('Люкс', 'Люкс')
+        ('Люкс', 'Люкс'),
+        ('Тріо', 'Тріо')
     )
 
     pib = models.CharField('П.І.Б.', max_length=225)
-    phone = PhoneField('Номер телефону', blank=True, help_text='Контактний номер телефону')
+    phone = models.CharField('Номер телефону', max_length=225, help_text='Контактний номер телефону')
     email = models.EmailField('E-mail')
     date_entry = models.DateField('Дата заїзду', default=datetime.now)
-    date_leave = models.DateField('Дата виїзду')
+    date_leave = models.DateField('Дата виїзду', default=datetime.now)
     quantity = models.IntegerField('Кількість осіб')
     room_type = models.CharField('Тип Кімнати', max_length=225, choices=ROOM_CHOICES)
     additional = models.CharField('Додаткові опціі', max_length=225)
@@ -35,6 +39,9 @@ class Booking(models.Model):
 
 
 class MenuItem(models.Model):
+    """
+    Model for menu items
+    """
     image = models.ImageField('Зображення', blank=True, upload_to='menu_images')
     title = models.CharField('Назва страви', max_length=225)
     description = models.TextField('Опис')
