@@ -7,9 +7,9 @@ from django.conf import settings
 
 
 class RoomType(models.Model):
-    name = models.CharField(max_length=64)
-    quantity = models.IntegerField()
-    color_id = models.IntegerField()
+    name = models.CharField('Тип Кімнати',max_length=64)
+    quantity = models.IntegerField('Кількість кімнат')
+    color_id = models.IntegerField('Id кольору')
 
     def __str__(self):
         return self.name
@@ -19,16 +19,7 @@ class RoomType(models.Model):
         verbose_name_plural = 'Типи Кімнат'
 
 class Booking(models.Model):
-    """
-    Boking model
-    """
-    # ROOM_CHOICES = (
-    #     ('Стандарт', 'Стандарт'),
-    #     ('Комфорт', 'Комфорт'),
-    #     ('Комфорт Плюс', 'Комфорт Плюс'),
-    #     ('Люкс', 'Люкс'),
-    #     ('Тріо', 'Тріо')
-    # )
+
 
     pib = models.CharField('П.І.Б.', max_length=225)
     phone = models.CharField('Номер телефону', max_length=225, help_text='Контактний номер телефону')
