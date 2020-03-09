@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Booking, MenuItem
+from .models import Booking, MenuItem, RoomType
 
 
 # Register your models here.
@@ -20,3 +20,4 @@ class BookingAdmin(admin.ModelAdmin):
 
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(MenuItem)
+admin.site.register(RoomType)

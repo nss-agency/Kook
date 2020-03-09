@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
-    'phone_field',
     'jet_django',
 ]
 
@@ -129,3 +128,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 JET_PROJECT = 'kook'
 JET_TOKEN = '6b798a0e-b3d5-4731-965b-826eb518083f'
+
+ENABLE_GOOGLE_CALENDAR = False
