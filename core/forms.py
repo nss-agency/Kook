@@ -22,5 +22,8 @@ class BookingForm(ModelForm):
             'date_leave' : forms.SelectDateWidget,
             'quantity' : forms.NumberInput,
         }
+        labels = {
+            'room_type' : 'Тип кімнати'
+        }
 
 

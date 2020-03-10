@@ -11,6 +11,13 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_ul }}
+
+    {% if ctx2.success %}
+        <h1>Congrats</h1>
+    {% endif %}
+    {% if ctx2.fail %}
+        <h1>Sorry</h1>
+    {% endif %}
     <button id="submitContactForm" type="submit">Submit
     </button>
 </form>

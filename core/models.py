@@ -1,33 +1,40 @@
 from django.db import models
-from phone_field import PhoneField
 from django.dispatch import receiver
 from django.db.models.signals import post_delete
 from datetime import datetime
+from core.google_calendar import create_event_from_booking
+from django.conf import settings
 
 
-# Create your models here.
+class RoomType(models.Model):
+    name = models.CharField('Тип Кімнати', max_length=64)
+    quantity = models.IntegerField('Кількість кімнат')
+    color_id = models.IntegerField('Id кольору')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Тип Кімнати'
+        verbose_name_plural = 'Типи Кімнат'
+
 
 class Booking(models.Model):
-    """
-    Boking model
-    """
-    ROOM_CHOICES = (
-        ('Стандарт', 'Стандарт'),
-        ('Комфорт', 'Комфорт'),
-        ('Комфорт Плюс', 'Комфорт Плюс'),
-        ('Люкс', 'Люкс'),
-        ('Тріо', 'Тріо')
-    )
-
     pib = models.CharField('П.І.Б.', max_length=225)
     phone = models.CharField('Номер телефону', max_length=225, help_text='Контактний номер телефону')
     email = models.EmailField('E-mail')
     date_entry = models.DateField('Дата заїзду', default=datetime.now)
     date_leave = models.DateField('Дата виїзду', default=datetime.now)
     quantity = models.IntegerField('Кількість осіб')
-    room_type = models.CharField('Тип Кімнати', max_length=225, choices=ROOM_CHOICES)
+    room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE)
     additional = models.CharField('Додаткові опціі', max_length=225)
     breakfest = models.BooleanField('Сніданок', default=True)
+    bed_type = models.CharField(default='DBL', null=True, blank=True, max_length=225)
+
+    def save(self, *args, **kwargs):
+        super().save()
+        if settings.ENABLE_GOOGLE_CALENDAR:
+            create_event_from_booking(self)
 
     def __str__(self):
         template = '{0.pib} | {0.phone} | {0.room_type}'
