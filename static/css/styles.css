@@ -155,7 +155,7 @@ nav .nav-buttons .nav-link:hover {
 }
 
 .container-index-text-blocks {
-  margin: 1vh 7em;
+  margin: 1vh 15em;
   position: relative;
 }
 
@@ -183,6 +183,10 @@ nav .nav-buttons .nav-link:hover {
 }
 .index-info-block .index-info-text .info-block-small {
   color: var(--accent);
+}
+.index-info-block .index-info-text .info-block-p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
 }
 .index-info-block .index-info-wrapper {
   width: calc(60% - 2em);

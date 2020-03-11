@@ -379,7 +379,14 @@ core/migrations
 
 .env
 venv
+__pycachr__
 
 # Pyre type checker
 
 # End of https://www.gitignore.io/api/django,python,pycharm,pycharm+all,pycharm+iml
+
+core/credentials.txt
+core/credentials.json
+core/token.pickle
+static/css/styles.css
+static/css/styles.css.map
