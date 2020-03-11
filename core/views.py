@@ -17,6 +17,12 @@ def index(request):
     return render(request, 'index.html', ctx)
 
 
+def hotel(request):
+    ctx = {}
+
+    return render(request, 'hotel_rooms.html', ctx)
+
+
 def form(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)

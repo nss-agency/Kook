@@ -19,6 +19,7 @@ body {
 
 .container {
   margin: 2vh 5vw;
+  position: relative;
 }
 
 .btn {
@@ -381,6 +382,83 @@ footer .footer-copy .heart {
   color: #ff4d5a;
   font-size: 2rem;
   margin: 0 0.3rem;
+}
+
+.hero-container__hotel {
+  height: 50vh;
+  position: relative;
+  background: #000000;
+  overflow: hidden;
+}
+.hero-container__hotel .hero-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.hero-container__hotel .header-container {
+  background: var(--white);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem;
+}
+.hero-container__hotel .header-container .hero-header__hotel {
+  color: var(--black);
+  text-align: center;
+  margin-bottom: 0;
+}
+.hero-container__hotel .header-container .hero-small__hotel {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.rooms-container {
+  display: grid;
+  margin: 5rem;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  grid-gap: 2rem;
+  row-gap: 5rem;
+}
+.rooms-container .room-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.rooms-container .room-wrapper .room-image {
+  height: 30vh;
+  object-fit: cover;
+}
+.rooms-container .room-wrapper .room-description small {
+  color: var(--accent);
+}
+.rooms-container .room-wrapper .room-description .room-header {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.hotel-decor-1 {
+  display: block;
+  border: 10px var(--grey) solid;
+  position: absolute;
+  width: 95%;
+  height: 29%;
+  top: 36%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.hotel-decor-2 {
+  display: block;
+  border: 10px var(--grey) solid;
+  position: absolute;
+  width: 95%;
+  height: 29%;
+  top: 36%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
 }
 
 /*# sourceMappingURL=styles.css.map */
