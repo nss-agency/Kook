@@ -379,7 +379,7 @@ core/migrations
 
 .env
 venv
-__pycachr__
+__pycache__
 
 # Pyre type checker
 
