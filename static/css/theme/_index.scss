@@ -69,7 +69,7 @@
 }
 
 .index-info-block {
-	margin: 1vh 0;
+	margin: 6em 0;
 	display: flex;
 	box-sizing: border-box;
 	position: relative;
@@ -148,6 +148,30 @@
 	position: absolute;
 	left:40%;
 	width: 20%;
+	height: 108%;
+    top: -6%;
+}
+
+.index-decor-2 {
+	display: block;
+	//box-sizing: border-box;
+	border: 10px var(--grey) solid;
+	position: absolute;
+	right:40%;
+	width: 30%;
+	height: 108%;
+    top: -6%;
+}
+
+.index-decor-3 {
+	display: block;
+	//box-sizing: border-box;
+	border: 10px var(--grey) solid;
+	position: absolute;
+	left:40%;
+	width: 35%;
+	height: 108%;
+    top: -6%;
 }
 
 $colors: #222222, #333333, #444444, #555555, #666666, #777777;

@@ -1,0 +1,29 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% include 'includes/head_links.html' %}
+    <title>Hotel</title>
+</head>
+<body>
+{% include 'includes/navbar.html' %}
+<div class="container">
+    <div class="hero-container">
+        <img class="hero-image" src="{% static 'img/hero-image-hotel-rooms.jpg' %}" alt="">
+        <div class="header-container">
+            <h1>Lorem Ipsum dolor</h1>
+            <span>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium</span>
+        </div>
+    </div>
+
+    <div class="rooms-container">
+
+    </div>
+</div>
+{% include 'includes/footer.html' %}
+</body>
+</html>

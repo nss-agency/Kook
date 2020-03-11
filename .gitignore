@@ -377,6 +377,9 @@ style.css
 
 core/migrations
 
+.env
+venv
+
 # Pyre type checker
 
 # End of https://www.gitignore.io/api/django,python,pycharm,pycharm+all,pycharm+iml

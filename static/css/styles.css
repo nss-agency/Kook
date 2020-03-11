@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap");
 :root {
   --black: #141414;
   --white: #ffffff;
@@ -159,7 +160,7 @@ nav .nav-buttons .nav-link:hover {
 }
 
 .index-info-block {
-  margin: 1vh 0;
+  margin: 6em 0;
   display: flex;
   box-sizing: border-box;
   position: relative;
@@ -225,6 +226,28 @@ nav .nav-buttons .nav-link:hover {
   position: absolute;
   left: 40%;
   width: 20%;
+  height: 108%;
+  top: -6%;
+}
+
+.index-decor-2 {
+  display: block;
+  border: 10px var(--grey) solid;
+  position: absolute;
+  right: 40%;
+  width: 30%;
+  height: 108%;
+  top: -6%;
+}
+
+.index-decor-3 {
+  display: block;
+  border: 10px var(--grey) solid;
+  position: absolute;
+  left: 40%;
+  width: 35%;
+  height: 108%;
+  top: -6%;
 }
 
 #hero-element-0 {
@@ -300,46 +323,60 @@ nav .nav-buttons .nav-link:hover {
 }
 
 footer {
-  display: flex;
-  padding: 4em 7em 4em 7em;
+  position: relative;
   background-color: var(--black);
   color: white;
-  justify-content: space-between;
-  height: 200px;
 }
-footer .footer-logo {
+footer .footer-flex {
+  display: flex;
+  height: 200px;
+  padding: 4em 7em 4em 7em;
+  justify-content: space-between;
+}
+footer .footer-flex .footer-logo {
   height: 100%;
 }
-footer .footer-block {
+footer .footer-flex .footer-block {
   text-align: center;
 }
-footer .footer-block .footer-header {
+footer .footer-flex .footer-block .footer-header {
   font-size: 2rem;
   font-weight: 600;
   margin: 0 0 1rem 0;
   text-transform: uppercase;
 }
-footer .footer-block .footer-phone-number {
+footer .footer-flex .footer-block .footer-phone-number {
   font-size: 1.75rem;
   font-weight: lighter;
 }
-footer .footer-block .footer-link-list {
+footer .footer-flex .footer-block .footer-link-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-footer .footer-block .footer-link-list .footer-list-element {
+footer .footer-flex .footer-block .footer-link-list .footer-list-element {
   color: var(--white);
   font-size: 1.5rem;
   text-decoration: none;
   font-weight: lighter;
 }
-footer .footer-block .footer-link-list .footer-list-element .footer-link {
+footer .footer-flex .footer-block .footer-link-list .footer-list-element .footer-link {
   text-decoration: none;
   color: inherit;
 }
-footer .footer-block .footer-link-list .footer-list-element .footer-link:hover {
+footer .footer-flex .footer-block .footer-link-list .footer-list-element .footer-link:hover {
   text-decoration: underline;
+}
+footer .footer-copy {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+footer .footer-copy .heart {
+  color: #ff4d5a;
+  font-size: 2rem;
+  margin: 0 0.3rem;
 }
 
 /*# sourceMappingURL=styles.css.map */
