@@ -1,9 +1,9 @@
 {% load static %}
 <nav>
 <ol class="nav-buttons">
-    <li><a href=""><img src="{% static 'svg/logo-black.svg' %}" alt="Kook logo"></a></li>
+    <li><a href="{% url 'index' %}"><img src="{% static 'svg/logo-black.svg' %}" alt="Kook logo"></a></li>
     <li class="nav-phone-number">Call Us Free: +38 032 247-45-19</li>
-    <li><a class="nav-link" href="">Hotel</a></li>
+    <li><a class="nav-link" href="{% url 'hotel' %}">Hotel</a></li>
     <li><a class="nav-link" href="">restaurant</a></li>
     <li><a class="nav-link" href="">banquet hall</a></li>
     <li><a class="nav-link" href="">cantact</a></li>

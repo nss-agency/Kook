@@ -14,8 +14,8 @@ class BookingAdmin(admin.ModelAdmin):
         'quantity',
         'room_type',
         'additional']
-    list_filter = ['date_entry', 'date_leave']
-    search_fields = ['phone']
+    list_filter = ['date_entry', 'date_leave', 'room_type']
+    search_fields = ['phone', 'pib', 'date_entry', 'date_leave', 'email']
 
 
 admin.site.register(Booking, BookingAdmin)
