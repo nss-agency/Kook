@@ -2,11 +2,32 @@ from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_delete
 from datetime import datetime
-from core.google_calendar import create_event_from_booking
+from core.google_calendar import create_event_from_booking, create_event_from_banquet
 from django.conf import settings
 
 
+class Promo(models.Model):
+    """
+    Model for promocodes
+    """
+    name = models.CharField('Код Промокоду', max_length=60)
+    discount = models.FloatField('Значення промокоду')
+    is_percetage = models.BooleanField('Це відсоток?', default=True)
+
+    def __str__(self):
+        template = '{0.name} | {0.discount}'
+        return template.format(self)
+
+    class Meta:
+        verbose_name = 'Промокод'
+        verbose_name_plural = 'Промокоди'
+
+
 class RoomType(models.Model):
+    """
+       Model for room types
+    """
+    image = models.ImageField('Фото кімнати', upload_to='room_types', blank=True)
     name = models.CharField('Тип Кімнати', max_length=64)
     quantity = models.IntegerField('Кількість кімнат')
     color_id = models.IntegerField('Id кольору')
@@ -21,6 +42,9 @@ class RoomType(models.Model):
 
 
 class Booking(models.Model):
+    """
+    Model for Booking
+    """
     pib = models.CharField('П.І.Б.', max_length=225)
     phone = models.CharField('Номер телефону', max_length=225, help_text='Контактний номер телефону')
     email = models.EmailField('E-mail')
@@ -30,8 +54,12 @@ class Booking(models.Model):
     room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE)
     additional = models.CharField('Додаткові опціі', max_length=225)
     breakfest = models.BooleanField('Сніданок', default=True)
-    bed_type = models.CharField(default='DBL', null=True, blank=True, max_length=225)
+    bed_type = models.CharField('Тип Ліжка', null=True, blank=True, max_length=225)
+    notes = models.TextField('Нотатки', blank=True, help_text='Цей текст буде бачити тільки адміністратор та модератор')
+    is_paid = models.BooleanField(default=False)
+    discount = models.ForeignKey(Promo, null=True, on_delete=models.CASCADE, blank=True)
 
+    # save event to google calendar
     def save(self, *args, **kwargs):
         super().save()
         if settings.ENABLE_GOOGLE_CALENDAR:
@@ -63,6 +91,27 @@ class MenuItem(models.Model):
         verbose_name_plural = 'Продукти'
 
 
+class Baquet(models.Model):
+    check_in = models.DateField('Заїзд', default=datetime.now)
+    pib = models.CharField('П.І.Б.', max_length=225)
+    phone = models.CharField('Номер телефону', max_length=225, help_text='Контактний номер телефону')
+    email = models.EmailField('E-mail')
+    notes = models.TextField('Нотатки', blank=True, help_text='Цей текст буде бачити тільки адміністратор та модератор')
+
+    def save(self, *args, **kwargs):
+        super().save()
+        if settings.ENABLE_GOOGLE_CALENDAR:
+            create_event_from_banquet(self)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Банкет'
+        verbose_name_plural = 'Банкет'
+
+
+# Delete photo if model.object delete
 @receiver(post_delete)
 def submission_delete(sender, instance, **kwargs):
     try:

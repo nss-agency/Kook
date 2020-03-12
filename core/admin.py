@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Booking, MenuItem, RoomType
+from .models import Booking, MenuItem, RoomType, Promo, Baquet
 
 
 # Register your models here.
@@ -30,4 +30,6 @@ class RoomAdmin(admin.ModelAdmin):
 
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(MenuItem)
-admin.site.register(RoomType,RoomAdmin)
+admin.site.register(Promo)
+admin.site.register(Baquet)
+admin.site.register(RoomType, RoomAdmin)
