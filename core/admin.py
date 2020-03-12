@@ -14,10 +14,20 @@ class BookingAdmin(admin.ModelAdmin):
         'quantity',
         'room_type',
         'additional']
-    list_filter = ['date_entry', 'date_leave', 'room_type']
-    search_fields = ['phone', 'pib', 'date_entry', 'date_leave', 'email']
+    list_filter = ['room_type', 'date_entry', 'date_leave']
+    search_fields = ('phone', 'pib', 'date_entry', 'date_leave', 'email')
+    list_per_page = 10
+    date_hierarchy = 'date_entry'
+
+
+class RoomAdmin(admin.ModelAdmin):
+    list_display = [
+        'name',
+        'quantity',
+        'price',
+    ]
 
 
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(MenuItem)
-admin.site.register(RoomType)
+admin.site.register(RoomType,RoomAdmin)

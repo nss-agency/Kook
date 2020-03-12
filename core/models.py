@@ -10,6 +10,7 @@ class RoomType(models.Model):
     name = models.CharField('Тип Кімнати', max_length=64)
     quantity = models.IntegerField('Кількість кімнат')
     color_id = models.IntegerField('Id кольору')
+    price = models.PositiveIntegerField('Ціна')
 
     def __str__(self):
         return self.name
