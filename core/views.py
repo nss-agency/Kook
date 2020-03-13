@@ -38,7 +38,7 @@ def form(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-            ctx2 = {
+            booking_status = {
                 'success': False,
                 'fail': False,
 
@@ -89,17 +89,17 @@ def form(request):
 
             if (case_1 or case_2 or case_3 or case_4) and case >= room_type.quantity:
                 print('Zanyato')
-                ctx2['fail'] = True
+                booking_status['fail'] = True
             else:
                 booking = form.save(commit=False)
                 booking.save()
-                ctx2['success'] = True
+                booking_status['success'] = True
         else:
             BookingForm()
 
     ctx = {
         'form': BookingForm,
-        'ctx2': ctx2,
+        'booking_status': booking_status,
         'booking_info': booking_info
     }
 
