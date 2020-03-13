@@ -8,21 +8,7 @@
 </head>
 <body>
 
-<form method="post">
-    {% csrf_token %}
-<div class="">
-    {{ form.as_ul }}
-
-    {% if ctx2.success %}
-        <h1>Congrats</h1>
-    {% endif %}
-    {% if ctx2.fail %}
-        <h1>Sorry</h1>
-    {% endif %}
-    <button id="submitContactForm" type="submit">Submit
-    </button>
-</div>
-</form>
+{% include 'ajax_icludes/ajax_form.html' %}
 </body>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
