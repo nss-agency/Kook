@@ -15,8 +15,7 @@ class Promo(models.Model):
     is_percetage = models.BooleanField('Це відсоток?', default=True)
 
     def __str__(self):
-        template = '{0.name} | {0.discount}'
-        return template.format(self)
+        return self.name
 
     class Meta:
         verbose_name = 'Промокод'
@@ -57,7 +56,7 @@ class Booking(models.Model):
     bed_type = models.CharField('Тип Ліжка', null=True, blank=True, max_length=225)
     notes = models.TextField('Нотатки', blank=True, help_text='Цей текст буде бачити тільки адміністратор та модератор')
     is_paid = models.BooleanField(default=False)
-    discount = models.ForeignKey(Promo, null=True, on_delete=models.CASCADE, blank=True)
+    discount = models.CharField('Промокод', max_length=225, null=True, blank=True)
 
     # save event to google calendar
     def save(self, *args, **kwargs):

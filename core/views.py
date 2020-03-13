@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from .forms import BookingForm
-from .models import Booking, RoomType
+from .models import Booking, RoomType, Promo, Baquet
 from .decorators import check_recaptcha
 import datetime
-
+from datetime import datetime
 
 # def is_room_type_available(room_type, date_entry, date_leave):
 #     # case 1: a room is booked before the check_in date, and checks out after the requested check_in date
@@ -34,6 +34,7 @@ def form(request):
         'fail': False,
 
     }
+
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
@@ -42,9 +43,35 @@ def form(request):
                 'fail': False,
 
             }
+            pib = form.cleaned_data['pib']
+            phone = form.cleaned_data['phone']
+            email = form.cleaned_data['email']
             date_entry = form.cleaned_data['date_entry']
             date_leave = form.cleaned_data['date_leave']
+            quantity = form.cleaned_data['quantity']
             room_type = form.cleaned_data['room_type']
+            additionals = form.cleaned_data['additional']
+            entry_promo = form.cleaned_data['discount']
+
+            day = date_leave - date_entry
+            price = room_type.price * day.days
+
+            booking_info = {
+                'pib': pib,
+                'phone': phone,
+                'email': email,
+                'date_entry': date_entry,
+                'date_leave': date_leave,
+                'date_leave': date_leave,
+                'quantity': quantity,
+                'room_type': room_type,
+                'additionals': additionals,
+                'days': day.days,
+                'price': price
+            }
+
+            exist_promo = Promo.objects.get(name__contains=entry_promo)
+            print(str(exist_promo) == entry_promo)
 
             case_1 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,
                                             date_leave__gte=date_entry)
@@ -72,7 +99,8 @@ def form(request):
 
     ctx = {
         'form': BookingForm,
-        'ctx2': ctx2
+        'ctx2': ctx2,
+        'booking_info': booking_info
     }
 
     return render(request, 'form.html', ctx)
