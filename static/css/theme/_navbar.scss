@@ -13,12 +13,12 @@ nav {
 
         .nav-phone-number {
             color: var(--dark-grey);
-            font-size: .9em;
+            font-size: 0.9em;
 
             &::after {
                 display: inline-block;
                 content: "";
-                border-top: .5px solid var(--dark-grey);
+                border-top: 0.5px solid var(--dark-grey);
                 width: 8.25rem;
                 margin: 0 1rem;
                 transform: translateY(-0.3rem);
@@ -27,7 +27,7 @@ nav {
             &::before {
                 display: inline-block;
                 content: "";
-                border-top: .5px solid var(--dark-grey);
+                border-top: 0.5px solid var(--dark-grey);
                 width: 8.25rem;
                 margin: 0 1rem;
                 transform: translateY(-0.3rem);

@@ -12,44 +12,30 @@ from datetime import datetime
 
 def hotel(request):
     ctx = {}
-
     return render(request, 'hotel_rooms.html', ctx)
 
 
 # Create your views here.
 def index(request):
     ctx = {}
-
     return render(request, 'index.html', ctx)
-
-
-def hotel(request):
-    ctx = {}
-
-    return render(request, 'hotel_rooms.html', ctx)
 
 
 def banquet(request):
     ctx = {}
-
     return render(request, 'banquet.html', ctx)
 
 
 def form(request):
-    ctx2 = {
+    booking_status = {
         'success': False,
         'fail': False,
-
     }
 
+    booking_info = {}
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-            booking_status = {
-                'success': False,
-                'fail': False,
-
-            }
             pib = form.cleaned_data['pib']
             phone = form.cleaned_data['phone']
             email = form.cleaned_data['email']
@@ -62,6 +48,10 @@ def form(request):
 
             day = date_leave - date_entry
             price = room_type.price * day.days
+            # exist_promo = Promo.objects.get(name__contains=entry_promo)
+            # if str(exist_promo) == entry_promo
+
+            # print(str(exist_promo) == entry_promo)
 
             booking_info = {
                 'pib': pib,
@@ -69,16 +59,12 @@ def form(request):
                 'email': email,
                 'date_entry': date_entry,
                 'date_leave': date_leave,
-                'date_leave': date_leave,
                 'quantity': quantity,
                 'room_type': room_type,
                 'additionals': additionals,
                 'days': day.days,
                 'price': price
             }
-
-            # exist_promo = Promo.objects.get(name__contains=entry_promo)
-            # print(str(exist_promo) == entry_promo)
 
             case_1 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,
                                             date_leave__gte=date_entry)

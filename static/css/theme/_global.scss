@@ -1,25 +1,25 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,700&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap");
 
-:root{
-	--black: #141414;
-	--white: #ffffff;
-	--grey: #ececec;
-	--dark-grey: #838383;
-	--accent: #892d15;
+:root {
+    --black: #141414;
+    --white: #ffffff;
+    --grey: #ececec;
+    --dark-grey: #838383;
+    --accent: #892d15;
 }
 
 html,
-body{
-	margin: 0;
-	padding: 0;
-	font-size: 14px;
-	font-family: 'Oswald', sans-serif;
-	color: var(--black)
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Oswald", sans-serif;
+    color: var(--black);
 }
 
-.container{
-	margin: 2vh 5vw;
-	position: relative;
+.container {
+    margin: 2vh 5vw;
+    position: relative;
 }

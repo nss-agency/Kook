@@ -1,62 +1,61 @@
 .btn {
-	font-family: Oswald, sans-serif;
-	font-weight: 600;
-	padding: .4em 1.5em;
-	font-size: 1.5em;
-	text-transform: uppercase;
-	text-decoration: none;
-	display: block;
-	position: relative;
-	width: fit-content;
-	width: -moz-fit-content;
+    font-family: Oswald, sans-serif;
+    font-weight: 600;
+    padding: 0.4em 1.5em;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    width: fit-content;
+    width: -moz-fit-content;
 
-	transition: background-color .3s, color .3s;
+    transition: background-color 0.3s, color 0.3s;
 
-	&:after {
-		content: "";
-		height: 3px;
-		width: 0;
-		position: absolute;
-		left: -15px;
-		top: 10px;
-		transform: rotate(135deg);
-		transition: width .3s;
-	}
+    &:after {
+        content: "";
+        height: 3px;
+        width: 0;
+        position: absolute;
+        left: -15px;
+        top: 10px;
+        transform: rotate(135deg);
+        transition: width 0.3s;
+    }
 
-	&:hover{
-		&:after{
-			width: 50px;
-		}
-	}
+    &:hover {
+        &:after {
+            width: 50px;
+        }
+    }
 }
 
 .btn-black {
-	color: var(--white);
-	background-color: var(--black);
-	border: 3px var(--black) solid;
+    color: var(--white);
+    background-color: var(--black);
+    border: 3px var(--black) solid;
 
+    &:after {
+        background-color: var(--black);
+    }
 
-	&:after {
-		background-color: var(--black);
-	}
-
-	&:hover {
-		color: var(--black);
-		background-color: var(--white);
-	}
+    &:hover {
+        color: var(--black);
+        background-color: var(--white);
+    }
 }
 
 .btn-outline {
-	color: var(--black);
-	background-color: var(--white);
-	border: 3px var(--black) solid;
+    color: var(--black);
+    background-color: var(--white);
+    border: 3px var(--black) solid;
 
-	&:after {
-		background-color: var(--white);
-	}
+    &:after {
+        background-color: var(--white);
+    }
 
-	&:hover {
-		color: var(--white);
-		background-color: var(--black);
-	}
+    &:hover {
+        color: var(--white);
+        background-color: var(--black);
+    }
 }

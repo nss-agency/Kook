@@ -26,7 +26,8 @@ class RoomType(models.Model):
     """
        Model for room types
     """
-    image = models.ImageField('Фото кімнати', upload_to='room_types', blank=True)
+    image = models.ImageField(
+        'Фото кімнати', upload_to='room_types', blank=True)
     name = models.CharField('Тип Кімнати', max_length=64)
     quantity = models.IntegerField('Кількість кімнат')
     color_id = models.IntegerField('Id кольору')
@@ -45,7 +46,8 @@ class Booking(models.Model):
     Model for Booking
     """
     pib = models.CharField('П.І.Б.', max_length=225)
-    phone = models.CharField('Номер телефону', max_length=225, help_text='Контактний номер телефону')
+    phone = models.CharField(
+        'Номер телефону', max_length=225, help_text='Контактний номер телефону')
     email = models.EmailField('E-mail')
     date_entry = models.DateField('Дата заїзду', default=datetime.now)
     date_leave = models.DateField('Дата виїзду', default=datetime.now)
@@ -53,10 +55,13 @@ class Booking(models.Model):
     room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE)
     additional = models.CharField('Додаткові опціі', max_length=225)
     breakfest = models.BooleanField('Сніданок', default=True)
-    bed_type = models.CharField('Тип Ліжка', null=True, blank=True, max_length=225)
-    notes = models.TextField('Нотатки', blank=True, help_text='Цей текст буде бачити тільки адміністратор та модератор')
+    bed_type = models.CharField(
+        'Тип Ліжка', null=True, blank=True, max_length=225)
+    notes = models.TextField(
+        'Нотатки', blank=True, help_text='Цей текст буде бачити тільки адміністратор та модератор')
     is_paid = models.BooleanField(default=False)
-    discount = models.CharField('Промокод', max_length=225, null=True, blank=True)
+    discount = models.CharField(
+        'Промокод', max_length=225, null=True, blank=True)
 
     # save event to google calendar
     def save(self, *args, **kwargs):
@@ -77,7 +82,8 @@ class MenuItem(models.Model):
     """
     Model for menu items
     """
-    image = models.ImageField('Зображення', blank=True, upload_to='menu_images')
+    image = models.ImageField(
+        'Зображення', blank=True, upload_to='menu_images')
     title = models.CharField('Назва страви', max_length=225)
     description = models.TextField('Опис')
     price = models.IntegerField('Ціна')
@@ -93,9 +99,11 @@ class MenuItem(models.Model):
 class Baquet(models.Model):
     check_in = models.DateField('Заїзд', default=datetime.now)
     pib = models.CharField('П.І.Б.', max_length=225)
-    phone = models.CharField('Номер телефону', max_length=225, help_text='Контактний номер телефону')
+    phone = models.CharField(
+        'Номер телефону', max_length=225, help_text='Контактний номер телефону')
     email = models.EmailField('E-mail')
-    notes = models.TextField('Нотатки', blank=True, help_text='Цей текст буде бачити тільки адміністратор та модератор')
+    notes = models.TextField(
+        'Нотатки', blank=True, help_text='Цей текст буде бачити тільки адміністратор та модератор')
 
     def save(self, *args, **kwargs):
         super().save()
@@ -103,7 +111,8 @@ class Baquet(models.Model):
             create_event_from_banquet(self)
 
     def __str__(self):
-        return self.title
+        template = '{0.pib} | {0.phone}'
+        return template.format(self)
 
     class Meta:
         verbose_name = 'Банкет'
