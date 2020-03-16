@@ -16,15 +16,20 @@
 		bottom: 0;
 		left: 50%;
 		transform: translateX(-50%);
-		padding: 1rem;
+		padding: 2rem;
 
 		.hero-header__hotel {
+			font-family: Ubuntu, sans-serif;
+			font-weight: bold;
+			font-size: 35px;
 			color: var(--black);
 			text-align: center;
 			margin-bottom: 0;
+			margin-top: 0;
 		}
 
 		.hero-small__hotel {
+			font-size: 12px;
 			display: block;
 			font-family: 'Montserrat', sans-serif;
 			text-align: center;
@@ -49,7 +54,14 @@
 		}
 
 		.room-description {
+			margin-top: 25px;
+			p{
+				font-family: Montserrat sans-serif;
+				text-align: left;
+			}
 			small {
+				font-size: 15px;
+				margin-top: 5px;
 				color: var(--accent);
 			}
 

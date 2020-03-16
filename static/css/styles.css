@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap");
 :root {
   --black: #141414;
   --white: #ffffff;
@@ -23,6 +24,8 @@ body {
 }
 
 .btn {
+  font-family: Oswald, sans-serif;
+  font-weight: 600;
   padding: 0.4em 1.5em;
   font-size: 1.5em;
   text-transform: uppercase;
@@ -87,6 +90,22 @@ nav .nav-buttons {
 nav .nav-buttons .nav-phone-number {
   color: var(--dark-grey);
   font-size: 0.9em;
+}
+nav .nav-buttons .nav-phone-number::after {
+  display: inline-block;
+  content: "";
+  border-top: 0.5px solid var(--dark-grey);
+  width: 8.25rem;
+  margin: 0 1rem;
+  transform: translateY(-0.3rem);
+}
+nav .nav-buttons .nav-phone-number::before {
+  display: inline-block;
+  content: "";
+  border-top: 0.5px solid var(--dark-grey);
+  width: 8.25rem;
+  margin: 0 1rem;
+  transform: translateY(-0.3rem);
 }
 nav .nav-buttons .nav-link {
   color: var(--black);
@@ -183,6 +202,8 @@ nav .nav-buttons .nav-link:hover {
   font-weight: bold;
 }
 .index-info-block .index-info-text .info-block-small {
+  font-size: 15px;
+  font-weight: 300;
   color: var(--accent);
 }
 .index-info-block .index-info-text .info-block-p {
@@ -345,12 +366,13 @@ footer .footer-flex .footer-block {
   text-align: center;
 }
 footer .footer-flex .footer-block .footer-header {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 600;
   margin: 0 0 1rem 0;
   text-transform: uppercase;
 }
 footer .footer-flex .footer-block .footer-phone-number {
+  font-family: Montserrat, sans-serif;
   font-size: 1.75rem;
   font-weight: lighter;
 }
@@ -362,7 +384,7 @@ footer .footer-flex .footer-block .footer-link-list {
 }
 footer .footer-flex .footer-block .footer-link-list .footer-list-element {
   color: var(--white);
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-decoration: none;
   font-weight: lighter;
 }
@@ -403,14 +425,19 @@ footer .footer-copy .heart {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  padding: 1rem;
+  padding: 2rem;
 }
 .hero-container__hotel .header-container .hero-header__hotel {
+  font-family: Ubuntu, sans-serif;
+  font-weight: bold;
+  font-size: 35px;
   color: var(--black);
   text-align: center;
   margin-bottom: 0;
+  margin-top: 0;
 }
 .hero-container__hotel .header-container .hero-small__hotel {
+  font-size: 12px;
   display: block;
   font-family: "Montserrat", sans-serif;
   text-align: center;
@@ -431,7 +458,16 @@ footer .footer-copy .heart {
   height: 30vh;
   object-fit: cover;
 }
+.rooms-container .room-wrapper .room-description {
+  margin-top: 25px;
+}
+.rooms-container .room-wrapper .room-description p {
+  font-family: Montserrat sans-serif;
+  text-align: left;
+}
 .rooms-container .room-wrapper .room-description small {
+  font-size: 15px;
+  margin-top: 5px;
   color: var(--accent);
 }
 .rooms-container .room-wrapper .room-description .room-header {
@@ -461,6 +497,83 @@ footer .footer-copy .heart {
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
+}
+
+.hero-container__banquet {
+  height: 50vh;
+  position: relative;
+  background: #000000;
+  overflow: hidden;
+}
+.hero-container__banquet .hero-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.hero-container__banquet .header-container {
+  background: var(--white);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2rem;
+}
+.hero-container__banquet .header-container .hero-header__banquet {
+  font-family: Ubuntu, sans-serif;
+  font-weight: bold;
+  font-size: 35px;
+  color: var(--black);
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.hero-container__banquet .header-container .hero-small__banquet {
+  font-size: 12px;
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.banquet_container {
+  height: 50vh;
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  margin: 0 24vh;
+}
+.banquet_container h2 {
+  font-size: 20px;
+  margin: 6vh 0 0 0;
+}
+.banquet_container p {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+}
+
+.btn__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-black__banquet {
+  color: var(--white);
+  background-color: var(--black);
+  border: 3px var(--black) solid;
+  display: inline-flex;
+  margin-top: 3.5vh;
+  padding-left: 6vw;
+  padding-right: 6vw;
+  margin-left: 1.5vh;
+}
+.btn-black__banquet:after {
+  background-color: var(--black);
+}
+.btn-black__banquet:hover {
+  color: var(--black);
+  background-color: var(--white);
 }
 
 /*# sourceMappingURL=styles.css.map */

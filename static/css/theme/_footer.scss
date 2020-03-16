@@ -19,13 +19,14 @@ footer {
 			text-align: center;
 
 			.footer-header {
-				font-size: 2rem;
+				font-size: 1.6rem;
 				font-weight: 600;
 				margin: 0 0 1rem 0;
 				text-transform: uppercase;
 			}
 
 			.footer-phone-number {
+				font-family: Montserrat, sans-serif;
 				font-size: 1.75rem;
 				font-weight: lighter;
 			}
@@ -38,7 +39,7 @@ footer {
 
 				.footer-list-element {
 					color: var(--white);
-					font-size: 1.5rem;
+					font-size: 1rem;
 					text-decoration: none;
 					font-weight: lighter;
 

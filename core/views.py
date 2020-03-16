@@ -5,6 +5,7 @@ from .decorators import check_recaptcha
 import datetime
 from datetime import datetime
 
+
 # def is_room_type_available(room_type, date_entry, date_leave):
 #     # case 1: a room is booked before the check_in date, and checks out after the requested check_in date
 #
@@ -26,6 +27,12 @@ def hotel(request):
     ctx = {}
 
     return render(request, 'hotel_rooms.html', ctx)
+
+
+def banquet(request):
+    ctx = {}
+
+    return render(request, 'banquet.html', ctx)
 
 
 def form(request):
@@ -70,8 +77,8 @@ def form(request):
                 'price': price
             }
 
-            exist_promo = Promo.objects.get(name__contains=entry_promo)
-            print(str(exist_promo) == entry_promo)
+            # exist_promo = Promo.objects.get(name__contains=entry_promo)
+            # print(str(exist_promo) == entry_promo)
 
             case_1 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,
                                             date_leave__gte=date_entry)
