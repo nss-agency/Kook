@@ -1,121 +1,128 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     {% include 'includes/head_links.html' %}
 </head>
+
 <body>
-{% include 'includes/navbar.html' %}
-<div class="container">
-    <div class="hero-slider">
-        <div class="hero-elements-wrapper" id="hero-elements-wrapper">
-            <div class="hero-element" id="hero-element-0">
-                <img src="{% static 'img/hero-slider-1.jpg' %}" class="hero-photo" alt="">
+    {% include 'includes/navbar.html' %}
+    <div class="container">
+        <div class="hero-slider">
+            <div class="hero-elements-wrapper" id="hero-elements-wrapper">
+                <div class="hero-element" id="hero-element-0">
+                    <img src="{% static 'img/hero-slider-1.jpg' %}" class="hero-photo" alt="">
+                </div>
+                <div class="hero-element" id="hero-element-1">
+                    <img src="{% static 'img/hero-slider-1.jpg' %}" class="hero-photo" alt="">
+                </div>
+                <div class="hero-element" id="hero-element-2">
+                    <img src="{% static 'img/hero-slider-1.jpg' %}" class="hero-photo" alt="">
+                </div>
+                <div class="hero-element" id="hero-element-3">
+                    <img src="{% static 'img/hero-slider-1.jpg' %}" class="hero-photo" alt="">
+                </div>
+                <div class="hero-element" id="hero-element-4">
+                    <img src="{% static 'img/hero-slider-1.jpg' %}" class="hero-photo" alt="">
+                </div>
             </div>
-            <div class="hero-element" id="hero-element-1">
-                <img src="{% static 'img/hero-slider-1.jpg' %}" class="hero-photo" alt="">
+            <div class="hero-controls">
+                <span id="hero-controls-element-0" class="hero-controls-element"></span>
+                <span id="hero-controls-element-1" class="hero-controls-element"></span>
+                <span id="hero-controls-element-2" class="hero-controls-element"></span>
+                <span id="hero-controls-element-3" class="hero-controls-element"></span>
+                <span id="hero-controls-element-4" class="hero-controls-element"></span>
             </div>
-            <div class="hero-element" id="hero-element-2">
-                <img src="{% static 'img/hero-slider-1.jpg' %}" class="hero-photo" alt="">
-            </div>
-            <div class="hero-element" id="hero-element-3">
-                <img src="{% static 'img/hero-slider-1.jpg' %}" class="hero-photo" alt="">
-            </div>
-            <div class="hero-element" id="hero-element-4">
-                <img src="{% static 'img/hero-slider-1.jpg' %}" class="hero-photo" alt="">
-            </div>
-        </div>
-        <div class="hero-controls">
-            <span id="hero-controls-element-0" class="hero-controls-element"></span>
-            <span id="hero-controls-element-1" class="hero-controls-element"></span>
-            <span id="hero-controls-element-2" class="hero-controls-element"></span>
-            <span id="hero-controls-element-3" class="hero-controls-element"></span>
-            <span id="hero-controls-element-4" class="hero-controls-element"></span>
-        </div>
-    </div>
-</div>
-
-<div class="container-index-text-blocks">
-    <span class="index-big-decor"></span>
-    <div class="index-info-block">
-        <span class="index-decor-1"></span>
-        <div class="index-info-text">
-            <h4 class="info-block-header">Hotel</h4>
-            <small class="info-block-small">Tame lorem</small>
-            <p class="info-block-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur,
-                consequuntur corporis deleniti deserunt enim error est excepturi facere id inventore minus nemo neque
-                quos, repellat sapiente similique sunt temporibus!</p>
-            <br>
-            <a href="" class="btn btn-black">read more</a>
-        </div>
-        <div class="index-info-wrapper">
-            <img src="{% static 'img/text-block-1.jpg' %}" alt="" class="index-info-img">
         </div>
     </div>
 
-    <div class="index-info-block index-info-block-reverse">
-        <span class="index-decor-2"></span>
-        <div class="index-info-text">
-            <h4 class="info-block-header">Hotel</h4>
-            <small class="info-block-small">Tame lorem</small>
-            <p class="info-block-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur,
-                consequuntur corporis deleniti deserunt enim error est excepturi facere id inventore minus nemo neque
-                quos, repellat sapiente similique sunt temporibus!</p>
-            <br>
-            <a href="" class="btn btn-black">read more</a>
+    <div class="container-index-text-blocks">
+        <span class="index-big-decor"></span>
+        <div class="index-info-block">
+            <span class="index-decor-1"></span>
+            <div class="index-info-text">
+                <h4 class="info-block-header">Hotel</h4>
+                <small class="info-block-small">Tame lorem</small>
+                <p class="info-block-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur,
+                    consequuntur corporis deleniti deserunt enim error est excepturi facere id inventore minus nemo
+                    neque
+                    quos, repellat sapiente similique sunt temporibus!</p>
+                <br>
+                <a href="" class="btn btn-black">read more</a>
+            </div>
+            <div class="index-info-wrapper">
+                <img src="{% static 'img/text-block-1.jpg' %}" alt="" class="index-info-img">
+            </div>
         </div>
-        <div class="index-info-wrapper">
-            <img src="{% static 'img/text-block-1.jpg' %}" alt="" class="index-info-img">
+
+        <div class="index-info-block index-info-block-reverse">
+            <span class="index-decor-2"></span>
+            <div class="index-info-text">
+                <h4 class="info-block-header">Hotel</h4>
+                <small class="info-block-small">Tame lorem</small>
+                <p class="info-block-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur,
+                    consequuntur corporis deleniti deserunt enim error est excepturi facere id inventore minus nemo
+                    neque
+                    quos, repellat sapiente similique sunt temporibus!</p>
+                <br>
+                <a href="" class="btn btn-black">read more</a>
+            </div>
+            <div class="index-info-wrapper">
+                <img src="{% static 'img/text-block-1.jpg' %}" alt="" class="index-info-img">
+            </div>
+        </div>
+
+        <div class="index-info-block">
+            <span class="index-decor-3"></span>
+            <div class="index-info-text">
+                <h4 class="info-block-header">Hotel</h4>
+                <small class="info-block-small">Tame lorem</small>
+                <p class="info-block-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur,
+                    consequuntur corporis deleniti deserunt enim error est excepturi facere id inventore minus nemo
+                    neque
+                    quos, repellat sapiente similique sunt temporibus!</p>
+                <br>
+                <a href="" class="btn btn-black">read more</a>
+            </div>
+            <div class="index-info-wrapper">
+                <img src="{% static 'img/text-block-1.jpg' %}" alt="" class="index-info-img">
+            </div>
         </div>
     </div>
+    {% include 'includes/footer.html' %}
+    <script>
+        let slides_count = 5;
+        /*
+        * if changing this you need to change animation time in .hero-container-controls-element in _index.scss
+        * */
+        let slide_visible_time = 3000;
+        let current_slide = 0;
 
-    <div class="index-info-block">
-        <span class="index-decor-3"></span>
-        <div class="index-info-text">
-            <h4 class="info-block-header">Hotel</h4>
-            <small class="info-block-small">Tame lorem</small>
-            <p class="info-block-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consectetur,
-                consequuntur corporis deleniti deserunt enim error est excepturi facere id inventore minus nemo neque
-                quos, repellat sapiente similique sunt temporibus!</p>
-            <br>
-            <a href="" class="btn btn-black">read more</a>
-        </div>
-        <div class="index-info-wrapper">
-            <img src="{% static 'img/text-block-1.jpg' %}" alt="" class="index-info-img">
-        </div>
-    </div>
-</div>
-{% include 'includes/footer.html' %}
-<script>
-    let slides_count = 5;
-    /*
-    * if changing this you need to change animation time in .hero-container-controls-element in _index.scss
-    * */
-    let slide_visible_time = 3000;
-    let current_slide = 0;
+        let timerId = setInterval(changeSlide, slide_visible_time)
+        document.getElementById(`hero-controls-element-0`).classList.add('hero-controls-element-animate')
 
-    let timerId = setInterval(changeSlide, slide_visible_time)
-    document.getElementById(`hero-controls-element-0`).classList.add('hero-controls-element-animate')
+        function changeSlide() {
+            document.getElementById(`hero-controls-element-${current_slide}`).classList.remove('hero-controls-element-animate')
+            if (current_slide !== slides_count - 1) {
+                current_slide++;
+            } else {
+                current_slide = 0;
+            }
 
-    function changeSlide() {
-        document.getElementById(`hero-controls-element-${current_slide}`).classList.remove('hero-controls-element-animate')
-        if (current_slide !== slides_count - 1) {
-            current_slide++;
-        } else {
-            current_slide = 0;
+            document.getElementById('hero-elements-wrapper').style.transform = `translateX(${current_slide * -100}%)`
+
+            document.getElementById(`hero-controls-element-${current_slide}`).classList.add('hero-controls-element-animate')
+
+
         }
+    </script>
 
-        document.getElementById('hero-elements-wrapper').style.transform = `translateX(${current_slide * -100}%)`
-
-        document.getElementById(`hero-controls-element-${current_slide}`).classList.add('hero-controls-element-animate')
-
-
-    }
-</script>
 </body>
+
 </html>

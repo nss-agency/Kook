@@ -14,7 +14,18 @@ class BookingForm(ModelForm):
 
     class Meta:
         model = Booking
-        fields = '__all__'
+        fields = (
+            'pib',
+            'phone',
+            'email',
+            'date_entry',
+            'date_leave',
+            'quantity',
+            'room_type',
+            'additional',
+            'breakfest',
+            'discount',
+        )
         widgets = {
             'pib': forms.TextInput,
             'phone': forms.TextInput,
