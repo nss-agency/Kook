@@ -76,9 +76,9 @@ WSGI_APPLICATION = 'Kook_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'kook',
-        'USER': 'kook',
-        'PASSWORD': 'Ko2020ok',
+        'NAME': 'test',
+        'USER': 'tetsuser',
+        'PASSWORD': 'test123',
         'HOST': 'localhost',
         'PORT': '',
     }
