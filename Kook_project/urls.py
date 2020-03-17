@@ -26,6 +26,7 @@ urlpatterns = [
     path('form/', views.form, name='form'),
     path('ajax_form/', views.form, name='form'),
     path('hotel/', views.hotel, name='hotel'),
+    path('contact/', views.contact, name='contact'),
 ]
 
 if settings.DEBUG:

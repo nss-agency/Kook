@@ -22,6 +22,14 @@ body {
   position: relative;
 }
 
+.h1 {
+  font-size: 3em;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: bold;
+  text-align: center;
+}
+
 .btn {
   padding: 0.4em 1.5em;
   font-size: 1.5em;
@@ -223,16 +231,6 @@ nav .nav-buttons .nav-link:hover {
   left: 3em;
   height: 100%;
   width: 80%;
-}
-
-.index-decor-1 {
-  display: block;
-  border: 10px var(--grey) solid;
-  position: absolute;
-  left: 40%;
-  width: 20%;
-  height: 108%;
-  top: -6%;
 }
 
 .index-decor-2 {
@@ -459,6 +457,73 @@ footer .footer-copy .heart {
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
+}
+
+.form-modal {
+  width: 30%;
+  background: var(--white);
+}
+.form-modal input[type=text],
+.form-modal input[type=number],
+.form-modal input[type=email] {
+  width: 100%;
+  padding: 1rem;
+  border: 1px var(--dark-grey) solid;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Oswald", sans-serif;
+}
+.form-modal label {
+  display: block;
+  color: var(--dark-grey);
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "text form" "map map";
+}
+.contact-grid .contact-text {
+  grid-area: text;
+  background-color: var(--dark-grey);
+  padding: 3rem;
+  color: var(--white);
+}
+.contact-grid .contact-text .contact-text-group .contact-text-icon {
+  display: inline;
+  padding: 1rem;
+  border-radius: 18px;
+  border: solid 5px var(--white);
+}
+.contact-grid .contact-text .contact-text-group .contact-text-header {
+  margin: 0;
+  font-size: 1.7rem;
+}
+.contact-grid .contact-text .contact-text-group .contact-text-small {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  word-wrap: break-word;
+}
+.contact-grid .contact-form {
+  grid-area: form;
+  background-color: var(--grey);
+  color: var(--black);
+}
+.contact-grid .contact-form input[type=text] {
+  display: block;
+  width: 100%;
+}
+.contact-grid .contact-form textarea {
+  width: 100%;
+  resize: none;
+}
+.contact-grid .contact-map {
+  grid-area: map;
+  background-color: black;
+  height: 30vh;
+  box-shadow: 10px 4px 4px var(--black) inset;
 }
 
 /*# sourceMappingURL=styles.css.map */

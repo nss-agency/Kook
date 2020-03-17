@@ -105,3 +105,8 @@ def form(request):
     }
 
     return render(request, 'form.html', ctx)
+
+
+def contact(request):
+    ctx={}
+    return render(request, 'contacts.html', ctx)

@@ -1,0 +1,58 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% include "includes/head_links.html" %}
+    <title>Contact Us</title>
+</head>
+<body>
+{% include "includes/navbar.html" %}
+<div class="container">
+    <h1 class="h1">Наші контакти</h1>
+    <div class="contact-grid">
+        <div class="contact-text">
+            <div class="contact-text-group">
+                <img src="{% static "svg/contact-address-icon.svg" %}" alt="" class="contact-text-icon">
+                <h3 class="contact-text-header">Location</h3>
+                <p class="contact-text-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <div class="contact-text-group">
+                <img src="{% static "svg/contact-mail-icon.svg" %}" alt="" class="contact-text-icon">
+                <h3 class="contact-text-header">Location</h3>
+                <p class="contact-text-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <div class="contact-text-group">
+                <img src="{% static "svg/contact-phone-icon.svg" %}" alt="" class="contact-text-icon">
+                <h3 class="contact-text-header">Location</h3>
+                <p class="contact-text-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <div class="contact-text-group">
+                <img src="{% static "svg/contact-bus-icon.svg" %}" alt="" class="contact-text-icon">
+                <h3 class="contact-text-header">Location</h3>
+                <p class="contact-text-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form method="post">
+                <label for="first_name" id="first_name_label">First Name</label>
+                <input type="text" name="first_name" id="first_name">
+                <label for="last_name" id="last_name_label">Last Name</label>
+                <input type="text" name="last_name" id="last_name">
+                <label for="email" id="email_label">E-mail</label>
+                <input type="text" name="email" id="email">
+                <label for="message" id="message_label">Message</label>
+                <textarea name="message" id="message" cols="30" rows="10">
+
+                </textarea>
+            </form>
+        </div>
+        <div class="contact-map"></div>
+    </div>
+</div>
+{% include "includes/footer.html" %}
+</body>
+</html>

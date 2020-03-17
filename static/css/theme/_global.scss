@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap');
 
-:root{
+:root {
 	--black: #141414;
 	--white: #ffffff;
 	--grey: #ececec;
@@ -10,7 +10,7 @@
 }
 
 html,
-body{
+body {
 	margin: 0;
 	padding: 0;
 	font-size: 14px;
@@ -18,7 +18,15 @@ body{
 	color: var(--black)
 }
 
-.container{
+.container {
 	margin: 2vh 5vw;
 	position: relative;
+}
+
+.h1 {
+	font-size: 3em;
+	text-transform: uppercase;
+	margin: 0;
+	font-weight: bold;
+	text-align: center;
 }
