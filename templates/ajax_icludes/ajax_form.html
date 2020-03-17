@@ -8,10 +8,10 @@
         </div>
     {% endfor %}
 
-    {% if ctx2.success %}
+    {% if booking_status.success %}
         <h1>Congrats</h1>
     {% endif %}
-    {% if ctx2.fail %}
+    {% if booking_status.fail %}
         <h1>Sorry</h1>
     {% endif %}
     <button class="btn btn-black" id="submitContactForm" type="submit">Submit</button>
