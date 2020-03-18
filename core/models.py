@@ -11,8 +11,8 @@ class Promo(models.Model):
     Model for promocodes
     """
     name = models.CharField('Код Промокоду', max_length=60)
-    discount = models.DecimalField('Значення промокоду', max_digits=5, decimal_places=2)
-    is_percetage = models.BooleanField('Це відсоток?', default=True)
+    discount = models.DecimalField('Значення промокоду', max_digits=3, decimal_places=0)
+    is_percentage = models.BooleanField('Це відсоток?', default=True)
 
     def __str__(self):
         return self.name
@@ -52,8 +52,8 @@ class Booking(models.Model):
     date_entry = models.DateField('Дата заїзду', default=datetime.now)
     date_leave = models.DateField('Дата виїзду', default=datetime.now)
     quantity = models.IntegerField('Кількість осіб')
-    room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE)
-    additional = models.CharField('Додаткові опціі', max_length=225)
+    room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, verbose_name='Тип Кімнати')
+    additional = models.CharField('Додаткові опціі', max_length=225, blank=True)
     breakfest = models.BooleanField('Сніданок', default=True)
     bed_type = models.CharField(
         'Тип Ліжка', null=True, blank=True, max_length=225)

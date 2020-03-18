@@ -15,7 +15,7 @@ class BookingAdmin(admin.ModelAdmin):
         'room_type',
         'additional']
     list_filter = ['room_type', 'date_entry', 'date_leave']
-    search_fields = ('phone', 'pib', 'date_entry', 'date_leave', 'email')
+    search_fields = ('phone', 'pib', 'email')
     list_per_page = 10
     date_hierarchy = 'date_entry'
 
@@ -28,8 +28,16 @@ class RoomAdmin(admin.ModelAdmin):
     ]
 
 
+class PromoAdmin(admin.ModelAdmin):
+    list_display = [
+        'name',
+        'discount',
+        'is_percentage',
+    ]
+
+
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(MenuItem)
-admin.site.register(Promo)
+admin.site.register(Promo, PromoAdmin)
 admin.site.register(Baquet)
 admin.site.register(RoomType, RoomAdmin)
