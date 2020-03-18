@@ -1,0 +1,25 @@
+.form-modal {
+	//position: absolute;
+	width: 30%;
+	background: var(--white);
+	//left: 50%;
+	//transform: translateX(-50%);
+
+	input[type="text"],
+	input[type="number"],
+	input[type="email"] {
+		width: 100%;
+		padding: 1rem;
+		border: 1px var(--dark-grey) solid;
+		text-align: center;
+		font-size: 1.5rem;
+		font-family: "Oswald", sans-serif;
+	}
+
+	label {
+		display: block;
+		color: var(--dark-grey);
+		width: 100%;
+		font-family: "Montserrat", sans-serif;
+	}
+}

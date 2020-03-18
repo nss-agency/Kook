@@ -1,0 +1,102 @@
+.hero-container__hotel {
+    height: 50vh;
+    position: relative;
+    background: #000000;
+    overflow: hidden;
+
+    .hero-image {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    .header-container {
+        background: var(--white);
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 2rem;
+
+        .hero-header__hotel {
+            font-family: Ubuntu, sans-serif;
+            font-weight: bold;
+            font-size: 35px;
+            color: var(--black);
+            text-align: center;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        .hero-small__hotel {
+            font-size: 12px;
+            display: block;
+            font-family: "Montserrat", sans-serif;
+            text-align: center;
+        }
+    }
+}
+
+.rooms-container {
+    display: grid;
+    margin: 5rem;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    grid-gap: 2rem;
+    row-gap: 5rem;
+
+    .room-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        .room-image {
+            height: 30vh;
+            object-fit: cover;
+        }
+
+        .room-description {
+            margin-top: 25px;
+
+            p {
+                font-family: Montserrat sans-serif;
+                text-align: left;
+            }
+
+            small {
+                font-size: 15px;
+                margin-top: 5px;
+                color: var(--accent);
+            }
+
+            .room-header {
+                margin: 0;
+                font-size: 3rem;
+            }
+        }
+    }
+}
+
+.hotel-decor-1 {
+    display: block;
+    //box-sizing: border-box;
+    border: 10px var(--grey) solid;
+    position: absolute;
+    width: 95%;
+    height: 29%;
+    top: 36%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.hotel-decor-2 {
+    display: block;
+    //box-sizing: border-box;
+    border: 10px var(--grey) solid;
+    position: absolute;
+    width: 95%;
+    height: 29%;
+    top: 36%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}

@@ -24,8 +24,18 @@ urlpatterns = [
     path('jet_api/', include('jet_django.urls')),
     path('', views.index, name='index'),
     path('form/', views.form, name='form'),
+    path('ajax_form/', views.form, name='form'),
+    path('hotel/', views.hotel, name='hotel'),
+    path('contact/', views.contact, name='contact'),
+    path('banquet/', views.banquet, name='banquet'),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+
+admin.site.site_header = "KOOK Адмін Панель"
+admin.site.site_title = "Kook"
+admin.site.index_title = "KOOK Адмін Панель"

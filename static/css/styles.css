@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:300,400,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap");
 :root {
   --black: #141414;
   --white: #ffffff;
@@ -19,9 +20,20 @@ body {
 
 .container {
   margin: 2vh 5vw;
+  position: relative;
+}
+
+.h1 {
+  font-size: 3em;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: bold;
+  text-align: center;
 }
 
 .btn {
+  font-family: Oswald, sans-serif;
+  font-weight: 600;
   padding: 0.4em 1.5em;
   font-size: 1.5em;
   text-transform: uppercase;
@@ -86,6 +98,22 @@ nav .nav-buttons {
 nav .nav-buttons .nav-phone-number {
   color: var(--dark-grey);
   font-size: 0.9em;
+}
+nav .nav-buttons .nav-phone-number::after {
+  display: inline-block;
+  content: "";
+  border-top: 1px solid var(--dark-grey);
+  width: 8.25rem;
+  margin: 0 1rem;
+  transform: translateY(-0.3rem);
+}
+nav .nav-buttons .nav-phone-number::before {
+  display: inline-block;
+  content: "";
+  border-top: 1px solid var(--dark-grey);
+  width: 8.25rem;
+  margin: 0 1rem;
+  transform: translateY(-0.3rem);
 }
 nav .nav-buttons .nav-link {
   color: var(--black);
@@ -155,12 +183,12 @@ nav .nav-buttons .nav-link:hover {
 }
 
 .container-index-text-blocks {
-  margin: 1vh 7em;
+  margin: 1vh 15em;
   position: relative;
 }
 
 .index-info-block {
-  margin: 1vh 0;
+  margin: 6em 0;
   display: flex;
   box-sizing: border-box;
   position: relative;
@@ -182,6 +210,8 @@ nav .nav-buttons .nav-link:hover {
   font-weight: bold;
 }
 .index-info-block .index-info-text .info-block-small {
+  font-size: 15px;
+  font-weight: 300;
   color: var(--accent);
 }
 .index-info-block .index-info-text .info-block-p {
@@ -230,6 +260,28 @@ nav .nav-buttons .nav-link:hover {
   position: absolute;
   left: 40%;
   width: 20%;
+  height: 108%;
+  top: -6%;
+}
+
+.index-decor-2 {
+  display: block;
+  border: 10px var(--grey) solid;
+  position: absolute;
+  right: 40%;
+  width: 30%;
+  height: 108%;
+  top: -6%;
+}
+
+.index-decor-3 {
+  display: block;
+  border: 10px var(--grey) solid;
+  position: absolute;
+  left: 40%;
+  width: 35%;
+  height: 108%;
+  top: -6%;
 }
 
 #hero-element-0 {
@@ -305,46 +357,298 @@ nav .nav-buttons .nav-link:hover {
 }
 
 footer {
-  display: flex;
-  padding: 4em 7em 4em 7em;
+  position: relative;
   background-color: var(--black);
   color: white;
-  justify-content: space-between;
-  height: 200px;
 }
-footer .footer-logo {
+footer .footer-flex {
+  display: flex;
+  height: 200px;
+  padding: 4em 7em 4em 7em;
+  justify-content: space-between;
+}
+footer .footer-flex .footer-logo {
   height: 100%;
 }
-footer .footer-block {
+footer .footer-flex .footer-block {
   text-align: center;
 }
-footer .footer-block .footer-header {
-  font-size: 2rem;
+footer .footer-flex .footer-block .footer-header {
+  font-size: 1.6rem;
   font-weight: 600;
   margin: 0 0 1rem 0;
   text-transform: uppercase;
 }
-footer .footer-block .footer-phone-number {
+footer .footer-flex .footer-block .footer-phone-number {
+  font-family: Montserrat, sans-serif;
   font-size: 1.75rem;
   font-weight: lighter;
 }
-footer .footer-block .footer-link-list {
+footer .footer-flex .footer-block .footer-link-list {
+  font-family: Montserrat, sans-serif;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-footer .footer-block .footer-link-list .footer-list-element {
+footer .footer-flex .footer-block .footer-link-list .footer-list-element {
   color: var(--white);
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-decoration: none;
   font-weight: lighter;
 }
-footer .footer-block .footer-link-list .footer-list-element .footer-link {
+footer .footer-flex .footer-block .footer-link-list .footer-list-element .footer-link {
   text-decoration: none;
   color: inherit;
 }
-footer .footer-block .footer-link-list .footer-list-element .footer-link:hover {
+footer .footer-flex .footer-block .footer-link-list .footer-list-element .footer-link:hover {
   text-decoration: underline;
+}
+footer .footer-copy {
+  font-family: Montserrat, sans-serif;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+footer .footer-copy .heart {
+  color: #ff000c;
+  font-size: 1rem;
+  margin: 0 0.3rem;
+}
+
+.hero-container__hotel {
+  height: 50vh;
+  position: relative;
+  background: #000000;
+  overflow: hidden;
+}
+.hero-container__hotel .hero-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.hero-container__hotel .header-container {
+  background: var(--white);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2rem;
+}
+.hero-container__hotel .header-container .hero-header__hotel {
+  font-family: Ubuntu, sans-serif;
+  font-weight: bold;
+  font-size: 35px;
+  color: var(--black);
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.hero-container__hotel .header-container .hero-small__hotel {
+  font-size: 12px;
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.rooms-container {
+  display: grid;
+  margin: 5rem;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  grid-gap: 2rem;
+  row-gap: 5rem;
+}
+.rooms-container .room-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.rooms-container .room-wrapper .room-image {
+  height: 30vh;
+  object-fit: cover;
+}
+.rooms-container .room-wrapper .room-description {
+  margin-top: 25px;
+}
+.rooms-container .room-wrapper .room-description p {
+  font-family: Montserrat sans-serif;
+  text-align: left;
+}
+.rooms-container .room-wrapper .room-description small {
+  font-size: 15px;
+  margin-top: 5px;
+  color: var(--accent);
+}
+.rooms-container .room-wrapper .room-description .room-header {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.hotel-decor-1 {
+  display: block;
+  border: 10px var(--grey) solid;
+  position: absolute;
+  width: 95%;
+  height: 29%;
+  top: 36%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.hotel-decor-2 {
+  display: block;
+  border: 10px var(--grey) solid;
+  position: absolute;
+  width: 95%;
+  height: 29%;
+  top: 36%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.form-modal {
+  width: 30%;
+  background: var(--white);
+}
+.form-modal input[type=text],
+.form-modal input[type=number],
+.form-modal input[type=email] {
+  width: 100%;
+  padding: 1rem;
+  border: 1px var(--dark-grey) solid;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Oswald", sans-serif;
+}
+.form-modal label {
+  display: block;
+  color: var(--dark-grey);
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "text form" "map map";
+}
+.contact-grid .contact-text {
+  grid-area: text;
+  background-color: var(--dark-grey);
+  padding: 3rem;
+  color: var(--white);
+}
+.contact-grid .contact-text .contact-text-group .contact-text-icon {
+  display: inline;
+  padding: 1rem;
+  border-radius: 18px;
+  border: solid 5px var(--white);
+}
+.contact-grid .contact-text .contact-text-group .contact-text-header {
+  margin: 0;
+  font-size: 1.7rem;
+}
+.contact-grid .contact-text .contact-text-group .contact-text-small {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  word-wrap: break-word;
+}
+.contact-grid .contact-form {
+  grid-area: form;
+  background-color: var(--grey);
+  color: var(--black);
+}
+.contact-grid .contact-form input[type=text] {
+  display: block;
+  width: 100%;
+}
+.contact-grid .contact-form textarea {
+  width: 100%;
+  resize: none;
+}
+.contact-grid .contact-map {
+  grid-area: map;
+  background-color: black;
+  height: 30vh;
+  box-shadow: 10px 4px 4px var(--black) inset;
+}
+
+.hero-container__banquet {
+  height: 50vh;
+  position: relative;
+  background: #000000;
+  overflow: hidden;
+}
+.hero-container__banquet .hero-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.hero-container__banquet .header-container {
+  background: var(--white);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2rem;
+}
+.hero-container__banquet .header-container .hero-header__banquet {
+  font-family: Ubuntu, sans-serif;
+  font-weight: bold;
+  font-size: 35px;
+  color: var(--black);
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.hero-container__banquet .header-container .hero-small__banquet {
+  font-size: 12px;
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.banquet_container {
+  height: 50vh;
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  margin: 0 24vh;
+}
+.banquet_container h2 {
+  font-size: 20px;
+  margin: 6vh 0 0 0;
+}
+.banquet_container p {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+}
+
+.btn__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-black__banquet {
+  color: var(--white);
+  background-color: var(--black);
+  border: 3px var(--black) solid;
+  display: inline-flex;
+  margin-top: 3.5vh;
+  padding-left: 6vw;
+  padding-right: 6vw;
+  margin-left: 1.5vh;
+}
+.btn-black__banquet:after {
+  background-color: var(--black);
+}
+.btn-black__banquet:hover {
+  color: var(--black);
+  background-color: var(--white);
 }
 
 /*# sourceMappingURL=styles.css.map */

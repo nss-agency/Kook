@@ -9,6 +9,7 @@ __pycache__/
 local_settings.py
 db.sqlite3
 media
+.vscode
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.
@@ -377,6 +378,10 @@ style.css
 
 core/migrations
 
+.env
+venv
+__pycache__
+
 # Pyre type checker
 
 # End of https://www.gitignore.io/api/django,python,pycharm,pycharm+all,pycharm+iml
@@ -384,3 +389,5 @@ core/migrations
 core/credentials.txt
 core/credentials.json
 core/token.pickle
+static/css/styles.css
+static/css/styles.css.map

@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
-    'jet_django',
 ]
 
 MIDDLEWARE = [
@@ -75,12 +74,8 @@ WSGI_APPLICATION = 'Kook_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test',
-        'USER': 'tetsuser',
-        'PASSWORD': 'test123',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -125,8 +120,5 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-JET_PROJECT = 'kook'
-JET_TOKEN = '6b798a0e-b3d5-4731-965b-826eb518083f'
 
 ENABLE_GOOGLE_CALENDAR = False

@@ -5,7 +5,7 @@ from .models import Booking
 
 class BookingForm(ModelForm):
     """
-    Add Bokking object form
+    Add Booking object form
     """
     phone = forms.CharField(label='Номер телефону',
                             widget=forms.TextInput,
@@ -14,7 +14,18 @@ class BookingForm(ModelForm):
 
     class Meta:
         model = Booking
-        fields = '__all__'
+        fields = (
+            'pib',
+            'phone',
+            'email',
+            'date_entry',
+            'date_leave',
+            'quantity',
+            'room_type',
+            'additional',
+            'breakfest',
+            'discount',
+        )
         widgets = {
             'pib': forms.TextInput,
             'phone': forms.TextInput,

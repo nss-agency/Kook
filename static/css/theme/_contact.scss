@@ -1,0 +1,60 @@
+.contact-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "text form" "map map";
+
+	.contact-text {
+		grid-area: text;
+		background-color: var(--dark-grey);
+		padding: 3rem;
+		color: var(--white);
+
+		.contact-text-group{
+
+			.contact-text-icon{
+				display: inline;
+				padding: 1rem;
+				border-radius: 18px;
+				border: solid 5px var(--white);
+
+			}
+
+			.contact-text-header{
+				margin: 0;
+				font-size: 1.7rem;
+			}
+
+			.contact-text-small{
+				margin: 0;
+				font-family: Montserrat, sans-serif;
+				word-wrap: break-word;
+			}
+		}
+	}
+
+	.contact-form {
+		grid-area: form;
+		background-color: var(--grey);
+		color: var(--black);
+
+		input[type="text"]{
+			display: block;
+			width: 100%;
+		}
+
+		textarea{
+			width: 100%;
+			resize: none;
+		}
+
+	}
+
+	.contact-map {
+		grid-area: map;
+		background-color: black;
+		height: 30vh;
+
+		box-shadow: 10px 4px 4px var(--black) inset;
+
+	}
+}

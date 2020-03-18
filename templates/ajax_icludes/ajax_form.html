@@ -1,0 +1,18 @@
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="field-wrapper">
+            {{ field.errors }}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+        </div>
+    {% endfor %}
+
+    {% if booking_status.success %}
+        <h1>Congrats</h1>
+    {% endif %}
+    {% if booking_status.fail %}
+        <h1>Sorry</h1>
+    {% endif %}
+    <button class="btn btn-black" id="submitContactForm" type="submit">Submit</button>
+</form>
