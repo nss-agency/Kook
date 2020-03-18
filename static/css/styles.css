@@ -84,6 +84,12 @@ body {
   background-color: var(--black);
 }
 
+.btn-center {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 nav {
   margin: 5vh 5vw;
 }
@@ -513,19 +519,29 @@ footer .footer-copy .heart {
 }
 .form-modal input[type=text],
 .form-modal input[type=number],
+.form-modal input[type=checkbox],
 .form-modal input[type=email] {
   width: 100%;
   padding: 1rem;
   border: 1px var(--dark-grey) solid;
   text-align: center;
   font-size: 1.5rem;
-  font-family: "Oswald", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 0.2em;
 }
 .form-modal label {
   display: block;
   color: var(--dark-grey);
   width: 100%;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Oswald", sans-serif;
+}
+
+.header__contact {
+  font-family: Ubuntu, sans-serif;
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 3.2vh 0;
 }
 
 .contact-grid {
@@ -535,9 +551,16 @@ footer .footer-copy .heart {
 }
 .contact-grid .contact-text {
   grid-area: text;
-  background-color: var(--dark-grey);
+  background-color: #555555;
   padding: 3rem;
   color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.contact-grid .contact-text .contact-text-group {
+  display: flex;
+  margin-left: 77px;
 }
 .contact-grid .contact-text .contact-text-group .contact-text-icon {
   display: inline;
@@ -545,33 +568,106 @@ footer .footer-copy .heart {
   border-radius: 18px;
   border: solid 5px var(--white);
 }
-.contact-grid .contact-text .contact-text-group .contact-text-header {
-  margin: 0;
-  font-size: 1.7rem;
+.contact-grid .contact-text .contact-text-group .contact-text-left {
+  margin-left: 2rem;
 }
-.contact-grid .contact-text .contact-text-group .contact-text-small {
+.contact-grid .contact-text .contact-text-group .contact-text-left .contact-text-header {
+  text-transform: uppercase;
+  font-size: 23px;
+  height: fit-content;
   margin: 0;
+}
+.contact-grid .contact-text .contact-text-group .contact-text-left .contact-text-small {
   font-family: Montserrat, sans-serif;
   word-wrap: break-word;
+  height: fit-content;
+  font-weight: 300;
+  font-size: 12px;
+  margin: 0;
+  width: 100%;
+  display: block;
 }
 .contact-grid .contact-form {
   grid-area: form;
-  background-color: var(--grey);
+  background-color: #CFCFCF;
   color: var(--black);
+  padding: 3em;
+}
+.contact-grid .contact-form .first_last_input {
+  display: flex;
 }
 .contact-grid .contact-form input[type=text] {
-  display: block;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 1rem;
+  border: 1px #ACACAC solid;
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 2.3vh;
+  background: #DADADA;
+  color: rgba(0, 0, 0, 0.5);
+}
+.contact-grid .contact-form input[type=email] {
+  box-sizing: border-box;
   width: 100%;
+  padding: 1rem;
+  border: 1px #ACACAC solid;
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 2.3vh;
+  background: #DADADA;
+  color: rgba(0, 0, 0, 0.5);
 }
 .contact-grid .contact-form textarea {
+  box-sizing: border-box;
   width: 100%;
   resize: none;
+  background: #DADADA;
+  border: 1px #ACACAC solid;
+  font-size: 12px;
+  padding: 1rem;
+  font-family: "Montserrat", sans-serif;
+  color: rgba(0, 0, 0, 0.5);
 }
 .contact-grid .contact-map {
   grid-area: map;
   background-color: black;
   height: 30vh;
   box-shadow: 10px 4px 4px var(--black) inset;
+}
+
+.contact_btn {
+  margin-top: 2.1vh;
+  color: var(--white);
+  background-color: var(--black);
+  border: 3px var(--black) solid;
+  font-size: 23px;
+  padding-left: 6vw;
+  padding-right: 6vw;
+}
+.contact_btn:after {
+  background-color: var(--black);
+}
+.contact_btn:hover {
+  color: var(--black);
+  background-color: #CFCFCF;
+}
+
+.btn_after_before::after {
+  display: inline-block;
+  content: "";
+  border-top: 1px solid var(--dark-grey);
+  width: 8.25rem;
+  margin: 0 1rem;
+  transform: translateY(-0.3rem);
+}
+.btn_after_before::before {
+  display: inline-block;
+  content: "";
+  border-top: 1px solid var(--dark-grey);
+  width: 8.25rem;
+  margin: 0 1rem;
+  transform: translateY(-0.3rem);
 }
 
 .hero-container__banquet {

@@ -6,17 +6,6 @@ import datetime
 from datetime import datetime
 
 
-# def is_room_type_available(room_type, date_entry, date_leave):
-#     # case 1: a room is booked before the check_in date, and checks out after the requested check_in date
-#
-
-def hotel(request):
-    ctx = {}
-    return render(request, 'hotel_rooms.html', ctx)
-
-# Create your views here.
-
-
 def index(request):
     ctx = {}
     return render(request, 'index.html', ctx)
@@ -31,57 +20,64 @@ def hotel(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-                pib = form.cleaned_data['pib']
-                phone = form.cleaned_data['phone']
-                email = form.cleaned_data['email']
-                date_entry = form.cleaned_data['date_entry']
-                date_leave = form.cleaned_data['date_leave']
-                quantity = form.cleaned_data['quantity']
-                room_type = form.cleaned_data['room_type']
-                additionals = form.cleaned_data['additional']
-                entry_promo = form.cleaned_data['discount']
+            pib = form.cleaned_data['pib']
+            phone = form.cleaned_data['phone']
+            email = form.cleaned_data['email']
+            date_entry = form.cleaned_data['date_entry']
+            date_leave = form.cleaned_data['date_leave']
+            quantity = form.cleaned_data['quantity']
+            room_type = form.cleaned_data['room_type']
+            additionals = form.cleaned_data['additional']
+            entry_promo = form.cleaned_data['discount']
+            day = date_leave - date_entry
+            price = room_type.price * day.days
+            new_price = price
 
-                day = date_leave - date_entry
-                price = room_type.price * day.days
-                # exist_promo = Promo.objects.get(name__contains=entry_promo)
-                # if str(exist_promo) == entry_promo
-
-                # print(str(exist_promo) == entry_promo)
-
-                booking_info = {
-                    'pib': pib,
-                    'phone': phone,
-                    'email': email,
-                    'date_entry': date_entry,
-                    'date_leave': date_leave,
-                    'quantity': quantity,
-                    'room_type': room_type,
-                    'additionals': additionals,
-                    'days': day.days,
-                    'price': price
-                }
-
-                case_1 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,
-                                                date_leave__gte=date_entry)
-
-                case_2 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_leave,
-                                                date_leave__gte=date_leave)
-
-                case_3 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,
-                                                date_leave__gte=date_leave)
-
-                case_4 = Booking.objects.filter(room_type=room_type, date_entry__gte=date_entry,
-                                                date_leave__lte=date_leave)
-
-                case = (case_1.union(case_2).union(case_3).union(case_4)).count()
-
-                if (case_1 or case_2 or case_3 or case_4) and case >= room_type.quantity:
-                    print('Zanyato')
-                    booking_status['fail'] = True
+            if Promo.objects.filter(name=entry_promo):
+                exist_promo = Promo.objects.get(name=entry_promo)
+                if entry_promo == str(exist_promo) and exist_promo.is_percetage == False:
+                    new_price = price - exist_promo.discount
+                elif entry_promo == str(exist_promo) and exist_promo.is_percetage:
+                    new_price = price - (price * (exist_promo.discount / 100))
                 else:
-                    booking = form.save(commit=False)
-                    booking.save()
-                    booking_status['success'] = True
+                    new_price = price
+
+            booking_info = {
+                'pib': pib,
+                'phone': phone,
+                'email': email,
+                'date_entry': date_entry,
+                'date_leave': date_leave,
+                'quantity': quantity,
+                'room_type': room_type,
+                'additionals': additionals,
+                'days': day.days,
+                'price': price
+            }
+
+
+
+            case_1 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,
+                                            date_leave__gte=date_entry)
+
+            case_2 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_leave,
+                                            date_leave__gte=date_leave)
+
+            case_3 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,
+                                            date_leave__gte=date_leave)
+
+            case_4 = Booking.objects.filter(room_type=room_type, date_entry__gte=date_entry,
+                                            date_leave__lte=date_leave)
+
+            case = (case_1.union(case_2).union(case_3).union(case_4)).count()
+
+            if (case_1 or case_2 or case_3 or case_4) and case >= room_type.quantity:
+                print('Zanyato')
+                booking_status['fail'] = True
+            else:
+                booking = form.save(commit=False)
+                booking.save()
+                booking_status['success'] = True
         else:
             BookingForm()
     ctx = {
@@ -115,13 +111,18 @@ def form(request):
             room_type = form.cleaned_data['room_type']
             additionals = form.cleaned_data['additional']
             entry_promo = form.cleaned_data['discount']
-
             day = date_leave - date_entry
             price = room_type.price * day.days
-            # exist_promo = Promo.objects.get(name__contains=entry_promo)
-            # if str(exist_promo) == entry_promo
+            new_price = price
 
-            # print(str(exist_promo) == entry_promo)
+            if Promo.objects.filter(name=entry_promo):
+                exist_promo = Promo.objects.get(name=entry_promo)
+                if entry_promo == str(exist_promo) and exist_promo.is_percetage == False:
+                    new_price = price - exist_promo.discount
+                elif entry_promo == str(exist_promo) and exist_promo.is_percetage:
+                    new_price = price - (price * (exist_promo.discount / 100))
+                else:
+                    new_price = price
 
             booking_info = {
                 'pib': pib,
@@ -133,7 +134,7 @@ def form(request):
                 'room_type': room_type,
                 'additionals': additionals,
                 'days': day.days,
-                'price': price
+                'price': new_price
             }
 
             case_1 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,
@@ -169,7 +170,6 @@ def form(request):
     return render(request, 'form.html', ctx)
 
 
-
 def contact(request):
-    ctx={}
+    ctx = {}
     return render(request, 'contacts.html', ctx)
