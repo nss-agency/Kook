@@ -41,10 +41,19 @@ def form(request):
             room_type = form.cleaned_data['room_type']
             additionals = form.cleaned_data['additional']
             entry_promo = form.cleaned_data['discount']
-
             day = date_leave - date_entry
             price = room_type.price * day.days
-            # exist_promo = Promo.objects.get(name__contains=entry_promo)
+            new_price = price
+
+            if Promo.objects.filter(name=entry_promo):
+                exist_promo = Promo.objects.get(name=entry_promo)
+                if entry_promo == str(exist_promo) and exist_promo.is_percetage == False:
+                    new_price = price - exist_promo.discount
+                elif exist_promo.is_percetage:
+                    new_price = price - (price * (exist_promo.discount / 100))
+                else:
+                    new_price = price
+
             # if str(exist_promo) == entry_promo
 
             # print(str(exist_promo) == entry_promo)
@@ -59,7 +68,7 @@ def form(request):
                 'room_type': room_type,
                 'additionals': additionals,
                 'days': day.days,
-                'price': price
+                'price': new_price
             }
 
             case_1 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,

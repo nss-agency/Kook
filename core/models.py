@@ -11,7 +11,7 @@ class Promo(models.Model):
     Model for promocodes
     """
     name = models.CharField('Код Промокоду', max_length=60)
-    discount = models.FloatField('Значення промокоду')
+    discount = models.DecimalField('Значення промокоду', max_digits=5, decimal_places=2)
     is_percetage = models.BooleanField('Це відсоток?', default=True)
 
     def __str__(self):
@@ -86,7 +86,7 @@ class MenuItem(models.Model):
         'Зображення', blank=True, upload_to='menu_images')
     title = models.CharField('Назва страви', max_length=225)
     description = models.TextField('Опис')
-    price = models.IntegerField('Ціна')
+    price = models.DecimalField('Ціна', max_digits=5, decimal_places=2)
 
     def __str__(self):
         return self.title

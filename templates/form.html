@@ -9,14 +9,15 @@
 <body>
 
 {% include 'ajax_icludes/ajax_form.html' %}
+{% include 'includes/head_links.html' %}
 <form method="post">
     {% csrf_token %}
     <div class="">
-        {{ form.as_ul }}
+{#        {{ form.as_ul }}#}
         {% if booking_status.success %}
-            <h1>Congrats</h1>
+{#            <h1>Congrats</h1>#}
             <img src="{{ booking_info.room_type.image.url }}" alt=""><br>
-            <span> ПІБ: {{ booking_info.pib }}
+            <span> П.І.Б: {{ booking_info.pib }}
             </span>
             <br>
             <span> Телефон: {{ booking_info.phone }}</span>
@@ -32,9 +33,9 @@
             <span>Ціна: {{ booking_info.price }} грн</span><br>
         {% endif %}
         {% if booking_status.fail %}
-            <h1>Sorry</h1>
+{#            <h1>Sorry</h1>#}
             <img src="{{ booking_info.room_type.image.url }}" alt=""><br>
-            <span> ПІБ: {{ booking_info.pib }}</span>
+            <span> П.І.Б: {{ booking_info.pib }}</span>
             <br>
             <span> Телефон: {{ booking_info.phone }}</span>
             <br>
@@ -48,7 +49,7 @@
             <span>Кількість днів: {{ booking_info.days }}</span><br>
             <span>Ціна: {{ booking_info.price }} грн </span><br>
         {% endif %}
-        <button type="submit">Submit
+{#        <button type="submit">Submit#}
         </button>
     </div>
     <br><br><br><br><br><br><br><br>

@@ -1,7 +1,7 @@
 <form method="post">
     {% csrf_token %}
     {% for field in form %}
-        <div class="field-wrapper">
+        <div class="form-modal">
             {{ field.errors }}
             <label for="{{ field.id_for_label }}">{{ field.label }}</label>
             {{ field }}

@@ -7,19 +7,22 @@
 
 	input[type="text"],
 	input[type="number"],
-	input[type="email"] {
+	input[type="checkbox"],
+	input[type="email"],
+	{
 		width: 100%;
 		padding: 1rem;
 		border: 1px var(--dark-grey) solid;
 		text-align: center;
 		font-size: 1.5rem;
-		font-family: "Oswald", sans-serif;
+		font-family:"Montserrat", sans-serif ;
+		margin-bottom: .2em;
 	}
 
 	label {
 		display: block;
 		color: var(--dark-grey);
 		width: 100%;
-		font-family: "Montserrat", sans-serif;
+		font-family: "Oswald", sans-serif;
 	}
 }
