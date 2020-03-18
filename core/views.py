@@ -5,6 +5,7 @@ from .decorators import check_recaptcha
 import datetime
 from datetime import datetime
 
+
 def hotel(request):
     ctx = {}
     return render(request, 'hotel_rooms.html', ctx)
@@ -14,7 +15,6 @@ def hotel(request):
 def index(request):
     ctx = {}
     return render(request, 'index.html', ctx)
-
 
 
 def banquet(request):
@@ -49,14 +49,11 @@ def form(request):
                 exist_promo = Promo.objects.get(name=entry_promo)
                 if entry_promo == str(exist_promo) and exist_promo.is_percetage == False:
                     new_price = price - exist_promo.discount
-                elif exist_promo.is_percetage:
+                elif entry_promo == str(exist_promo) and exist_promo.is_percetage:
                     new_price = price - (price * (exist_promo.discount / 100))
                 else:
                     new_price = price
 
-            # if str(exist_promo) == entry_promo
-
-            # print(str(exist_promo) == entry_promo)
 
             booking_info = {
                 'pib': pib,
@@ -105,5 +102,5 @@ def form(request):
 
 
 def contact(request):
-    ctx={}
+    ctx = {}
     return render(request, 'contacts.html', ctx)

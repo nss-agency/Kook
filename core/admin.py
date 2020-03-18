@@ -13,7 +13,8 @@ class BookingAdmin(admin.ModelAdmin):
         'date_leave',
         'quantity',
         'room_type',
-        'additional']
+        'additional',
+        'discount']
     list_filter = ['room_type', 'date_entry', 'date_leave']
     search_fields = ('phone', 'pib', 'email')
     list_per_page = 10

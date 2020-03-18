@@ -5,11 +5,14 @@
 
     .contact-text {
         grid-area: text;
-        background-color: var(--dark-grey);
+        background-color: #555555;
         padding: 3rem;
         color: var(--white);
 
         .contact-text-group {
+            display: flex;
+            margin-bottom: 1.5vh;
+            margin-left: 77px;
 
             .contact-text-icon {
                 display: inline;
@@ -20,14 +23,19 @@
             }
 
             .contact-text-header {
-                margin: 0;
+                text-transform: uppercase;
                 font-size: 1.7rem;
+                //margin-left: 100px;
+                margin: 0 0 0 40px;
+                height: fit-content;
             }
 
             .contact-text-small {
-                margin: 0;
+                margin: 35px 0 0 118px;
                 font-family: Montserrat, sans-serif;
                 word-wrap: break-word;
+                height: fit-content;
+                position: absolute;
             }
         }
     }
