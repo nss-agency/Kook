@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Booking
+from .models import Booking, Banquet
 
 
 class BookingForm(ModelForm):
@@ -36,4 +36,26 @@ class BookingForm(ModelForm):
         }
         labels = {
             'room_type': 'Тип кімнати'
+        }
+
+
+class BanquetForm(ModelForm):
+    phone = forms.CharField(label='Номер телефону',
+                            widget=forms.TextInput,
+                            max_length=100,
+                            required=True)
+
+    class Meta:
+        model = Banquet
+        fields = (
+            'pib',
+            'phone',
+            'email',
+            'check_in',
+        )
+        widgets = {
+            'pib': forms.TextInput,
+            'phone': forms.TextInput,
+            'email': forms.EmailInput,
+            'check_in': forms.SelectDateWidget,
         }

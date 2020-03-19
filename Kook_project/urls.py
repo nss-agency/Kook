@@ -24,6 +24,7 @@ urlpatterns = [
     path('jet_api/', include('jet_django.urls')),
     path('', views.index, name='index'),
     path('form/', views.form, name='form'),
+    path('banquet_form/', views.banquet_form, name='banquet_form'),
     path('ajax_form/', views.form, name='form'),
     path('hotel/', views.hotel, name='hotel'),
     path('contact/', views.contact, name='contact'),

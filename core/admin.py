@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Booking, MenuItem, RoomType, Promo, Baquet
+from .models import Booking, MenuItem, RoomType, Promo, Banquet
 
 
 # Register your models here.
@@ -21,6 +21,19 @@ class BookingAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_entry'
 
 
+class BanquetAdmin(admin.ModelAdmin):
+    list_display = [
+        'pib',
+        'phone',
+        'email',
+        'check_in',
+    ]
+    list_filter = ['check_in']
+    search_fields = ('phone', 'pib', 'email')
+    list_per_page = 10
+    date_hierarchy = 'check_in'
+
+
 class RoomAdmin(admin.ModelAdmin):
     list_display = [
         'name',
@@ -40,5 +53,5 @@ class PromoAdmin(admin.ModelAdmin):
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(MenuItem)
 admin.site.register(Promo, PromoAdmin)
-admin.site.register(Baquet)
+admin.site.register(Banquet, BanquetAdmin)
 admin.site.register(RoomType, RoomAdmin)

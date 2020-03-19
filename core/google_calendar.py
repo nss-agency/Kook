@@ -63,7 +63,7 @@ def create_event_from_booking(booking):
 
     event = {
         'summary': f'{booking.pib} | {booking.phone} | {booking.room_type} ({booking.quantity})',
-        'description': f'E-mail: {booking.email} \n Додаткові опції: {booking.additional} \n Нотатки: {booking.notes}',
+        'description': f'E-mail: {booking.email} \nДодаткові опції: {booking.additional} \nНотатки: {booking.notes}',
         'colorId': f'{booking.room_type.color_id}',
         'start': {
             'dateTime': f'{booking.date_entry}T5:00:00-07:00',
@@ -84,9 +84,14 @@ def create_event_from_banquet(banquet):
 
     event = {
         'summary': f'БАНКЕТНИЙ ЗАЛ {banquet.pib} | {banquet.phone} ',
-        'description': f'E-mail: {banquet.email} \n Нотатки: {banquet.notes}',
+        'description': f'E-mail: {banquet.email} \nНотатки: {banquet.notes}',
+        'colorId': '9',
         'start': {
-            'dateTime': f'{banquet.check_in}T5:00:00-07:00',
+            'dateTime': f'{banquet.check_in}T1:00:00-07:00',
+            'timeZone': 'Europe/Kiev',
+        },
+        'end': {
+            'dateTime': f'{banquet.check_in}T24:00:00-07:00',
             'timeZone': 'Europe/Kiev',
         },
     }

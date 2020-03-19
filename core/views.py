@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import BookingForm
-from .models import Booking, RoomType, Promo, Baquet
+from .forms import BookingForm, BanquetForm
+from .models import Booking, RoomType, Promo, Banquet
 from .decorators import check_recaptcha
 import datetime
 from datetime import datetime
@@ -173,3 +173,32 @@ def form(request):
 def contact(request):
     ctx = {}
     return render(request, 'contacts.html', ctx)
+
+
+def banquet_form(request):
+    banquet_status = {
+        'success': False,
+        'fail': False,
+    }
+
+    if request.method == 'POST':
+        form = BanquetForm(request.POST)
+        if form.is_valid():
+            check_in = form.cleaned_data['check_in']
+            case = Banquet.objects.filter(check_in=check_in).exists()
+
+            if case:
+                print('Zanyato')
+                banquet_status['fail'] = True
+            else:
+                banquet = form.save(commit=False)
+                banquet.save()
+                banquet_status['success'] = True
+        else:
+            BanquetForm()
+
+    ctx= {
+        'form': BanquetForm,
+        'banquet_status': banquet_status,
+    }
+    return render(request, 'banque_form.html', ctx)

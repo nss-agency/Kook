@@ -96,8 +96,8 @@ class MenuItem(models.Model):
         verbose_name_plural = 'Продукти'
 
 
-class Baquet(models.Model):
-    check_in = models.DateField('Заїзд', default=datetime.now)
+class Banquet(models.Model):
+    check_in = models.DateField('Дата', default=datetime.now)
     pib = models.CharField('П.І.Б.', max_length=225)
     phone = models.CharField(
         'Номер телефону', max_length=225, help_text='Контактний номер телефону')
