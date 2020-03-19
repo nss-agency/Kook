@@ -117,9 +117,9 @@ def form(request):
 
             if Promo.objects.filter(name=entry_promo):
                 exist_promo = Promo.objects.get(name=entry_promo)
-                if entry_promo == str(exist_promo) and exist_promo.is_percetage == False:
+                if entry_promo == str(exist_promo) and exist_promo.is_percentage == False:
                     new_price = price - exist_promo.discount
-                elif entry_promo == str(exist_promo) and exist_promo.is_percetage:
+                elif entry_promo == str(exist_promo) and exist_promo.is_percentage:
                     new_price = price - (price * (exist_promo.discount / 100))
                 else:
                     new_price = price

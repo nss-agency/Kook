@@ -632,8 +632,11 @@ footer .footer-copy .heart {
 .contact-grid .contact-map {
   grid-area: map;
   background-color: black;
-  height: 30vh;
+  height: 60vh;
   box-shadow: 10px 4px 4px var(--black) inset;
+}
+.contact-grid .contact-map iframe {
+  box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .contact_btn {
@@ -653,21 +656,14 @@ footer .footer-copy .heart {
   background-color: #CFCFCF;
 }
 
-.btn_after_before::after {
-  display: inline-block;
-  content: "";
-  border-top: 1px solid var(--dark-grey);
-  width: 8.25rem;
-  margin: 0 1rem;
-  transform: translateY(-0.3rem);
-}
-.btn_after_before::before {
-  display: inline-block;
-  content: "";
-  border-top: 1px solid var(--dark-grey);
-  width: 8.25rem;
-  margin: 0 1rem;
-  transform: translateY(-0.3rem);
+.additional_footer {
+  height: 61vh;
+  clip-path: polygon(0 50%, 100% 0%, 100% 100%, 0% 100%);
+  background: var(--black);
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  z-index: -1;
 }
 
 .hero-container__banquet {

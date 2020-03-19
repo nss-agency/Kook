@@ -108,9 +108,13 @@
     .contact-map {
         grid-area: map;
         background-color: black;
-        height: 30vh;
+        height: 60vh;
 
         box-shadow: 10px 4px 4px var(--black) inset;
+
+        iframe {
+            box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.2);
+        }
 
     }
 }
@@ -134,24 +138,13 @@
     }
 }
 
-.btn_after_before {
+.additional_footer {
+    height: 61vh;
+    clip-path: polygon(0 50%, 100% 0%, 100% 100%, 0% 100%);
+    background: var(--black);
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    z-index: -1;
 
-    &::after {
-        display: inline-block;
-        content: "";
-        border-top: 1px solid var(--dark-grey);
-        width: 8.25rem;
-        margin: 0 1rem;
-        transform: translateY(-0.3rem);
-    }
-
-    &::before {
-        display: inline-block;
-        content: "";
-        border-top: 1px solid var(--dark-grey);
-        width: 8.25rem;
-        margin: 0 1rem;
-        transform: translateY(-0.3rem);
-    }
 }
-
