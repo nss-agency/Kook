@@ -1,0 +1,55 @@
+.menu-filter {
+
+	.menu-filter-item {
+
+	}
+}
+
+.menu-container {
+	margin: 20px;
+	.menu-item {
+		display: flex;
+		height: 600px;
+		flex-direction: column;
+		margin-bottom: 20px;
+		//height: 500px;
+		width: calc(25% - 20px);
+		background: var(--grey);
+
+		.menu-item-photo {
+			flex-grow: 1;
+			object-fit: cover;
+			max-height: 400px;
+		}
+
+		.menu-item-text {
+			padding: 1rem;
+			box-sizing: border-box;
+			.menu-item-header {
+				font-size: 3em;
+				margin: 0;
+				font-weight: bold;
+			}
+
+			.menu-item-description {
+				font-family: "Montserrat", sans-serif;
+				margin: 0;
+			}
+
+			.menu-item-price {
+				font-size: 2rem;
+				color: var(--dark-grey);
+				font-weight: bold;
+				margin: 0;
+			}
+		}
+	}
+
+	.menu-item-w2{
+		width: calc(50% - 20px);
+	}
+
+	.gap-size{
+		width: 4%;
+	}
+}

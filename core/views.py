@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import BookingForm, BanquetForm
-from .models import Booking, RoomType, Promo, Banquet
+from .models import Booking, RoomType, Promo, Banquet, MenuItem, MenuCategories
 from .decorators import check_recaptcha
 import datetime
 from datetime import datetime
@@ -9,6 +9,15 @@ from datetime import datetime
 def index(request):
     ctx = {}
     return render(request, 'index.html', ctx)
+
+
+def menu(request):
+    menu_items = MenuItem.objects.all()
+    menu_categories = MenuCategories.objects.all()
+
+    ctx = {'menu_items': menu_items,
+           'menu_categories': menu_categories}
+    return render(request, 'menu.html', ctx)
 
 
 def hotel(request):

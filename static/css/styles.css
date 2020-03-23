@@ -703,7 +703,6 @@ footer .footer-copy .heart {
 }
 
 .banquet_container {
-  height: 50vh;
   position: relative;
   background: #fff;
   overflow: hidden;
@@ -742,6 +741,48 @@ footer .footer-copy .heart {
 .btn-black__banquet:hover {
   color: var(--black);
   background-color: var(--white);
+}
+
+.menu-container {
+  margin: 20px;
+}
+.menu-container .menu-item {
+  display: flex;
+  height: 600px;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: calc(25% - 20px);
+  background: var(--grey);
+}
+.menu-container .menu-item .menu-item-photo {
+  flex-grow: 1;
+  object-fit: cover;
+  max-height: 400px;
+}
+.menu-container .menu-item .menu-item-text {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.menu-container .menu-item .menu-item-text .menu-item-header {
+  font-size: 3em;
+  margin: 0;
+  font-weight: bold;
+}
+.menu-container .menu-item .menu-item-text .menu-item-description {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+}
+.menu-container .menu-item .menu-item-text .menu-item-price {
+  font-size: 2rem;
+  color: var(--dark-grey);
+  font-weight: bold;
+  margin: 0;
+}
+.menu-container .menu-item-w2 {
+  width: calc(50% - 20px);
+}
+.menu-container .gap-size {
+  width: 4%;
 }
 
 /*# sourceMappingURL=styles.css.map */

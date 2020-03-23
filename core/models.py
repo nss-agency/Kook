@@ -78,6 +78,17 @@ class Booking(models.Model):
         verbose_name_plural = 'Замовлення'
 
 
+class MenuCategories(models.Model):
+    name = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Категорія Страви'
+        verbose_name_plural = 'Категорії Страв'
+
+
 class MenuItem(models.Model):
     """
     Model for menu items
@@ -87,13 +98,14 @@ class MenuItem(models.Model):
     title = models.CharField('Назва страви', max_length=225)
     description = models.TextField('Опис')
     price = models.DecimalField('Ціна', max_digits=5, decimal_places=2)
+    category = models.ManyToManyField(MenuCategories)
 
     def __str__(self):
         return self.title
 
     class Meta:
-        verbose_name = 'Продукт'
-        verbose_name_plural = 'Продукти'
+        verbose_name = 'Страва'
+        verbose_name_plural = 'Страви'
 
 
 class Banquet(models.Model):

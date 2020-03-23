@@ -29,6 +29,7 @@ urlpatterns = [
     path('hotel/', views.hotel, name='hotel'),
     path('contact/', views.contact, name='contact'),
     path('banquet/', views.banquet, name='banquet'),
+    path('menu/', views.menu, name='menu'),
 ]
 
 if settings.DEBUG:
