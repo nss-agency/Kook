@@ -13,6 +13,7 @@ class Promo(models.Model):
     name = models.CharField('Код Промокоду', max_length=60)
     discount = models.DecimalField('Значення промокоду', max_digits=3, decimal_places=0)
     is_percentage = models.BooleanField('Це відсоток?', default=True)
+    date_expired = models.DateField('Дата закінчення', default=datetime.now)
 
     def __str__(self):
         return self.name

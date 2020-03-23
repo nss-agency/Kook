@@ -64,8 +64,6 @@ def hotel(request):
                 'price': price
             }
 
-
-
             case_1 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,
                                             date_leave__gte=date_entry)
 
@@ -124,14 +122,16 @@ def form(request):
             price = room_type.price * day.days
             new_price = price
 
+
             if Promo.objects.filter(name=entry_promo):
                 exist_promo = Promo.objects.get(name=entry_promo)
-                if entry_promo == str(exist_promo) and exist_promo.is_percentage == False:
-                    new_price = price - exist_promo.discount
-                elif entry_promo == str(exist_promo) and exist_promo.is_percentage:
-                    new_price = price - (price * (exist_promo.discount / 100))
-                else:
-                    new_price = price
+                if exist_promo.date_expired > datetime.now().date():
+                    if entry_promo == str(exist_promo) and exist_promo.is_percentage == False:
+                        new_price = price - exist_promo.discount
+                    elif entry_promo == str(exist_promo) and exist_promo.is_percentage:
+                        new_price = price - (price * (exist_promo.discount / 100))
+                    else:
+                        new_price = price
 
             booking_info = {
                 'pib': pib,
@@ -206,7 +206,7 @@ def banquet_form(request):
         else:
             BanquetForm()
 
-    ctx= {
+    ctx = {
         'form': BanquetForm,
         'banquet_status': banquet_status,
     }
