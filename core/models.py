@@ -1,9 +1,24 @@
+import sys
 from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_delete
 from datetime import datetime
 from core.google_calendar import create_event_from_booking, create_event_from_banquet
 from django.conf import settings
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+
+
+def compressImage(uploadedImage):
+    imageTemproary = Image.open(uploadedImage)
+    outputIoStream = BytesIO()
+    imageTemproaryResized = imageTemproary.resize((1020, 573))
+    imageTemproary.save(outputIoStream, format='JPEG', quality=60)
+    outputIoStream.seek(0)
+    uploadedImage = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % uploadedImage.name.split('.')[0],
+                                         'image/jpeg', sys.getsizeof(outputIoStream), None)
+    return uploadedImage
 
 
 class Promo(models.Model):
@@ -33,6 +48,11 @@ class RoomType(models.Model):
     quantity = models.IntegerField('Кількість кімнат')
     color_id = models.IntegerField('Id кольору')
     price = models.PositiveIntegerField('Ціна')
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.image = compressImage(self.image)
+        super(RoomType, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -98,8 +118,13 @@ class MenuItem(models.Model):
         'Зображення', blank=True, upload_to='menu_images')
     title = models.CharField('Назва страви', max_length=225)
     description = models.TextField('Опис')
-    price = models.DecimalField('Ціна', max_digits=5, decimal_places=2)
+    price = models.DecimalField('Ціна', max_digits=5, decimal_places=0)
     category = models.ManyToManyField(MenuCategories)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.image = compressImage(self.image)
+        super(MenuItem, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
