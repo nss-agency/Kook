@@ -25,10 +25,11 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('form/', views.form, name='form'),
     path('banquet_form/', views.banquet_form, name='banquet_form'),
-    path('ajax_form/', views.form, name='form'),
+    path('ajax_form/', views.form, name='ajax_form'),
     path('hotel/', views.hotel, name='hotel'),
     path('contact/', views.contact, name='contact'),
     path('banquet/', views.banquet, name='banquet'),
+    path('confirm/', views.confirmation, name='confirm'),
     path('menu/', views.menu, name='menu'),
 ]
 

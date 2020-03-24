@@ -14,7 +14,7 @@ def compressImage(uploadedImage):
     imageTemproary = Image.open(uploadedImage)
     outputIoStream = BytesIO()
     imageTemproaryResized = imageTemproary.resize((1020, 573))
-    imageTemproary.save(outputIoStream, format='JPEG', quality=60)
+    imageTemproary.save(outputIoStream, format='JPEG', quality=85)
     outputIoStream.seek(0)
     uploadedImage = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % uploadedImage.name.split('.')[0],
                                          'image/jpeg', sys.getsizeof(outputIoStream), None)
