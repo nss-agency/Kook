@@ -743,6 +743,29 @@ footer .footer-copy .heart {
   background-color: var(--white);
 }
 
+.menu-filter {
+  margin: 0 20px;
+  position: relative;
+}
+.menu-filter .menu-filter-item {
+  position: relative;
+  font-size: 1.5rem;
+  padding: 0.5rem 1.3rem;
+  margin: 0 0.5rem;
+  border: 3px solid var(--grey);
+}
+.menu-filter .menu-filter-item:after {
+  content: "";
+  height: 3px;
+  width: 50px;
+  position: absolute;
+  left: -15px;
+  top: 10px;
+  transform: rotate(135deg);
+  transition: width 0.3s;
+  background-color: var(--grey);
+}
+
 .menu-container {
   margin: 20px;
 }

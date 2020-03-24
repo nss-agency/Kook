@@ -1,12 +1,31 @@
 .menu-filter {
+	margin: 0 20px;
+	position: relative;
 
 	.menu-filter-item {
+		position: relative;
+		font-size: 1.5rem;
+		padding: .5rem 1.3rem;
+		margin: 0 .5rem;
+		border: 3px solid var(--grey);
 
+		&:after {
+			content: "";
+			height: 3px;
+			width: 50px;
+			position: absolute;
+			left: -15px;
+			top: 10px;
+			transform: rotate(135deg);
+			transition: width 0.3s;
+			background-color: var(--grey);
+		}
 	}
 }
 
 .menu-container {
 	margin: 20px;
+
 	.menu-item {
 		display: flex;
 		height: 600px;
@@ -25,6 +44,7 @@
 		.menu-item-text {
 			padding: 1rem;
 			box-sizing: border-box;
+
 			.menu-item-header {
 				font-size: 3em;
 				margin: 0;
@@ -45,11 +65,11 @@
 		}
 	}
 
-	.menu-item-w2{
+	.menu-item-w2 {
 		width: calc(50% - 20px);
 	}
 
-	.gap-size{
+	.gap-size {
 		width: 4%;
 	}
 }
