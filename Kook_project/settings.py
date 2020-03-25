@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'Kook_project.urls'
@@ -62,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -101,6 +104,17 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'uk-uk'
+
+LANGUAGES = (
+    ('uk', 'Ukrainian'),
+    ('en', 'English'),
+    ('pl', 'Polish'),
+    ('ru', 'Russian'),
+)
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'uk'
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 TIME_ZONE = 'UTC'
 

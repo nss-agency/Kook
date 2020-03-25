@@ -4,10 +4,12 @@
 :root {
   --black: #141414;
   --white: #ffffff;
-  --grey: #ececec;
+  --grey: #ECECEC;
   --dark-grey: #838383;
   --accent: #892d15;
-  --menu-gray: #F6F6F6 ;
+  --menu-gray: #F6F6F6;
+  --contact-gray: #CFCFCF;
+  --contact-gray-border: #ACACAC;
 }
 
 html,
@@ -590,7 +592,7 @@ footer .footer-copy .heart {
 }
 .contact-grid .contact-form {
   grid-area: form;
-  background-color: #CFCFCF;
+  background-color: var(--contact-gray);
   color: var(--black);
   padding: 3em;
 }
@@ -601,7 +603,7 @@ footer .footer-copy .heart {
   box-sizing: border-box;
   width: 50%;
   padding: 1rem;
-  border: 1px #ACACAC solid;
+  border: 1px var(--contact-gray-border) solid;
   font-size: 12px;
   font-family: "Montserrat", sans-serif;
   margin-bottom: 2.3vh;
@@ -612,7 +614,7 @@ footer .footer-copy .heart {
   box-sizing: border-box;
   width: 100%;
   padding: 1rem;
-  border: 1px #ACACAC solid;
+  border: 1px var(--contact-gray-border) solid;
   font-size: 12px;
   font-family: "Montserrat", sans-serif;
   margin-bottom: 2.3vh;
@@ -624,7 +626,7 @@ footer .footer-copy .heart {
   width: 100%;
   resize: none;
   background: #DADADA;
-  border: 1px #ACACAC solid;
+  border: 1px var(--contact-gray-border) solid;
   font-size: 12px;
   padding: 1rem;
   font-family: "Montserrat", sans-serif;
@@ -654,7 +656,7 @@ footer .footer-copy .heart {
 }
 .contact_btn:hover {
   color: var(--black);
-  background-color: #CFCFCF;
+  background-color: var(--contact-gray);
 }
 
 .additional_footer {
@@ -745,21 +747,27 @@ footer .footer-copy .heart {
 }
 
 .menu-filter {
-  margin: 0 20px;
+  margin: 5vh 5vw;
   position: relative;
+  font-family: Montserrat, sans-serif;
+}
+.menu-filter .checkbox-switch {
+  display: none;
 }
 .menu-filter .category-input:checked + .menu-filter-item {
   border: 3px solid var(--grey);
-  background-color: var(--black);
-  color: var(--white);
+  background-color: var(--menu-gray);
+  color: var(--black);
 }
 .menu-filter .menu-filter-item {
   position: relative;
-  font-size: 1.5rem;
   padding: 0.5rem 1.3rem;
   margin: 0 0.5rem;
-  border: 3px solid var(--grey);
+  border: 3px solid var(--contact-gray);
   transition: color 0.3s, background-color 0.3s;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
 }
 .menu-filter .menu-filter-item:after {
   content: "";
@@ -770,11 +778,11 @@ footer .footer-copy .heart {
   top: 10px;
   transform: rotate(135deg);
   transition: width 0.3s;
-  background-color: var(--grey);
+  background-color: var(--contact-gray);
 }
 
 .menu-container {
-  margin: 20px;
+  margin: 5vh 5vw;
 }
 .menu-container .menu-item {
   display: flex;

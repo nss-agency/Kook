@@ -1,5 +1,11 @@
 from django.contrib import admin
-from .models import Booking, MenuItem, RoomType, Promo, Banquet, MenuCategories
+from .models import Booking, MenuItem, RoomType, Promo, Banquet, MenuCategories, Photo
+from modeltranslation.admin import TabbedTranslationAdmin
+
+
+class PhotoInline(admin.StackedInline):
+    model = Photo
+    extra = 1
 
 
 # Register your models here.
@@ -34,12 +40,19 @@ class BanquetAdmin(admin.ModelAdmin):
     date_hierarchy = 'check_in'
 
 
-class RoomAdmin(admin.ModelAdmin):
+class RoomAdmin(TabbedTranslationAdmin):
     list_display = [
         'name',
         'quantity',
         'price',
     ]
+    inlines = [PhotoInline]
+
+    def save_model(self, request, obj, form, change):
+        obj.save()
+
+        for afile in request.FILES.getlist('photos_multiple'):
+            obj.photos.create(image=afile)
 
 
 class PromoAdmin(admin.ModelAdmin):
@@ -50,9 +63,19 @@ class PromoAdmin(admin.ModelAdmin):
     ]
 
 
+class MenuCategoriesAdmin(TabbedTranslationAdmin):
+    list_display = ['name']
+
+
+class MenuItemAdmin(TabbedTranslationAdmin):
+    search_fields = ('name',)
+    list_display = ['title',
+                    'price']
+
+
 admin.site.register(Booking, BookingAdmin)
-admin.site.register(MenuCategories)
-admin.site.register(MenuItem)
+admin.site.register(MenuCategories, MenuCategoriesAdmin)
+admin.site.register(MenuItem, MenuItemAdmin)
 admin.site.register(Promo, PromoAdmin)
 admin.site.register(Banquet, BanquetAdmin)
 admin.site.register(RoomType, RoomAdmin)

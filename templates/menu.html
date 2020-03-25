@@ -12,7 +12,7 @@
 <h1 class="header__contact">Меню</h1>
 <div class="menu-filter">
     {% for category in menu_categories %}
-        <input onclick="filter()" class="category-input" id="filter_category_{{ category.id }}"
+        <input onclick="filter()" class="category-input checkbox-switch" id="filter_category_{{ category.id }}"
                name="filter_category_{{ category.id }}" data-id="{{ category.id }}" type="checkbox">
         <label for="filter_category_{{ category.id }}" class="menu-filter-item">{{ category.name }}</label>
     {% endfor %}

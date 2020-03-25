@@ -58,7 +58,7 @@
 
     .contact-form {
         grid-area: form;
-        background-color: #CFCFCF;
+        background-color: var(--contact-gray);
         color: var(--black);
         padding: 3em;
 
@@ -71,7 +71,7 @@
             box-sizing: border-box;
             width: 50%;
             padding: 1rem;
-            border: 1px #ACACAC solid;
+            border: 1px var(--contact-gray-border) solid;
             font-size: 12px;
             font-family: "Montserrat", sans-serif;
             margin-bottom: 2.3vh;
@@ -83,7 +83,7 @@
             box-sizing: border-box;
             width: 100%;
             padding: 1rem;
-            border: 1px #ACACAC solid;
+            border: 1px var(--contact-gray-border) solid;
             font-size: 12px;
             font-family: "Montserrat", sans-serif;
             margin-bottom: 2.3vh;
@@ -96,7 +96,7 @@
             width: 100%;
             resize: none;
             background: #DADADA;
-            border: 1px #ACACAC solid;
+            border: 1px var(--contact-gray-border) solid;
             font-size: 12px;
             padding: 1rem;
             font-family: "Montserrat", sans-serif;
@@ -134,7 +134,7 @@
 
     &:hover {
         color: var(--black);
-        background-color: #CFCFCF;
+        background-color: var(--contact-gray);
     }
 }
 

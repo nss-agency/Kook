@@ -100,7 +100,7 @@ class Booking(models.Model):
 
 
 class MenuCategories(models.Model):
-    name = models.CharField(max_length=64)
+    name = models.CharField('Назва Категорії', max_length=64)
 
     def __str__(self):
         return self.name
@@ -136,7 +136,7 @@ class MenuItem(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Страва'
+        verbose_name = 'Страву'
         verbose_name_plural = 'Страви'
 
 
@@ -162,6 +162,19 @@ class Banquet(models.Model):
         verbose_name = 'Банкет'
         verbose_name_plural = 'Банкет'
 
+
+class Photo(models.Model):
+    image = models.ImageField('Зображення',
+                              upload_to='img',
+                              null=True,
+                              blank=True,
+                              # default='default.jpg',
+                             )
+    room = models.ForeignKey(RoomType, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Зображення'
+        verbose_name_plural = 'Зображення'
 
 # Delete photo if model.object delete
 @receiver(post_delete)
