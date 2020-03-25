@@ -7,6 +7,7 @@
   --grey: #ececec;
   --dark-grey: #838383;
   --accent: #892d15;
+  --menu-gray: #F6F6F6 ;
 }
 
 html,
@@ -507,7 +508,7 @@ footer .footer-copy .heart {
   position: absolute;
   width: 95%;
   height: 29%;
-  top: 36%;
+  top: 72%;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
@@ -747,12 +748,18 @@ footer .footer-copy .heart {
   margin: 0 20px;
   position: relative;
 }
+.menu-filter .category-input:checked + .menu-filter-item {
+  border: 3px solid var(--grey);
+  background-color: var(--black);
+  color: var(--white);
+}
 .menu-filter .menu-filter-item {
   position: relative;
   font-size: 1.5rem;
   padding: 0.5rem 1.3rem;
   margin: 0 0.5rem;
   border: 3px solid var(--grey);
+  transition: color 0.3s, background-color 0.3s;
 }
 .menu-filter .menu-filter-item:after {
   content: "";
@@ -775,7 +782,7 @@ footer .footer-copy .heart {
   flex-direction: column;
   margin-bottom: 20px;
   width: calc(25% - 20px);
-  background: var(--grey);
+  background: var(--menu-gray);
 }
 .menu-container .menu-item .menu-item-photo {
   flex-grow: 1;
@@ -794,10 +801,12 @@ footer .footer-copy .heart {
 .menu-container .menu-item .menu-item-text .menu-item-description {
   font-family: "Montserrat", sans-serif;
   margin: 0;
+  font-size: 14px;
+  font-weight: 400;
 }
 .menu-container .menu-item .menu-item-text .menu-item-price {
-  font-size: 2rem;
-  color: var(--dark-grey);
+  font-size: 1.8rem;
+  color: #AFAFAF;
   font-weight: bold;
   margin: 0;
 }

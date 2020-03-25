@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from .forms import BookingForm, BanquetForm
 from .models import Booking, RoomType, Promo, Banquet, MenuItem, MenuCategories
+from django.http import HttpResponse, HttpResponseRedirect
 from .decorators import check_recaptcha
 import datetime
 from datetime import datetime
+from django.urls import reverse
 
 
 def index(request):
@@ -85,6 +87,7 @@ def hotel(request):
                 booking = form.save(commit=False)
                 booking.save()
                 booking_status['success'] = True
+
         else:
             BookingForm()
     ctx = {
@@ -121,7 +124,6 @@ def form(request):
             day = date_leave - date_entry
             price = room_type.price * day.days
             new_price = price
-
 
             if Promo.objects.filter(name=entry_promo):
                 exist_promo = Promo.objects.get(name=entry_promo)
@@ -163,10 +165,14 @@ def form(request):
             if (case_1 or case_2 or case_3 or case_4) and case >= room_type.quantity:
                 print('Zanyato')
                 booking_status['fail'] = True
+                # response = confirmation(request, {'booking_info': booking_info })
+                # return HttpResponse(response)
             else:
                 booking = form.save(commit=False)
                 booking.save()
                 booking_status['success'] = True
+                # response = confirmation(request, {'booking_info': booking_info })
+                # return HttpResponse(response)
         else:
             BookingForm()
 
@@ -211,3 +217,10 @@ def banquet_form(request):
         'banquet_status': banquet_status,
     }
     return render(request, 'banque_form.html', ctx)
+
+
+def confirmation(request, newContext={}):
+    context = {
+    }
+    context.update(newContext)
+    return render(request, 'confirmation.html',context)

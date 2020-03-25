@@ -9,27 +9,30 @@
 </head>
 <body>
 {% include "includes/navbar.html" %}
-<h1 class="h1">Меню</h1>
+<h1 class="header__contact">Меню</h1>
 <div class="menu-filter">
     {% for category in menu_categories %}
-        <span class="menu-filter-item">{{ category.name }}</span>
+        <input onclick="filter()" class="category-input" id="filter_category_{{ category.id }}"
+               name="filter_category_{{ category.id }}" data-id="{{ category.id }}" type="checkbox">
+        <label for="filter_category_{{ category.id }}" class="menu-filter-item">{{ category.name }}</label>
     {% endfor %}
 </div>
 <div class="menu-container">
     {% for item in menu_items %}
-    <div class="menu-item {% cycle 'menu-item-w2' '' '' '' '' 'menu-item-w2'%}">
-        <img src="{{ item.image.url }}" alt="{{ item.title }}" class="menu-item-photo">
-        <div class="menu-item-text">
-            <h3 class="menu-item-header">{{ item.title }}</h3>
-            <p class="menu-item-description">{{ item.description }}</p>
-            <p class="menu-item-price">{{ item.price }}uah</p>
+        <div class="menu-item {{ item.get_categories_class }} {% cycle 'menu-item-w2' '' '' '' '' 'menu-item-w2' %}">
+            <img src="{{ item.image.url }}" alt="{{ item.title }}" class="menu-item-photo">
+            <div class="menu-item-text">
+                <h3 class="menu-item-header">{{ item.title }}</h3>
+                <p class="menu-item-description">{{ item.description }}</p>
+                <p class="menu-item-price">{{ item.price }}uah</p>
+            </div>
         </div>
-    </div>
     {% endfor %}
 </div>
 {% include "includes/footer.html" %}
 <script>
     let elem = document.querySelector('.menu-container');
+
     let iso = new Isotope(elem, {
         // options
         itemSelector: '.menu-item',
@@ -39,5 +42,22 @@
             gutter: 20
         }
     });
+
+    function getFilterSelector(){
+        let checks = document.querySelectorAll('.category-input');
+        let result = '';
+        checks.forEach((node) => {
+            if(node.checked){
+                result += `.cat_${node.dataset.id}`
+            }
+        });
+
+        return result
+    }
+
+
+    function filter(){
+        iso.arrange({filter: getFilterSelector()})
+    }
 </script>
 </body>
