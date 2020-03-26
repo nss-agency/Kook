@@ -22,7 +22,6 @@ from core import views
 
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
-    path('jet_api/', include('jet_django.urls')),
     path('', views.index, name='index'),
     path('form/', views.form, name='form'),
     path('banquet_form/', views.banquet_form, name='banquet_form'),
