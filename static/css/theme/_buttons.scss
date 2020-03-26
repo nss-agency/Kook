@@ -65,3 +65,21 @@
     left: 50%;
     transform: translateX(-50%);
 }
+
+.btn-arrow{
+    border: 2px solid var(--gray);
+    padding: .2rem 1rem;
+    background-color: var(--white);
+    color: var(--black);
+    font-size: 1.5rem;
+    transition: background-color .3s, color .3s, border .3s;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: "Arial", sans-serif;
+
+    &:hover{
+        border-color: var(--dark-gray);
+        background-color: var(--dark-gray);
+        color: var(--white)
+    }
+}

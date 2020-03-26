@@ -13,6 +13,11 @@ def index(request):
     return render(request, 'index.html', ctx)
 
 
+def restaurant(request):
+    ctx = {}
+    return render(request, 'restaurant.html', ctx)
+
+
 def menu(request):
     menu_items = MenuItem.objects.all()
     menu_categories = MenuCategories.objects.all()

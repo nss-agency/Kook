@@ -32,6 +32,7 @@ urlpatterns = i18n_patterns(
     path('banquet/', views.banquet, name='banquet'),
     path('confirm/', views.confirmation, name='confirm'),
     path('menu/', views.menu, name='menu'),
+    path('restaurant/', views.restaurant, name='restaurant'),
     prefix_default_language=False
 )
 

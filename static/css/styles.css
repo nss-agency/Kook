@@ -4,8 +4,8 @@
 :root {
   --black: #141414;
   --white: #ffffff;
-  --grey: #ECECEC;
-  --dark-grey: #838383;
+  --gray: #ECECEC;
+  --dark-gray: #838383;
   --accent: #892d15;
   --menu-gray: #F6F6F6;
   --contact-gray: #CFCFCF;
@@ -93,6 +93,23 @@ body {
   transform: translateX(-50%);
 }
 
+.btn-arrow {
+  border: 2px solid var(--gray);
+  padding: 0.2rem 1rem;
+  background-color: var(--white);
+  color: var(--black);
+  font-size: 1.5rem;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: "Arial", sans-serif;
+}
+.btn-arrow:hover {
+  border-color: var(--dark-gray);
+  background-color: var(--dark-gray);
+  color: var(--white);
+}
+
 nav {
   margin: 5vh 5vw;
 }
@@ -105,13 +122,13 @@ nav .nav-buttons {
   list-style: none;
 }
 nav .nav-buttons .nav-phone-number {
-  color: var(--dark-grey);
+  color: var(--dark-gray);
   font-size: 0.9em;
 }
 nav .nav-buttons .nav-phone-number::after {
   display: inline-block;
   content: "";
-  border-top: 1px solid var(--dark-grey);
+  border-top: 1px solid var(--dark-gray);
   width: 8.25rem;
   margin: 0 1rem;
   transform: translateY(-0.3rem);
@@ -119,7 +136,7 @@ nav .nav-buttons .nav-phone-number::after {
 nav .nav-buttons .nav-phone-number::before {
   display: inline-block;
   content: "";
-  border-top: 1px solid var(--dark-grey);
+  border-top: 1px solid var(--dark-gray);
   width: 8.25rem;
   margin: 0 1rem;
   transform: translateY(-0.3rem);
@@ -204,7 +221,7 @@ nav .nav-buttons .nav-link:hover {
 }
 .index-info-block .index-info-text {
   position: relative;
-  background-color: var(--grey);
+  background-color: var(--gray);
   width: 40%;
   height: fit-content;
   padding: 3em 3em 3em 3em;
@@ -255,7 +272,7 @@ nav .nav-buttons .nav-link:hover {
 .index-big-decor {
   display: block;
   box-sizing: border-box;
-  border: 10px var(--grey) solid;
+  border: 10px var(--gray) solid;
   position: absolute;
   top: 0;
   left: 3em;
@@ -265,7 +282,7 @@ nav .nav-buttons .nav-link:hover {
 
 .index-decor-1 {
   display: block;
-  border: 10px var(--grey) solid;
+  border: 10px var(--gray) solid;
   position: absolute;
   left: 40%;
   width: 20%;
@@ -275,7 +292,7 @@ nav .nav-buttons .nav-link:hover {
 
 .index-decor-2 {
   display: block;
-  border: 10px var(--grey) solid;
+  border: 10px var(--gray) solid;
   position: absolute;
   right: 40%;
   width: 30%;
@@ -285,7 +302,7 @@ nav .nav-buttons .nav-link:hover {
 
 .index-decor-3 {
   display: block;
-  border: 10px var(--grey) solid;
+  border: 10px var(--gray) solid;
   position: absolute;
   left: 40%;
   width: 35%;
@@ -404,6 +421,7 @@ footer .footer-flex .footer-block .footer-link-list .footer-list-element {
   font-size: 1rem;
   text-decoration: none;
   font-weight: lighter;
+  margin: 0.5rem 0;
 }
 footer .footer-flex .footer-block .footer-link-list .footer-list-element .footer-link {
   text-decoration: none;
@@ -411,6 +429,27 @@ footer .footer-flex .footer-block .footer-link-list .footer-list-element .footer
 }
 footer .footer-flex .footer-block .footer-link-list .footer-list-element .footer-link:hover {
   text-decoration: underline;
+}
+footer .footer-flex .footer-block .footer-circle-links-block {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0;
+}
+footer .footer-flex .footer-block .footer-circle-links-block .footer-circle-link {
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+}
+footer .footer-flex .footer-block .footer-circle-links-block .footer-circle-link .footer-circle-link-icon {
+  width: 100%;
+  filter: drop-shadow(0px 0px 0px var(--white));
+  transition: filter 0.3s;
+}
+footer .footer-flex .footer-block .footer-circle-links-block .footer-circle-link:hover .footer-circle-link-icon {
+  filter: drop-shadow(0px 0px 5px var(--white));
 }
 footer .footer-copy {
   font-family: Montserrat, sans-serif;
@@ -494,7 +533,7 @@ footer .footer-copy .heart {
 
 .hotel-decor-1 {
   display: block;
-  border: 10px var(--grey) solid;
+  border: 10px var(--gray) solid;
   position: absolute;
   width: 95%;
   height: 29%;
@@ -506,7 +545,7 @@ footer .footer-copy .heart {
 
 .hotel-decor-2 {
   display: block;
-  border: 10px var(--grey) solid;
+  border: 10px var(--gray) solid;
   position: absolute;
   width: 95%;
   height: 29%;
@@ -526,7 +565,7 @@ footer .footer-copy .heart {
 .form-modal input[type=email] {
   width: 100%;
   padding: 1rem;
-  border: 1px var(--dark-grey) solid;
+  border: 1px var(--dark-gray) solid;
   text-align: center;
   font-size: 1.5rem;
   font-family: "Montserrat", sans-serif;
@@ -534,7 +573,7 @@ footer .footer-copy .heart {
 }
 .form-modal label {
   display: block;
-  color: var(--dark-grey);
+  color: var(--dark-gray);
   width: 100%;
   font-family: "Oswald", sans-serif;
 }
@@ -755,15 +794,18 @@ footer .footer-copy .heart {
   display: none;
 }
 .menu-filter .category-input:checked + .menu-filter-item {
-  border: 3px solid var(--grey);
-  background-color: var(--menu-gray);
-  color: var(--black);
+  border: 3px solid var(--dark-gray);
+  background-color: var(--dark-gray);
+  color: var(--white);
+}
+.menu-filter .category-input:checked + .menu-filter-item:after {
+  background-color: var(--dark-gray);
 }
 .menu-filter .menu-filter-item {
   position: relative;
   padding: 0.5rem 1.3rem;
   margin: 0 0.5rem;
-  border: 3px solid var(--contact-gray);
+  border: 3px solid var(--gray);
   transition: color 0.3s, background-color 0.3s;
   cursor: pointer;
   font-size: 14px;
@@ -777,8 +819,8 @@ footer .footer-copy .heart {
   left: -15px;
   top: 10px;
   transform: rotate(135deg);
-  transition: width 0.3s;
-  background-color: var(--contact-gray);
+  transition: background-color 0.3s;
+  background-color: var(--gray);
 }
 
 .menu-container {
@@ -823,6 +865,90 @@ footer .footer-copy .heart {
 }
 .menu-container .gap-size {
   width: 4%;
+}
+
+.restaurant-header {
+  height: 50vh;
+  margin: 0 5vw;
+}
+.restaurant-header .restaurant-header-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.restaurant-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 1rem;
+  margin: 1rem 7rem;
+}
+.restaurant-container .restaurant-text .restaurant-block {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0;
+}
+.restaurant-container .restaurant-text .restaurant-block .restaurant-block-photo {
+  width: 55%;
+  object-fit: cover;
+}
+.restaurant-container .restaurant-text .restaurant-block .restaurant-block-text {
+  padding: 1rem;
+}
+.restaurant-container .restaurant-text .restaurant-block .restaurant-block-text .restaurant-block-header {
+  font-size: 3em;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: bold;
+}
+.restaurant-container .restaurant-text .restaurant-block .restaurant-block-text .restaurant-block-small {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--accent);
+}
+.restaurant-container .restaurant-text .restaurant-block .restaurant-block-text .restaurant-block-p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+}
+.restaurant-container .restaurant-text .restaurant-block-reversed {
+  flex-direction: row-reverse;
+}
+.restaurant-container .menu-sidebar .decorated-header {
+  background-color: var(--black);
+  color: var(--white);
+  text-transform: uppercase;
+  margin: 0 15%;
+  box-sizing: border-box;
+  width: 70%;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+.restaurant-container .menu-sidebar .decorated-header:before, .restaurant-container .menu-sidebar .decorated-header:after {
+  content: "";
+  width: 20px;
+  height: 2px;
+  background-color: black;
+  position: absolute;
+  display: block;
+  top: 50%;
+}
+.restaurant-container .menu-sidebar .decorated-header:before {
+  left: -15%;
+}
+.restaurant-container .menu-sidebar .decorated-header:after {
+  right: -15%;
+}
+.restaurant-container .menu-sidebar .simple-header {
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: center;
+}
+.restaurant-container .menu-sidebar .menu-item .menu-item-image {
+  width: 100%;
+}
+.restaurant-container .menu-sidebar .menu-item .menu-item-text {
+  font-family: "Montserrat", sans-serif;
 }
 
 /*# sourceMappingURL=styles.css.map */

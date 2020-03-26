@@ -10,9 +10,12 @@
     }
 
     .category-input:checked + .menu-filter-item {
-        border: 3px solid var(--grey);
-        background-color: var(--menu-gray);
-        color: var(--black);
+        border: 3px solid var(--dark-gray);
+        background-color: var(--dark-gray);
+        color: var(--white);
+        &:after{
+            background-color: var(--dark-gray);
+        }
 
 
     }
@@ -22,7 +25,7 @@
         position: relative;
         padding: .5rem 1.3rem;
         margin: 0 .5rem;
-        border: 3px solid var(--contact-gray);
+        border: 3px solid var(--gray);
         transition: color .3s, background-color .3s;
         cursor: pointer;
         font-size: 14px;
@@ -36,8 +39,8 @@
             left: -15px;
             top: 10px;
             transform: rotate(135deg);
-            transition: width 0.3s;
-            background-color: var(--contact-gray);
+            transition: background-color 0.3s;
+            background-color: var(--gray);
         }
     }
 }
