@@ -6,6 +6,7 @@ from .decorators import check_recaptcha
 import datetime
 from datetime import datetime
 from django.urls import reverse
+import random
 
 
 def index(request):
@@ -14,7 +15,11 @@ def index(request):
 
 
 def restaurant(request):
-    ctx = {}
+    menu_items = MenuItem.objects.all()
+    random_choice = random.sample(list(menu_items), 3)
+    ctx = {
+        'menu_items': random_choice
+    }
     return render(request, 'restaurant.html', ctx)
 
 
