@@ -16,7 +16,10 @@ def index(request):
 
 def restaurant(request):
     menu_items = MenuItem.objects.all()
-    random_choice = random.sample(list(menu_items), 3)
+    random_choice = ()
+    if len(menu_items) >= 3:
+     random_choice = random.sample(list(menu_items), 3)
+
     ctx = {
         'menu_items': random_choice
     }
