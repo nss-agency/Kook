@@ -886,7 +886,7 @@ footer .footer-copy .heart {
 .restaurant-container .restaurant-text .restaurant-block {
   display: flex;
   flex-direction: row;
-  margin: 1rem 0;
+  margin: 3rem 0;
 }
 .restaurant-container .restaurant-text .restaurant-block .restaurant-block-photo {
   width: 55%;
