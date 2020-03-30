@@ -1,43 +1,105 @@
+.form-modal-wrapper {
+	background-color: rgba(00, 00, 00, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: block;
+	z-index: 20;
+	transition: background-color .3s;
+	width: 100%;
+	height: 100%;
+}
+
+.modal-inactive {
+	background-color: rgba(66, 66, 66, 0);
+	display: none;
+}
+
+
 .form-modal {
 	//position: absolute;
 	width: 70%;
 	background: var(--white);
 	//left: 50%;
 	//transform: translateX(-50%);
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 2rem;
 	flex-direction: row;
 	justify-content: space-around;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 2rem;
 
-	.form-modal-fields{
-		width: 40%;
-		padding: .5rem;
+	.form-modal-fields {
 	}
 
-	.form-modal-room-type{
-		padding: .5rem;
-		width: 40%;
-
-		.form-modal-room-image{
+	.form-modal-room-type {
+		.form-modal-room-image {
 			width: 100%;
-			object-fit: cover;
+			height: 50%;
+			object-fit: contain;
+		}
+
+		.form-modal-room-type-header {
+			font-size: 2rem;
+			text-align: center;
 		}
 	}
 
 	input[type="text"],
+	input[type="tel"],
 	input[type="number"],
-	input[type="checkbox"],
-	input[type="email"]
-	{
+	input[type="date"],
+	input[type="email"] {
 		width: 100%;
 		padding: 1rem;
 		border: 1px var(--dark-gray) solid;
 		text-align: center;
-		font-size: 1.5rem;
-		font-family:"Montserrat", sans-serif ;
+		font-size: 1rem;
+		font-family: "Montserrat", sans-serif;
 		margin-bottom: .2em;
+		box-sizing: border-box;
 	}
 
-	label {
+	input[type="checkbox"] {
+		display: none;
+
+		&:checked {
+
+			& ~ .checkbox-label {
+
+				.checkbox-label-check-mark {
+					background-color: var(--black);
+				}
+			}
+		}
+	}
+
+	.checkbox-label {
+		margin: 0 .5rem;
+		width: 1rem;
+		height: 1rem;
+		border: 1px solid var(--black);
+		display: inline-block;
+		position: relative;
+
+		.checkbox-label-check-mark {
+			width: .5rem;
+			height: .5rem;
+			background-color: var(--white);
+			transition: background-color .3s;
+			display: inline-block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	.default-label {
 		display: block;
 		color: var(--dark-gray);
 		width: 100%;
