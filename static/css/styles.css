@@ -518,7 +518,7 @@ footer .footer-copy .heart {
   margin-top: 25px;
 }
 .rooms-container .room-wrapper .room-description p {
-  font-family: Montserrat sans-serif;
+  font-family: Montserrat, sans-serif;
   text-align: left;
 }
 .rooms-container .room-wrapper .room-description small {
@@ -556,8 +556,23 @@ footer .footer-copy .heart {
 }
 
 .form-modal {
-  width: 30%;
+  width: 70%;
   background: var(--white);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.form-modal .form-modal-fields {
+  width: 40%;
+  padding: 0.5rem;
+}
+.form-modal .form-modal-room-type {
+  padding: 0.5rem;
+  width: 40%;
+}
+.form-modal .form-modal-room-type .form-modal-room-image {
+  width: 100%;
+  object-fit: cover;
 }
 .form-modal input[type=text],
 .form-modal input[type=number],
@@ -879,14 +894,14 @@ footer .footer-copy .heart {
 
 .restaurant-container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 1rem;
-  margin: 1rem 7rem;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 2.5rem;
+  margin: 1rem 12rem;
 }
 .restaurant-container .restaurant-text .restaurant-block {
   display: flex;
   flex-direction: row;
-  margin: 3rem 0;
+  margin: 4rem 0;
 }
 .restaurant-container .restaurant-text .restaurant-block .restaurant-block-photo {
   width: 55%;
@@ -917,12 +932,12 @@ footer .footer-copy .heart {
   background-color: var(--black);
   color: var(--white);
   text-transform: uppercase;
-  margin: 0 15%;
   box-sizing: border-box;
   width: 70%;
   text-align: center;
   padding: 0.5rem 1rem;
   position: relative;
+  margin: 3rem 15% 0;
 }
 .restaurant-container .menu-sidebar .decorated-header:before, .restaurant-container .menu-sidebar .decorated-header:after {
   content: "";
@@ -940,15 +955,28 @@ footer .footer-copy .heart {
   right: -15%;
 }
 .restaurant-container .menu-sidebar .simple-header {
-  font-size: 1.5rem;
-  margin: 0;
+  font-size: 1.8rem;
+  margin: 2rem 0;
   text-align: center;
+  font-family: Ubuntu, sans-serif;
+}
+.restaurant-container .menu-sidebar .menu-item {
+  margin-bottom: 1rem;
+}
+.restaurant-container .menu-sidebar .menu-item .menu-item-header {
+  font-size: 1.2rem;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 .restaurant-container .menu-sidebar .menu-item .menu-item-image {
   width: 100%;
+  height: 26vh;
+  object-fit: cover;
 }
 .restaurant-container .menu-sidebar .menu-item .menu-item-text {
   font-family: "Montserrat", sans-serif;
+  margin: 0;
 }
 
 /*# sourceMappingURL=styles.css.map */

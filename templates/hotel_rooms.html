@@ -85,8 +85,14 @@
 
 
 <div class="form-modal">
-    {#    {% include 'ajax_icludes/ajax_form.html' %}#}
+    <div class="form-modal-fields">
+        {% include 'ajax_icludes/ajax_form.html' %}
+    </div>
+    <div class="form-modal-room-type">
+        <img src="{% static "img/placeholder.jpg" %}" alt="" class="form-modal-room-image">
+    </div>
 </div>
+
 {% include 'includes/footer.html' %}
 
 </body>

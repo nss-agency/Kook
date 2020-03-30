@@ -59,24 +59,16 @@
     <div class="menu-sidebar">
         <h3 class="decorated-header">Меню</h3>
         <h4 class="simple-header">Рекомендації</h4>
+        {%  for item in menu_items %}
         <div class="menu-item">
-            <img class="menu-item-image" src="{% static "img/placeholder.jpg" %}" alt="">
-            <p class="menu-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis distinctio
-                dolore earum enim eveniet nesciunt numquam odio officiis pariatur, perferendis praesentium quasi
-                quibusdam repellat reprehenderit sed soluta tempora vel vero!</p>
+            <a href="{% url 'menu' %}" target="_blank"><img class="menu-item-image" src="{{ item.image.url }}" alt=""></a>
+            <h6 class="menu-item-header">{{ item.title }}</h6>
+            <p class="menu-item-text">{{ item.description }}
+            </p>
         </div>
-        <div class="menu-item">
-            <img class="menu-item-image" src="{% static "img/placeholder.jpg" %}" alt="">
-            <p class="menu-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis distinctio
-                dolore earum enim eveniet nesciunt numquam odio officiis pariatur, perferendis praesentium quasi
-                quibusdam repellat reprehenderit sed soluta tempora vel vero!</p>
-        </div>
-        <div class="menu-item">
-            <img class="menu-item-image" src="{% static "img/placeholder.jpg" %}" alt="">
-            <p class="menu-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis distinctio
-                dolore earum enim eveniet nesciunt numquam odio officiis pariatur, perferendis praesentium quasi
-                quibusdam repellat reprehenderit sed soluta tempora vel vero!</p>
-        </div>
+        {% endfor %}
+
+
     </div>
 </div>
 {% include 'includes/footer.html' %}

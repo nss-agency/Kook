@@ -1,107 +1,123 @@
-.restaurant-header{
-	height: 50vh;
-	margin: 0 5vw;
-	.restaurant-header-image{
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+.restaurant-header {
+    height: 50vh;
+    margin: 0 5vw;
+
+    .restaurant-header-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
 
 
 .restaurant-container {
-	display: grid;
-	grid-template-columns: 2fr 1fr;
-	grid-gap: 1rem;
-	margin: 1rem 7rem;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 2.5rem;
+    margin: 1rem 12rem;
 
-	.restaurant-text {
+    .restaurant-text {
 
-		.restaurant-block {
-			display: flex;
-			flex-direction: row;
-			margin: 3rem 0;
+        .restaurant-block {
+            display: flex;
+            flex-direction: row;
+            margin: 4rem 0;
 
-			.restaurant-block-photo {
-				width: 55%;
+            .restaurant-block-photo {
+                width: 55%;
+                object-fit: cover;
+            }
+
+            .restaurant-block-text {
+                padding: 1rem;
+
+                .restaurant-block-header {
+                    font-size: 3em;
+                    text-transform: uppercase;
+                    margin: 0;
+                    font-weight: bold;
+                }
+
+                .restaurant-block-small {
+                    font-size: 15px;
+                    font-weight: 300;
+                    color: var(--accent);
+                }
+
+                .restaurant-block-p {
+                    font-family: "Montserrat", sans-serif;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .restaurant-block-reversed {
+            flex-direction: row-reverse;
+        }
+    }
+
+    .menu-sidebar {
+        .decorated-header {
+            background-color: var(--black);
+            color: var(--white);
+            text-transform: uppercase;
+            box-sizing: border-box;
+            width: 70%;
+            text-align: center;
+            padding: .5rem 1rem;
+            position: relative;
+            margin: 3rem 15% 0;
+
+
+
+            &:before,
+            &:after {
+                content: "";
+                width: 20px;
+                height: 2px;
+                background-color: black;
+                position: absolute;
+                display: block;
+                top: 50%
+            }
+
+            &:before {
+                left: -15%;
+            }
+
+            &:after {
+                right: -15%;
+            }
+        }
+
+        .simple-header {
+            font-size: 1.8rem;
+            margin: 2rem 0;
+            text-align: center;
+			font-family: Ubuntu, sans-serif;
+        }
+
+        .menu-item {
+            margin-bottom: 1rem;
+
+            .menu-item-header{
+                font-size: 1.2rem;
+                margin: 0;
+                text-transform: uppercase;
+                font-weight: bold;
+
+            }
+
+            .menu-item-image {
+                width: 100%;
+                height: 26vh;
 				object-fit: cover;
-			}
+            }
 
-			.restaurant-block-text {
-				padding: 1rem;
-
-				.restaurant-block-header {
-					font-size: 3em;
-					text-transform: uppercase;
-					margin: 0;
-					font-weight: bold;
-				}
-
-				.restaurant-block-small {
-					font-size: 15px;
-					font-weight: 300;
-					color: var(--accent);
-				}
-
-				.restaurant-block-p {
-					font-family: "Montserrat", sans-serif;
-					font-size: 14px;
-				}
-			}
-		}
-
-		.restaurant-block-reversed {
-			flex-direction: row-reverse;
-		}
-	}
-
-	.menu-sidebar {
-		.decorated-header {
-			background-color: var(--black);
-			color: var(--white);
-			text-transform: uppercase;
-			margin: 0 15%;
-			box-sizing: border-box;
-			width: 70%;
-			text-align: center;
-			padding: .5rem 1rem;
-			position: relative;
-
-			&:before,
-			&:after {
-				content: "";
-				width: 20px;
-				height: 2px;
-				background-color: black;
-				position: absolute;
-				display: block;
-				top: 50%
-			}
-
-			&:before {
-				left: -15%;
-			}
-
-			&:after {
-				right: -15%;
-			}
-		}
-
-		.simple-header {
-			font-size: 1.5rem;
-			margin: 0;
-			text-align: center;
-		}
-
-		.menu-item {
-
-			.menu-item-image {
-				width: 100%;
-			}
-
-			.menu-item-text {
-				font-family: "Montserrat", sans-serif;
-			}
-		}
-	}
+            .menu-item-text {
+                font-family: "Montserrat", sans-serif;
+                margin: 0;
+            }
+        }
+    }
 }
