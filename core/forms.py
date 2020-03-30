@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Booking, Banquet
+from datetime import datetime
 
 
 class BookingForm(ModelForm):
@@ -30,8 +31,12 @@ class BookingForm(ModelForm):
             'pib': forms.TextInput,
             'phone': forms.TextInput,
             'email': forms.EmailInput,
-            'date_entry': forms.SelectDateWidget,
-            'date_leave': forms.SelectDateWidget,
+            'date_entry': forms.TextInput(attrs={
+                'type': 'date',
+            }),
+            'date_leave': forms.TextInput(attrs={
+                'type': 'date'
+            }),
             'quantity': forms.NumberInput,
         }
         labels = {

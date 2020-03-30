@@ -18,7 +18,7 @@ def restaurant(request):
     menu_items = MenuItem.objects.all()
     random_choice = ()
     if len(menu_items) >= 3:
-     random_choice = random.sample(list(menu_items), 3)
+        random_choice = random.sample(list(menu_items), 3)
 
     ctx = {
         'menu_items': random_choice
@@ -40,6 +40,7 @@ def hotel(request):
         'success': False,
         'fail': False,
     }
+
     booking_info = {}
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -59,12 +60,13 @@ def hotel(request):
 
             if Promo.objects.filter(name=entry_promo):
                 exist_promo = Promo.objects.get(name=entry_promo)
-                if entry_promo == str(exist_promo) and exist_promo.is_percetage == False:
-                    new_price = price - exist_promo.discount
-                elif entry_promo == str(exist_promo) and exist_promo.is_percetage:
-                    new_price = price - (price * (exist_promo.discount / 100))
-                else:
-                    new_price = price
+                if exist_promo.date_expired > datetime.now().date():
+                    if entry_promo == str(exist_promo) and exist_promo.is_percentage == False:
+                        new_price = price - exist_promo.discount
+                    elif entry_promo == str(exist_promo) and exist_promo.is_percentage:
+                        new_price = price - (price * (exist_promo.discount / 100))
+                    else:
+                        new_price = price
 
             booking_info = {
                 'pib': pib,
@@ -76,7 +78,7 @@ def hotel(request):
                 'room_type': room_type,
                 'additionals': additionals,
                 'days': day.days,
-                'price': price
+                'price': new_price
             }
 
             case_1 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,
@@ -96,17 +98,23 @@ def hotel(request):
             if (case_1 or case_2 or case_3 or case_4) and case >= room_type.quantity:
                 print('Zanyato')
                 booking_status['fail'] = True
+                # response = confirmation(request, {'booking_info': booking_info })
+                # return HttpResponse(response)
             else:
                 booking = form.save(commit=False)
                 booking.save()
                 booking_status['success'] = True
-
+                # response = confirmation(request, {'booking_info': booking_info })
+                # return HttpResponse(response)
         else:
             BookingForm()
+
     ctx = {
         'form': BookingForm,
-        'booking_status': booking_status
+        'booking_status': booking_status,
+        'booking_info': booking_info
     }
+
     return render(request, 'hotel_rooms.html', ctx)
 
 
@@ -236,4 +244,4 @@ def confirmation(request, newContext={}):
     context = {
     }
     context.update(newContext)
-    return render(request, 'confirmation.html',context)
+    return render(request, 'confirmation.html', context)
