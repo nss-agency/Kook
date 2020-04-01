@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Booking, MenuItem, RoomType, Promo, Banquet, MenuCategories, Photo
+from .models import Booking, MenuItem, RoomType, Promo, Banquet, MenuCategories, Photo, Gallery
 from modeltranslation.admin import TabbedTranslationAdmin
 
 
@@ -79,3 +79,4 @@ admin.site.register(MenuItem, MenuItemAdmin)
 admin.site.register(Promo, PromoAdmin)
 admin.site.register(Banquet, BanquetAdmin)
 admin.site.register(RoomType, RoomAdmin)
+admin.site.register(Gallery)

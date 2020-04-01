@@ -168,13 +168,37 @@ class Photo(models.Model):
                               upload_to='img',
                               null=True,
                               blank=True,
-                              # default='default.jpg',
-                             )
+                              )
     room = models.ForeignKey(RoomType, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Зображення'
         verbose_name_plural = 'Зображення'
+
+
+class Gallery(models.Model):
+    GALLERY_CHOICES = (
+        ('Ресторан', 'Ресторан'),
+        ('Банкетний Зал', 'Банкетний Зал'),
+        ('Готель', 'Готель'),
+    )
+
+    image = models.ImageField('Зображення',
+                              upload_to='img',
+                              null=True,
+                              blank=True,
+                              )
+    category = models.CharField('Категорія', max_length=225, choices=GALLERY_CHOICES)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.image = compressImage(self.image)
+        super(Gallery, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'Галерея'
+        verbose_name_plural = 'Галерея'
+
 
 # Delete photo if model.object delete
 @receiver(post_delete)
