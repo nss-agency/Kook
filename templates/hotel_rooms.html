@@ -77,29 +77,13 @@
                     телевізор, шафа. санвузол суміщений (душова кабінка), внутрішній телефон. <br>
                     <b>Номер обладнаний:</b> супутниковим телебаченням, доступом до мережі Інтернет (Wi-Fi).
                 </p>
-                <button onclick="showModal()" class="btn btn-black" href="">бронь</button>
+                <button onclick="showModal()" class="btn btn-black">бронь</button>
             </div>
         </div>
     </div>
 </div>
+{% include 'ajax_icludes/ajax_form.html' %}
 
-<div class="form-modal-wrapper modal-inactive" id="form-modal-wrapper">
-    <div class="form-modal">
-        <div class="form-modal-fields">
-            {% include 'ajax_icludes/ajax_form.html' %}
-        </div>
-        <div class="form-modal-room-type">
-            <img src="{% static "img/placeholder.jpg" %}" alt="" class="form-modal-room-image">
-            <h3 class="form-modal-room-type-header">Номер типу "Стандарт"</h3>
-            <p>
-                <b>Комплектація Номеру:</b> Однокімнатний номер, 2 ліжка, стіл, 2 крісла, LED
-                телевізор, шафа. санвузол суміщений (душова кабінка), внутрішній телефон. <br>
-                <b>Номер обладнаний:</b> супутниковим телебаченням, доступом до мережі Інтернет (Wi-Fi).
-            </p>
-            <a href="" class="btn btn-outline btn-center">змінити</a>
-        </div>
-    </div>
-</div>
 
 {% include 'includes/footer.html' %}
 <script>
@@ -112,6 +96,14 @@
         let modal = document.querySelector('#form-modal-wrapper');
         modal.classList.add('modal-inactive')
     }
+
+    function backgroundModalClick(e) {
+        if(e.target === this){
+            hideModal()
+        }
+    }
+
+    document.getElementById('form-modal-wrapper').addEventListener('click', backgroundModalClick)
 </script>
 </body>
 

@@ -38,9 +38,9 @@ class BookingForm(ModelForm):
                 'type': 'date'
             }),
             'quantity': forms.NumberInput,
-        }
-        labels = {
-            'room_type': 'Тип кімнати'
+            'room_type': forms.Select(attrs={
+                'hidden': 'false'
+            })
         }
 
 
