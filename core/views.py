@@ -57,6 +57,11 @@ def hotel(request):
             day = date_leave - date_entry
             price = room_type.price * day.days
             new_price = price
+            pib_form = request.POST.get('pib', '')
+            print('djanngo form:', date_entry)
+            print('html form:', pib_form)
+            print('djanngo form:', type(date_entry))
+
 
             if Promo.objects.filter(name=entry_promo):
                 exist_promo = Promo.objects.get(name=entry_promo)
