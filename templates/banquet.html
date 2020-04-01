@@ -3,59 +3,79 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     {% include 'includes/head_links.html' %}
     <title>Banquet Hall</title>
 </head>
 
 <body>
-    {% include 'includes/navbar.html' %}
-    <div class="container">
-        <div class="hero-container__banquet">
-            <div class="header-container">
-                <h1 class="hero-header__banquet">Lorem Ipsum dolor</h1>
-                <span class="hero-small__banquet">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem
+{% include 'includes/navbar.html' %}
+<div class="container">
+    <div class="hero-container__banquet">
+        <div class="header-container">
+            <h1 class="hero-header__banquet">Lorem Ipsum dolor</h1>
+            <span class="hero-small__banquet">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem
                     accusantium</span>
-            </div>
-            <img class="hero-image" src="{% static 'img/banquet.jpg' %}" alt="" />
         </div>
-        <div class="banquet_container">
-            <h2>Sed ut perspiciatis unde omnis iste</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos
-                id inventore ipsam necessitatibus nobis quasi sunt totam. Animi
-                architecto aut blanditiis consequatur cum dignissimos ipsum libero
-                maxime obcaecati quaerat quibusdam rem similique sint temporibus vel
-                velit, voluptates. Adipisci corporis debitis distinctio earum esse
-                fugiat laudantium, magni omnis quae quas vel!orem ipsum dolor sit
-                amet, consectetur adipisicing elit. Dignissimos id inventore ipsam
-                necessitatibus nobis quasi sunt totam. Animi architecto aut blanditiis
-                consequatur cum dignissimos ipsum libero maxime obcaecati quaerat
-                quibusdam rem similique sint temporibus vel velit, voluptates.
-                Adipisci corporis debitis distinctio earum esse fugiat laudantium,
-                magni omnis quae quas vel!
-            </p>
+        <img class="hero-image" src="{% static 'img/banquet.jpg' %}" alt=""/>
+    </div>
+    <div class="banquet_container">
+        <h2>Sed ut perspiciatis unde omnis iste</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos
+            id inventore ipsam necessitatibus nobis quasi sunt totam. Animi
+            architecto aut blanditiis consequatur cum dignissimos ipsum libero
+            maxime obcaecati quaerat quibusdam rem similique sint temporibus vel
+            velit, voluptates. Adipisci corporis debitis distinctio earum esse
+            fugiat laudantium, magni omnis quae quas vel!orem ipsum dolor sit
+            amet, consectetur adipisicing elit. Dignissimos id inventore ipsam
+            necessitatibus nobis quasi sunt totam. Animi architecto aut blanditiis
+            consequatur cum dignissimos ipsum libero maxime obcaecati quaerat
+            quibusdam rem similique sint temporibus vel velit, voluptates.
+            Adipisci corporis debitis distinctio earum esse fugiat laudantium,
+            magni omnis quae quas vel!
+        </p>
 
-            <h2>Sed ut perspiciatis unde omnis iste</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos
-                id inventore ipsam necessitatibus nobis quasi sunt totam. Animi
-                architecto aut blanditiis consequatur cum dignissimos ipsum libero
-                maxime obcaecati quaerat quibusdam rem similique sint temporibus vel
-                velit, voluptates. Adipisci corporis debitis distinctio earum esse
-                fugiat laudantium, magni omnis quae quas vel!
-            </p>
+        <h2>Sed ut perspiciatis unde omnis iste</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos
+            id inventore ipsam necessitatibus nobis quasi sunt totam. Animi
+            architecto aut blanditiis consequatur cum dignissimos ipsum libero
+            maxime obcaecati quaerat quibusdam rem similique sint temporibus vel
+            velit, voluptates. Adipisci corporis debitis distinctio earum esse
+            fugiat laudantium, magni omnis quae quas vel!
+        </p>
 
-            <div class="btn__wrapper">
-                <a class="btn btn-black__banquet" href="{% url 'menu' %}">меню</a>
-                <a class="btn btn-black__banquet" href="">бронь</a>
-            </div>
+        <div class="btn__wrapper">
+            <a class="btn btn-black__banquet" href="{% url 'menu' %}">меню</a>
+            <a class="btn btn-black__banquet" onclick="showModal()">бронь</a>
         </div>
     </div>
-    {% include 'includes/footer.html' %}
+</div>
+{% include 'ajax_icludes/ajax_banquet.html' %}
+{% include 'includes/footer.html' %}
+<script>
+    function showModal() {
+        let modal = document.querySelector('#form-modal-wrapper');
+        modal.classList.remove('modal-inactive');
+    }
+
+    function hideModal() {
+        let modal = document.querySelector('#form-modal-wrapper');
+        modal.classList.add('modal-inactive')
+    }
+
+    function backgroundModalClick(e) {
+        if (e.target === this) {
+            hideModal()
+        }
+    }
+
+    document.getElementById('form-modal-wrapper').addEventListener('click', backgroundModalClick)
+</script>
 </body>
 
 </html>

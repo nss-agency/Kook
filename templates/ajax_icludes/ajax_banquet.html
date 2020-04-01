@@ -1,0 +1,22 @@
+{% load static %}
+<div class="form-modal-wrapper modal-inactive" id="form-modal-wrapper">
+    <div id="form-modal" class="form-modal_banquet" onclick="">
+
+        <div class="form-modal-fields">
+            <h3 class="decorated-header">Бронь</h3>
+            <form id="form-body" method="post">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                {% if banquet_status.success %}
+                    <h1>Congrats</h1>
+                {% endif %}
+                {% if banquet_status.fail %}
+                    <h1>Sorry</h1>
+                {% endif %}
+                <button class="btn btn-black btn-center" id="submitContactForm">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

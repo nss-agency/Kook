@@ -63,5 +63,7 @@ class BanquetForm(ModelForm):
             'pib': forms.TextInput,
             'phone': forms.TextInput,
             'email': forms.EmailInput,
-            'check_in': forms.SelectDateWidget,
+            'check_in': forms.TextInput(attrs={
+                'type': 'date',
+            }),
         }

@@ -45,6 +45,7 @@ body {
   position: relative;
   width: fit-content;
   width: -moz-fit-content;
+  cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
 }
 .btn:after {
@@ -602,6 +603,10 @@ footer .footer-copy .heart {
   font-size: 2rem;
   text-align: center;
 }
+.form-modal .form-modal-room-type p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+}
 .form-modal input[type=text],
 .form-modal input[type=tel],
 .form-modal input[type=number],
@@ -648,11 +653,6 @@ footer .footer-copy .heart {
   font-family: "Oswald", sans-serif;
 }
 
-.form-modal-inactive {
-  transform: translate(-50%, -50%) scale(0, 0);
-  opacity: 0;
-}
-
 .form-confirmation {
   background-color: var(--white);
   position: absolute;
@@ -666,6 +666,87 @@ footer .footer-copy .heart {
 .confirmation-inactive {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0, 0);
+}
+
+.decorated-header {
+  background-color: var(--black);
+  color: var(--white);
+  text-transform: uppercase;
+  box-sizing: border-box;
+  width: 70%;
+  text-align: center;
+  padding: 1rem 1rem;
+  position: relative;
+  margin: 1rem 15% 0;
+  font-size: 1.8rem;
+}
+.decorated-header:before, .decorated-header:after {
+  content: "";
+  width: 20px;
+  height: 2px;
+  background-color: black;
+  position: absolute;
+  display: block;
+  top: 50%;
+}
+.decorated-header:before {
+  left: -15%;
+}
+.decorated-header:after {
+  right: -15%;
+}
+
+.form-modal_banquet {
+  width: 25%;
+  background: var(--white);
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-around;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  opacity: 1;
+  transition: opacity 0.3s 0.3s, transform 0s 0.3s;
+}
+.form-modal_banquet .form-modal-room-type .form-modal-room-image {
+  width: 100%;
+  height: 50%;
+  object-fit: contain;
+}
+.form-modal_banquet .form-modal-room-type .form-modal-room-type-header {
+  font-size: 2rem;
+  text-align: center;
+}
+.form-modal_banquet .form-modal-room-type p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+}
+.form-modal_banquet input[type=text],
+.form-modal_banquet input[type=tel],
+.form-modal_banquet input[type=number],
+.form-modal_banquet input[type=date],
+.form-modal_banquet input[type=email] {
+  width: 100%;
+  padding: 1rem;
+  border: 1px var(--dark-gray) solid;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 0.2em;
+  box-sizing: border-box;
+}
+.form-modal_banquet .default-label {
+  display: block;
+  color: var(--dark-gray);
+  width: 100%;
+  font-family: "Oswald", sans-serif;
+}
+
+.form-modal-inactive {
+  transform: translate(-50%, -50%) scale(0, 0);
+  opacity: 0;
 }
 
 .header__contact {

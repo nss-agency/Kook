@@ -57,11 +57,6 @@ def hotel(request):
             day = date_leave - date_entry
             price = room_type.price * day.days
             new_price = price
-            pib_form = request.POST.get('pib', '')
-            print('djanngo form:', date_entry)
-            print('html form:', pib_form)
-            print('djanngo form:', type(date_entry))
-
 
             if Promo.objects.filter(name=entry_promo):
                 exist_promo = Promo.objects.get(name=entry_promo)
@@ -124,7 +119,31 @@ def hotel(request):
 
 
 def banquet(request):
-    ctx = {}
+    banquet_status = {
+        'success': False,
+        'fail': False,
+    }
+
+    if request.method == 'POST':
+        form = BanquetForm(request.POST)
+        if form.is_valid():
+            check_in = form.cleaned_data['check_in']
+            case = Banquet.objects.filter(check_in=check_in).exists()
+
+            if case:
+                print('Zanyato')
+                banquet_status['fail'] = True
+            else:
+                banquet = form.save(commit=False)
+                banquet.save()
+                banquet_status['success'] = True
+        else:
+            BanquetForm()
+
+    ctx = {
+        'form': BanquetForm,
+        'banquet_status': banquet_status,
+    }
     return render(request, 'banquet.html', ctx)
 
 
@@ -255,6 +274,6 @@ def confirmation(request, newContext={}):
 def ajax_description(request, id):
     room = RoomType.objects.get(pk=id)
 
-    ctx={'room': room}
+    ctx = {'room': room}
 
     return render(request, 'ajax_icludes/ajax_room_description.html', ctx)

@@ -14,4 +14,4 @@ class PostTranslationOptions(TranslationOptions):
 
 @register(RoomType)
 class PostTranslationOptions(TranslationOptions):
-    fields = ('name',)
+    fields = ('name', 'description')
