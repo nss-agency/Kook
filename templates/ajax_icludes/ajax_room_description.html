@@ -1,0 +1,7 @@
+{% load static %}
+<img src="{{ room.image.url }}" alt="" class="form-modal-room-image">
+<h3 class="form-modal-room-type-header">Номер типу "{{ room.name }}"</h3>
+<p>
+{{ room.description|safe }}
+</p>
+<a href="" class="btn btn-outline btn-center">змінити</a>

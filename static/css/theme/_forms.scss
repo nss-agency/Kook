@@ -21,13 +21,9 @@
 	}
 }
 
-
 .form-modal {
-	//position: absolute;
 	width: 70%;
 	background: var(--white);
-	//left: 50%;
-	//transform: translateX(-50%);
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 2rem;
@@ -39,7 +35,7 @@
 	transform: translate(-50%, -50%);
 	padding: 2rem;
 	opacity: 1;
-	transition: opacity .3s .3s;
+	transition: opacity .3s .3s, transform 0s .3s;
 
 	.form-modal-fields {
 	}
@@ -115,6 +111,11 @@
 	}
 }
 
+.form-modal-inactive{
+	transform: translate(-50%, -50%) scale(0,0);
+	opacity: 0;
+}
+
 .form-confirmation {
 	background-color: var(--white);
 	position: absolute;
@@ -123,6 +124,11 @@
 	transform: translate(-50%, -50%) scale(1,1);
 	padding: 2rem;
 	opacity: 1;
+	transition: opacity .3s .3s;
+
+	.form-confirmation-room-type-header{
+
+	}
 }
 
 .confirmation-inactive {

@@ -32,6 +32,7 @@ urlpatterns = i18n_patterns(
     path('confirm/', views.confirmation, name='confirm'),
     path('menu/', views.menu, name='menu'),
     path('restaurant/', views.restaurant, name='restaurant'),
+    path('ajax_description/<id>', views.ajax_description, name='ajax_description'),
     prefix_default_language=False
 )
 

@@ -1,8 +1,8 @@
 {% load static %}
 <div class="form-modal-wrapper modal-inactive" id="form-modal-wrapper">
-    <div class="form-modal" onclick="">
+    <div id="form-modal" class="form-modal" onclick="">
         <div class="form-modal-fields">
-            <form method="post">
+            <form id="form-body" method="post">
                 {% csrf_token %}
                 {% for field in form.visible_fields %}
                     <div class="">
@@ -13,6 +13,7 @@
                         {{ field }}
                     </div>
                 {% endfor %}
+                <span>*Сніданок включений в ціну номера</span>
 
                 {% if booking_status.success %}
                     <h1>Congrats</h1>
@@ -20,22 +21,16 @@
                 {% if booking_status.fail %}
                     <h1>Sorry</h1>
                 {% endif %}
-                <button class="btn btn-black btn-center" id="submitContactForm" type="submit">Submit</button>
+                <button class="btn btn-black btn-center" id="submitContactForm" >Submit</button>
             </form>
         </div>
-        <div class="form-modal-room-type">
-            <img src="{% static "img/placeholder.jpg" %}" alt="" class="form-modal-room-image">
-            <h3 class="form-modal-room-type-header">Номер типу "Стандарт"</h3>
-            <p>
-                <b>Комплектація Номеру:</b> Однокімнатний номер, 2 ліжка, стіл, 2 крісла, LED
-                телевізор, шафа. санвузол суміщений (душова кабінка), внутрішній телефон. <br>
-                <b>Номер обладнаний:</b> супутниковим телебаченням, доступом до мережі Інтернет (Wi-Fi).
-            </p>
-            <a href="" class="btn btn-outline btn-center">змінити</a>
+        <div class="form-modal-room-type " id="form-modal-room-type">
+
         </div>
     </div>
-<div class="form-confirmation confirmation-inactive">
-
+<div id="form-confirmation" class="form-confirmation confirmation-inactive">
+    <img src="{% static "img/placeholder.jpg" %}" alt="">
+    <h3 class="form-confirmation-room-type-header">Номер типу "4mo"</h3>
 </div>
 </div>
 <script>

@@ -245,3 +245,11 @@ def confirmation(request, newContext={}):
     }
     context.update(newContext)
     return render(request, 'confirmation.html', context)
+
+
+def ajax_description(request, id):
+    room = RoomType.objects.get(pk=id)
+
+    ctx={'room': room}
+
+    return render(request, 'ajax_icludes/ajax_room_description.html', ctx)

@@ -40,7 +40,8 @@ class BookingForm(ModelForm):
             'quantity': forms.NumberInput,
             'room_type': forms.Select(attrs={
                 'hidden': 'false'
-            })
+            }),
+            'breakfest': forms.HiddenInput
         }
 
 

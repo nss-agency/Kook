@@ -48,6 +48,7 @@ class RoomType(models.Model):
     quantity = models.IntegerField('Кількість кімнат')
     color_id = models.IntegerField('Id кольору')
     price = models.PositiveIntegerField('Ціна')
+    description = models.TextField()
 
     def save(self, *args, **kwargs):
         if not self.id:
