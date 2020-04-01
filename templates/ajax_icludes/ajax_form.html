@@ -1,55 +1,44 @@
-<form method="post">
-    {% csrf_token %}
-        {% for field in form %}
-            <div class="">
-                {{ field.errors }}
-                <label class="default-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
-                {{ field }}
-            </div>
-        {% endfor %}
-{#    <div class="">#}
-{##}
-{#        <label class="default-label" for="id_pib">П.І.Б.</label>#}
-{#        <input type="text" id="id_pib" name="pib">#}
-{#    </div>#}
-{#    <div class="">#}
-{#        <label class="default-label" for="id_phone">Номер телефону</label>#}
-{#        <input type="tel" id="id_phone" name="phone">#}
-{#    </div>#}
-{#    <div class="">#}
-{#        <label class="default-label" for="id_email">Електронна пошта</label>#}
-{#        <input type="email" id="id_email" name="email">#}
-{#    </div>#}
-{#    <div class="">#}
-{#        <label class="default-label" for="id_date_entry">Дата заселення</label>#}
-{#        <input type="date" id="id_date_entry" name="date_entry">#}
-{#    </div>#}
-{#    <div class="">#}
-{#        <label class="default-label" for="id_date_leave">Дата виселення</label>#}
-{#        <input type="date" id="id_date_leave" name="date_leave">#}
-{#    </div>#}
-{#    <div class="">#}
-{#        <label class="default-label" for="id_quantity">Кількість осіб</label>#}
-{#        <input type="number" min="1" minlength="1" id="id_quantity" name="quantity">#}
-{#    </div>#}
-{#    <div class="">#}
-{#        <label class="default-label" for="id_additional">Додаткова інформація</label>#}
-{#        <input type="text" id="id_additional" name="additional">#}
-{#    </div>#}
-{#    <div class="">#}
-{#        <label for="id_breakfest">Сніданок</label>#}
-{#        <input type="checkbox" checked disabled id="id_breakfest" name="breakfest">#}
-{#        <label class="checkbox-label" for="id_breakfest"><span class="checkbox-label-check-mark"></span></label>#}
-{#    </div>#}
+
+{% load static %}
+<div class="form-modal-wrapper modal-inactive" id="form-modal-wrapper">
+    <div class="form-modal" onclick="">
+        <div class="form-modal-fields">
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form.visible_fields %}
+                    <div class="">
+                        {{ field.errors }}
+                        {% if field.id_for_label  != 'id_room_type' %}
+                            <label class="default-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {% endif %}
+                        {{ field }}
+                    </div>
+                {% endfor %}
 
 
-    {% if booking_status.success %}
-        <h1>Congrats</h1>
-    {% endif %}
-    {% if booking_status.fail %}
-        <h1>Sorry</h1>
-    {% endif %}
-    <button class="btn btn-black btn-center" id="submitContactForm" type="submit">Submit</button>
-</form>
+                {% if booking_status.success %}
+                    <h1>Congrats</h1>
+                {% endif %}
+                {% if booking_status.fail %}
+                    <h1>Sorry</h1>
+                {% endif %}
+                <button class="btn btn-black btn-center" id="submitContactForm" type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="form-modal-room-type">
+            <img src="{% static "img/placeholder.jpg" %}" alt="" class="form-modal-room-image">
+            <h3 class="form-modal-room-type-header">Номер типу "Стандарт"</h3>
+            <p>
+                <b>Комплектація Номеру:</b> Однокімнатний номер, 2 ліжка, стіл, 2 крісла, LED
+                телевізор, шафа. санвузол суміщений (душова кабінка), внутрішній телефон. <br>
+                <b>Номер обладнаний:</b> супутниковим телебаченням, доступом до мережі Інтернет (Wi-Fi).
+            </p>
+            <a href="" class="btn btn-outline btn-center">змінити</a>
+        </div>
+    </div>
+<div class="form-confirmation confirmation-inactive">
+
+</div>
+</div>
 <script>
 </script>

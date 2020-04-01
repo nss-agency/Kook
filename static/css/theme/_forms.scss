@@ -8,11 +8,17 @@
 	transition: background-color .3s;
 	width: 100%;
 	height: 100%;
+	transform: scale(1, 1);
 }
 
 .modal-inactive {
 	background-color: rgba(66, 66, 66, 0);
-	display: none;
+	transform: scale(0, 0);
+	transition: transform 0s linear .6s, background-color .3s .3s;
+
+	.form-modal {
+		opacity: 0;
+	}
 }
 
 
@@ -32,6 +38,8 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	padding: 2rem;
+	opacity: 1;
+	transition: opacity .3s .3s;
 
 	.form-modal-fields {
 	}
@@ -105,4 +113,19 @@
 		width: 100%;
 		font-family: "Oswald", sans-serif;
 	}
+}
+
+.form-confirmation {
+	background-color: var(--white);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(1,1);
+	padding: 2rem;
+	opacity: 1;
+}
+
+.confirmation-inactive {
+	opacity: 0;
+	transform: translate(-50%, -50%) scale(0,0);
 }
