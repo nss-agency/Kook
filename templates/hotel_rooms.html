@@ -99,9 +99,8 @@
     }
 
     function getRoomTypeMap() {
-        let room_select = document.querySelector('#id_room_type')
-        let choices = room_select.options
-        console.log(choices);
+        let room_select = document.querySelector('#id_room_type');
+        let choices = room_select.options;
         let result = {}
         for (let i = 0; i < choices.length; ++i) {
             result[choices[i].value] = choices[i].index
@@ -110,12 +109,35 @@
         return result
     }
 
-    function modalShowNextStep(){
+    function submitForm(){
+        document.querySelector('#form-body').submit()
+    }
+
+    function modalShowNextStep() {
         document.querySelector('#form-modal').classList.add('form-modal-inactive')
         document.querySelector('#form-confirmation').classList.remove('confirmation-inactive')
+        let date_start = document.querySelector('#id_date_entry').value
+        let date_end = document.querySelector('#id_date_leave').value
+        let select = document.querySelector('#id_room_type')
+        let id = parseInt(select[select.selectedIndex].value)
+        let email = document.querySelector('#id_email').value
+        let promo = document.querySelector('#id_discount').value
+
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("form-confirmation").innerHTML = this.responseText;
+                document.getElementById('payment_button').addEventListener('click', submitForm)
+            }
+        };
+        xhttp.open("GET", `/ajax_second_step?date_start=${date_start}&date_end=${date_end}&id=${id}&email=${email}&promo=${promo}`, true);
+        xhttp.send();
     }
 
     function showModal(room_id) {
+        document.querySelector('#form-modal').classList.remove('form-modal-inactive')
+        document.querySelector('#form-confirmation').classList.add('confirmation-inactive')
         let modal = document.querySelector('#form-modal-wrapper');
         modal.classList.remove('modal-inactive');
         let room_type_select = document.querySelector('#id_room_type');
@@ -134,18 +156,27 @@
         }
     }
 
-    function formNextStep(e){
+    function formNextStep(e) {
         e.preventDefault()
         let form = document.querySelector('#form-body')
-        if(form.checkValidity()){
+        if (form.checkValidity()) {
             modalShowNextStep()
-        } else{
+        } else {
             form.reportValidity()
         }
     }
 
     document.getElementById('form-modal-wrapper').addEventListener('click', backgroundModalClick)
     document.getElementById('submitContactForm').addEventListener('click', formNextStep)
+
+
+    document.querySelector('#id_date_entry').min = new Date().toISOString().split("T")[0];
+    document.querySelector('#id_date_leave').min = new Date().toISOString().split("T")[0];
+
+    document.querySelector('#id_date_entry').addEventListener('change', () => {
+            document.querySelector('#id_date_leave').min = new Date(document.querySelector('#id_date_entry').value).toISOString().split("T")[0];
+        }
+    )
 </script>
 </body>
 

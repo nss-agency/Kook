@@ -71,8 +71,8 @@ class Booking(models.Model):
     phone = models.CharField(
         'Номер телефону', max_length=225, help_text='Контактний номер телефону')
     email = models.EmailField('E-mail')
-    date_entry = models.DateField('Дата заїзду', default=datetime.now)
-    date_leave = models.DateField('Дата виїзду', default=datetime.now)
+    date_entry = models.DateField('Дата заїзду')
+    date_leave = models.DateField('Дата виїзду')
     quantity = models.IntegerField('Кількість осіб')
     room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, verbose_name='Тип Кімнати')
     additional = models.CharField('Додаткові опціі', max_length=225, blank=True)

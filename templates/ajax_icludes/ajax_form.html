@@ -1,19 +1,18 @@
-
 {% load static %}
 <div class="form-modal-wrapper modal-inactive" id="form-modal-wrapper">
     <div id="form-modal" class="form-modal" onclick="">
 
         <div class="form-modal-fields">
-        <h3 class="decorated-header">Бронь</h3>
+            <h3 class="decorated-header">Бронь</h3>
             <form id="form-body" method="post">
                 {% csrf_token %}
                 {% for field in form.visible_fields %}
-                    <div class="">
+                    <div class="form-modal-field-wrapper">
                         {{ field.errors }}
+                        {{ field }}
                         {% if field.id_for_label  != 'id_room_type' %}
                             <label class="default-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
                         {% endif %}
-                        {{ field }}
                     </div>
                 {% endfor %}
                 <span>*Сніданок включений в ціну номера</span>
@@ -25,17 +24,16 @@
                 {% if booking_status.fail %}
                     <h1>Sorry</h1>
                 {% endif %}
-                <button class="btn btn-black btn-center" id="submitContactForm" >Submit</button>
+                <button class="btn btn-black btn-center" id="submitContactForm">Submit</button>
             </form>
         </div>
         <div class="form-modal-room-type " id="form-modal-room-type">
 
         </div>
     </div>
-<div id="form-confirmation" class="form-confirmation confirmation-inactive">
-    <img src="{% static "img/placeholder.jpg" %}" alt="">
-    <h3 class="form-confirmation-room-type-header">Номер типу "4mo"</h3>
-</div>
+    <div id="form-confirmation" class="form-confirmation confirmation-inactive">
+
+    </div>
 </div>
 <script>
 </script>
