@@ -17,7 +17,7 @@ from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from core import views
 
 urlpatterns = i18n_patterns(
@@ -33,6 +33,8 @@ urlpatterns = i18n_patterns(
     path('menu/', views.menu, name='menu'),
     path('restaurant/', views.restaurant, name='restaurant'),
     path('ajax_description/<id>', views.ajax_description, name='ajax_description'),
+    re_path(r'^pay/$', views.PayView.as_view(), name='pay_view'),
+    re_path(r'^pay-callback/$', views.PayCallbackView.as_view(), name='pay_callback'),
     prefix_default_language=False
 )
 

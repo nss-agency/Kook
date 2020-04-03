@@ -3,7 +3,7 @@
     <div id="form-modal" class="form-modal_banquet" onclick="">
 
         <div class="form-modal-fields">
-            <h3 class="decorated-header">Бронь</h3>
+            <h3 class="decorated-header">Замовлення Банкету</h3>
             <form id="form-body" method="post">
                 {% csrf_token %}
 
@@ -15,7 +15,7 @@
                 {% if banquet_status.fail %}
                     <h1>Sorry</h1>
                 {% endif %}
-                <button class="btn btn-black btn-center" id="submitContactForm">Submit</button>
+                <button class="btn btn-black btn-center" id="submitContactForm">Замовити</button>
             </form>
         </div>
     </div>

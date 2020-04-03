@@ -14,6 +14,7 @@ class BookingForm(ModelForm):
                             required=True)
 
     class Meta:
+        
         model = Booking
         fields = (
             'pib',

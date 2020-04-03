@@ -1,12 +1,56 @@
 from django.shortcuts import render, redirect
+from django.utils.decorators import method_decorator
+from django.views import View
+from django.views.decorators.csrf import csrf_exempt
+
 from .forms import BookingForm, BanquetForm
 from .models import Booking, RoomType, Promo, Banquet, MenuItem, MenuCategories
 from django.http import HttpResponse, HttpResponseRedirect
 from .decorators import check_recaptcha
 import datetime
 from datetime import datetime
-from django.urls import reverse
 import random
+from Kook_project import settings
+
+from liqpay.liqpay import LiqPay
+
+from django.views.generic import TemplateView
+from django.shortcuts import render
+from django.http import HttpResponse
+
+
+class PayView(TemplateView):
+    template_name = 'pay.html'
+
+    def get(self, request, *args, **kwargs):
+        liq_pay = LiqPay(settings.LIQPAY_PUBLIC_KEY, settings.LIQPAY_PRIVATE_KEY)
+        params = {
+            'action': 'pay',
+            'amount': '100',
+            'currency': 'USD',
+            'description': 'Payment for clothes',
+            'order_id': 'order_id_1',
+            'version': '3',
+            'sandbox': 1,  # sandbox mode, set to 1 to enable it
+            'server_url': 'https://test.com/billing/pay-callback/',  # url to callback view
+        }
+        signature = liq_pay.cnb_signature(params)
+        data = liq_pay.cnb_data(params)
+        return render(request, self.template_name, {'signature': signature, 'data': data})
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class PayCallbackView(View):
+    def post(self, request, *args, **kwargs):
+        liq_pay = LiqPay(settings.LIQPAY_PUBLIC_KEY, settings.LIQPAY_PRIVATE_KEY)
+        data = request.POST.get('data')
+        signature = request.POST.get('signature')
+        sign = liq_pay.str_to_sign(settings.LIQPAY_PRIVATE_KEY + data + settings.LIQPAY_PRIVATE_KEY)
+        if sign == signature:
+            print('callback is valid')
+        response = liq_pay.decode_data_from_str(data)
+        print('callback data', response)
+        return HttpResponse()
 
 
 def index(request):
@@ -60,7 +104,7 @@ def hotel(request):
 
             if Promo.objects.filter(name=entry_promo):
                 exist_promo = Promo.objects.get(name=entry_promo)
-                if exist_promo.date_expired > datetime.now().date():
+                if exist_promo.date_expired >= datetime.now().date():
                     if entry_promo == str(exist_promo) and exist_promo.is_percentage == False:
                         new_price = price - exist_promo.discount
                     elif entry_promo == str(exist_promo) and exist_promo.is_percentage:
@@ -176,7 +220,8 @@ def form(request):
                     if entry_promo == str(exist_promo) and exist_promo.is_percentage == False:
                         new_price = price - exist_promo.discount
                     elif entry_promo == str(exist_promo) and exist_promo.is_percentage:
-                        new_price = price - (price * (exist_promo.discount / 100))
+                        new_price = price - \
+                                    (price * (exist_promo.discount / 100))
                     else:
                         new_price = price
 
@@ -277,3 +322,37 @@ def ajax_description(request, id):
     ctx = {'room': room}
 
     return render(request, 'ajax_icludes/ajax_room_description.html', ctx)
+
+
+class PayView(TemplateView):
+    template_name = 'pay.html'
+
+    def get(self, request, *args, **kwargs):
+        liq_pay = LiqPay(settings.LIQPAY_PUBLIC_KEY, settings.LIQPAY_PRIVATE_KEY)
+        params = {
+            'action': 'pay',
+            'amount': '100',
+            'currency': 'USD',
+            'description': 'Payment for clothes',
+            'order_id': 'order_id_1',
+            'version': '3',
+            'sandbox': 1,  # sandbox mode, set to 1 to enable it
+            'server_url': 'https://test.com/billing/pay-callback/',  # url to callback view
+        }
+        signature = liq_pay.cnb_signature(params)
+        data = liq_pay.cnb_data(params)
+        return render(request, self.template_name, {'signature':  signature, 'data': data})
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class PayCallbackView(View):
+    def post(self, request, *args, **kwargs):
+        liq_pay = LiqPay(settings.LIQPAY_PUBLIC_KEY, settings.LIQPAY_PRIVATE_KEY)
+        data = request.POST.get('data')
+        signature = request.POST.get('signature')
+        sign = liq_pay.str_to_sign(settings.LIQPAY_PRIVATE_KEY + data + settings.LIQPAY_PRIVATE_KEY)
+        if sign == signature:
+            print('callback is valid')
+        response = liq_pay.decode_data_from_str(data)
+        print('callback data', response)
+        return HttpResponse()
