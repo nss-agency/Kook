@@ -20,7 +20,8 @@ class BookingAdmin(admin.ModelAdmin):
         'quantity',
         'room_type',
         'additional',
-        'discount']
+        'discount',
+        'is_paid']
     list_filter = ['room_type', 'date_entry', 'date_leave']
     search_fields = ('phone', 'pib', 'email')
     list_per_page = 10
@@ -46,6 +47,7 @@ class RoomAdmin(TabbedTranslationAdmin):
         'quantity',
         'price',
     ]
+
     # inlines = [PhotoInline]
 
     def save_model(self, request, obj, form, change):

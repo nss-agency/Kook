@@ -321,13 +321,6 @@ def banquet_form(request):
     return render(request, 'banque_form.html', ctx)
 
 
-def confirmation(request, newContext={}):
-    context = {
-    }
-    context.update(newContext)
-    return render(request, 'confirmation.html', context)
-
-
 def ajax_description(request, id):
     room = RoomType.objects.get(pk=id)
 
@@ -382,17 +375,22 @@ def ajax_second_step(request):
     ppd = room.price
     price = days * ppd
     new_price = price
+    discount_value = 0
     if Promo.objects.filter(name=entry_promo):
         exist_promo = Promo.objects.get(name=entry_promo)
         if exist_promo.date_expired >= datetime.now().date():
             if entry_promo == str(exist_promo) and exist_promo.is_percentage is False:
-                new_price = price - exist_promo.discount
+                discount_value = exist_promo.discount
+                new_price = price - discount_value
             elif entry_promo == str(exist_promo) and exist_promo.is_percentage:
-                new_price = price - (price * (exist_promo.discount / 100))
+                discount_value = (price * (exist_promo.discount / 100))
+                new_price = price - discount_value
             else:
                 new_price = price
 
     ctx = {'price': new_price,
+           'old_price': price,
+           'discount_value' : discount_value,
            'days': days,
            'date_start': date_start,
            'date_end': date_end,

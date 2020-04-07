@@ -1,0 +1,36 @@
+.gallery-container {
+  margin: 5vh 5vw;
+
+  .gallery-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: calc(25% - 20px);
+
+    .gallery-item-photo {
+      flex-grow: 1;
+      object-fit: cover;
+      max-height: 346px;
+    }
+
+    .gallery-item-text {
+      padding: 1rem;
+      box-sizing: border-box;
+
+      .gallery-item-header {
+        font-size: 3em;
+        margin: 0;
+        font-weight: bold;
+      }
+        
+    }
+  }
+
+  .gallery-item-w2 {
+    width: calc(50% - 20px);
+  }
+
+  .gap-size {
+    width: 4%;
+  }
+}

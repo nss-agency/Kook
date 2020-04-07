@@ -1,8 +1,10 @@
 {% load static %}
+<h3 class="decorated-header-confirm" style="margin-bottom: 2rem" >Підтвердження</h3>
 <img class="form-confirmation-image" src="{{ room.image.url }}" alt="">
 <h3 class="form-confirmation-room-type-header">Номер типу "{{ room.name }}"</h3>
 <p class="form-confirmation-field">{{ date_start }} - {{ date_end }}</p>
 <p class="form-confirmation-field">{{ email }}</p>
 <p class="form-confirmation-field">{{ days }} дні</p>
-<p class="form-confirmation-field form-confirmation-price">Підсумок {{ price }}грн</p>
-<button id="payment_button" class="btn btn-outline btn-center">ОПЛАТА</button>
+<p class="form-confirmation-field form-confirmation-price">Підсумок {% if discount_value > 0 %} {{ old_price }} -
+    {{ discount_value }} (Промокод) = {{ price }} {% else %}  {{ price }} {% endif %} грн</p>
+<button id="payment_button" style="margin-top: 2rem;" class="btn btn-outline btn-center">ОПЛАТА</button>

@@ -580,6 +580,35 @@ footer .footer-copy .heart {
   opacity: 0;
 }
 
+.decorated-header-confirm {
+  background-color: var(--white);
+  color: var(--black);
+  text-transform: uppercase;
+  border: 1.4px solid var(--black);
+  box-sizing: border-box;
+  width: 70%;
+  text-align: center;
+  padding: 1rem 1rem;
+  position: relative;
+  margin: 1rem 15% 0;
+  font-size: 1.8rem;
+}
+.decorated-header-confirm:before, .decorated-header-confirm:after {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background-color: black;
+  position: absolute;
+  display: block;
+  top: 50%;
+}
+.decorated-header-confirm:before {
+  left: -15%;
+}
+.decorated-header-confirm:after {
+  right: -15%;
+}
+
 .form-modal {
   width: 70%;
   background: var(--white);
@@ -719,6 +748,10 @@ footer .footer-copy .heart {
   font-family: "Montserrat", sans-serif;
   margin-bottom: 0.2em;
   box-sizing: border-box;
+}
+.form-confirmation .form-confirmation-room-type-header {
+  text-align: center;
+  font-size: 1.8rem;
 }
 .confirmation-inactive {
   opacity: 0;
@@ -1191,6 +1224,36 @@ footer .footer-copy .heart {
 .restaurant-container .menu-sidebar .menu-item .menu-item-text {
   font-family: "Montserrat", sans-serif;
   margin: 0;
+}
+
+.gallery-container {
+  margin: 5vh 5vw;
+}
+.gallery-container .gallery-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: calc(25% - 20px);
+}
+.gallery-container .gallery-item .gallery-item-photo {
+  flex-grow: 1;
+  object-fit: cover;
+  max-height: 346px;
+}
+.gallery-container .gallery-item .gallery-item-text {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.gallery-container .gallery-item .gallery-item-text .gallery-item-header {
+  font-size: 3em;
+  margin: 0;
+  font-weight: bold;
+}
+.gallery-container .gallery-item-w2 {
+  width: calc(50% - 20px);
+}
+.gallery-container .gap-size {
+  width: 4%;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -17,23 +17,20 @@
         <label for="filter_category_{{ category.id }}" class="menu-filter-item">{{ category.name }}</label>
     {% endfor %}
 </div>
-<div class="menu-container">
+<div class="gallery-container">
     {% for item in gallery_items %}
-        <div class="menu-item {{ item.get_categories_class }} {% cycle 'menu-item-w2' '' '' '' '' 'menu-item-w2' %}">
-            <img src="{{ item.image.url }}" alt="{{ item.name }}" class="menu-item-photo">
-            <div class="menu-item-text">
-                <h3 class="menu-item-header">{{ item.name }}</h3>
-            </div>
+        <div class="gallery-item {{ item.get_categories_class }} {% cycle 'gallery-item-w2' '' '' '' '' 'gallery-item-w2' %}">
+            <img src="{{ item.image.url }}" alt="{{ item.name }}" class="gallery-item-photo">
         </div>
     {% endfor %}
 </div>
 {% include "includes/footer.html" %}
 <script>
-    let elem = document.querySelector('.menu-container');
+    let elem = document.querySelector('.gallery-container');
 
     let iso = new Isotope(elem, {
         // options
-        itemSelector: '.menu-item',
+        itemSelector: '.gallery-item',
         layoutMode: 'fitRows',
         percentPosition: true,
         fitRows: {
