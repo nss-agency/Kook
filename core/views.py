@@ -7,8 +7,9 @@ from .forms import BookingForm, BanquetForm
 from .models import Booking, RoomType, Promo, Banquet, MenuItem, MenuCategories
 from django.http import HttpResponse, HttpResponseRedirect
 from .decorators import check_recaptcha
-import datetime
-from datetime import datetime
+from datetime import datetime, date
+from django.urls import reverse
+
 import random
 from Kook_project import settings
 
@@ -324,6 +325,7 @@ def ajax_description(request, id):
     return render(request, 'ajax_icludes/ajax_room_description.html', ctx)
 
 
+
 class PayView(TemplateView):
     template_name = 'pay.html'
 
@@ -341,7 +343,7 @@ class PayView(TemplateView):
         }
         signature = liq_pay.cnb_signature(params)
         data = liq_pay.cnb_data(params)
-        return render(request, self.template_name, {'signature':  signature, 'data': data})
+        return render(request, self.template_name, {'signature': signature, 'data': data})
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -356,3 +358,34 @@ class PayCallbackView(View):
         response = liq_pay.decode_data_from_str(data)
         print('callback data', response)
         return HttpResponse()
+
+
+def ajax_second_step(request):
+    date_start = date.fromisoformat(request.GET.get('date_start', None))
+    date_end = date.fromisoformat(request.GET.get('date_end', None))
+    room_type_id = request.GET.get('id', None)
+    entry_promo = request.GET.get('promo', '')
+    email = request.GET.get('email', None)
+    days = (date_end - date_start).days
+    room = RoomType.objects.get(pk=room_type_id)
+    ppd = room.price
+    price = days * ppd
+    new_price = price
+    if Promo.objects.filter(name=entry_promo):
+        exist_promo = Promo.objects.get(name=entry_promo)
+        if exist_promo.date_expired >= datetime.now().date():
+            if entry_promo == str(exist_promo) and exist_promo.is_percentage is False:
+                new_price = price - exist_promo.discount
+            elif entry_promo == str(exist_promo) and exist_promo.is_percentage:
+                new_price = price - (price * (exist_promo.discount / 100))
+            else:
+                new_price = price
+
+    ctx = {'price': new_price,
+           'days': days,
+           'date_start': date_start,
+           'date_end': date_end,
+           'email': email,
+           'room': room}
+
+    return render(request, 'ajax_icludes/ajax_form_second_step_overview.html', ctx)

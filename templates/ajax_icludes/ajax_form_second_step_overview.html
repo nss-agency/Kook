@@ -1,0 +1,8 @@
+{% load static %}
+<img class="form-confirmation-image" src="{{ room.image.url }}" alt="">
+<h3 class="form-confirmation-room-type-header">Номер типу "{{ room.name }}"</h3>
+<p class="form-confirmation-field">{{ date_start }} - {{ date_end }}</p>
+<p class="form-confirmation-field">{{ email }}</p>
+<p class="form-confirmation-field">{{ days }} дні</p>
+<p class="form-confirmation-field form-confirmation-price">Підсумок {{ price }}грн</p>
+<button id="payment_button" class="btn btn-outline btn-center">ОПЛАТА</button>

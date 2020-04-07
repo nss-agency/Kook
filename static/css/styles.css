@@ -10,6 +10,8 @@
   --menu-gray: #F6F6F6;
   --contact-gray: #CFCFCF;
   --contact-gray-border: #ACACAC;
+  --error-red: #ff3f43;
+  --error-red-light: #ffa9af;
 }
 
 html,
@@ -594,6 +596,10 @@ footer .footer-copy .heart {
   opacity: 1;
   transition: opacity 0.3s 0.3s, transform 0s 0.3s;
 }
+.form-modal .form-modal-field-wrapper {
+  position: relative;
+  margin: 1rem 0;
+}
 .form-modal .form-modal-room-type .form-modal-room-image {
   width: 100%;
   height: 50%;
@@ -611,7 +617,8 @@ footer .footer-copy .heart {
 .form-modal input[type=tel],
 .form-modal input[type=number],
 .form-modal input[type=date],
-.form-modal input[type=email] {
+.form-modal input[type=email],
+.form-modal input:not([type=hidden]) {
   width: 100%;
   padding: 1rem;
   border: 1px var(--dark-gray) solid;
@@ -620,6 +627,34 @@ footer .footer-copy .heart {
   font-family: "Montserrat", sans-serif;
   margin-bottom: 0.2em;
   box-sizing: border-box;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+.form-modal input[type=text]:focus ~ label, .form-modal input[type=text]:not(:placeholder-shown) ~ label, .form-modal input[type=text]:active ~ label,
+.form-modal input[type=tel]:focus ~ label,
+.form-modal input[type=tel]:not(:placeholder-shown) ~ label,
+.form-modal input[type=tel]:active ~ label,
+.form-modal input[type=number]:focus ~ label,
+.form-modal input[type=number]:not(:placeholder-shown) ~ label,
+.form-modal input[type=number]:active ~ label,
+.form-modal input[type=date]:focus ~ label,
+.form-modal input[type=date]:not(:placeholder-shown) ~ label,
+.form-modal input[type=date]:active ~ label,
+.form-modal input[type=email]:focus ~ label,
+.form-modal input[type=email]:not(:placeholder-shown) ~ label,
+.form-modal input[type=email]:active ~ label,
+.form-modal input:not([type=hidden]):focus ~ label,
+.form-modal input:not([type=hidden]):not(:placeholder-shown) ~ label,
+.form-modal input:not([type=hidden]):active ~ label {
+  opacity: 0;
+}
+.form-modal input[type=text]:invalid:not(:focus):not(:placeholder-shown):not([type=date]),
+.form-modal input[type=tel]:invalid:not(:focus):not(:placeholder-shown):not([type=date]),
+.form-modal input[type=number]:invalid:not(:focus):not(:placeholder-shown):not([type=date]),
+.form-modal input[type=date]:invalid:not(:focus):not(:placeholder-shown):not([type=date]),
+.form-modal input[type=email]:invalid:not(:focus):not(:placeholder-shown):not([type=date]),
+.form-modal input:not([type=hidden]):invalid:not(:focus):not(:placeholder-shown):not([type=date]) {
+  border-color: var(--error-red);
+  background-color: var(--error-red-light);
 }
 .form-modal input[type=checkbox] {
   display: none;
@@ -647,10 +682,12 @@ footer .footer-copy .heart {
   transform: translate(-50%, -50%);
 }
 .form-modal .default-label {
-  display: block;
   color: var(--dark-gray);
-  width: 100%;
   font-family: "Oswald", sans-serif;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .form-confirmation {
@@ -662,6 +699,26 @@ footer .footer-copy .heart {
   padding: 2rem;
   opacity: 1;
   transition: opacity 0.3s 0.3s;
+  max-width: 500px;
+}
+.form-confirmation .form-confirmation-image {
+  width: 100%;
+  max-height: 30%;
+  object-fit: cover;
+}
+.form-confirmation .form-confirmation-header {
+  text-align: center;
+  font-size: 2rem;
+}
+.form-confirmation .form-confirmation-field {
+  width: 100%;
+  padding: 1rem;
+  border: 1px var(--dark-gray) solid;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 0.2em;
+  box-sizing: border-box;
 }
 .confirmation-inactive {
   opacity: 0;
