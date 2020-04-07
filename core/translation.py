@@ -15,3 +15,8 @@ class PostTranslationOptions(TranslationOptions):
 @register(RoomType)
 class PostTranslationOptions(TranslationOptions):
     fields = ('name', 'description')
+
+
+@register(Slider)
+class PostTranslationOptions(TranslationOptions):
+    fields = ('title', 'sub_title')

@@ -67,6 +67,11 @@ class Booking(models.Model):
     """
     Model for Booking
     """
+    BED_TYPE_CHOICES = (
+        ('Двохспальне ліжко', 'Двохспальне ліжко'),
+        ('Два Односпальних ліжка', 'Два односпальних ліжка'),
+    )
+
     pib = models.CharField('П.І.Б.', max_length=225)
     phone = models.CharField(
         'Номер телефону', max_length=225, help_text='Контактний номер телефону')
@@ -78,7 +83,7 @@ class Booking(models.Model):
     additional = models.CharField('Додаткові опціі', max_length=225, blank=True)
     breakfast = models.BooleanField('Сніданок', default=True)
     bed_type = models.CharField(
-        'Тип Ліжка', null=True, blank=True, max_length=225)
+        'Тип Ліжка', null=True, blank=True, max_length=225, choices=BED_TYPE_CHOICES)
     notes = models.TextField(
         'Нотатки', blank=True, help_text='Цей текст буде бачити тільки адміністратор та модератор')
     is_paid = models.BooleanField(default=False)
@@ -165,7 +170,7 @@ class Banquet(models.Model):
 
 
 class GalleryCategory(models.Model):
-    name = models.CharField(max_length=64)
+    name = models.CharField('Назіва категорії', max_length=64)
 
     def __str__(self):
         return self.name
@@ -182,7 +187,8 @@ class GalleryPhoto(models.Model):
         ('Готель', 'Готель'),
     )
 
-    name = models.CharField(max_length=255)
+    name = models.CharField('Назва', max_length=255,
+                            help_text='потрібно для відображення на комп\'ютерах зі слабким підключення до інтернету')
     image = models.ImageField('Зображення',
                               upload_to='img',
                               null=True,
@@ -208,6 +214,27 @@ class GalleryPhoto(models.Model):
         verbose_name = 'Галерея'
         verbose_name_plural = 'Галерея'
 
+
+class Slider(models.Model):
+    image = models.ImageField('Зображення',
+                              upload_to='img',
+                              null=True,
+                              blank=True,)
+    title = models.CharField('Верхній тект', max_length=64)
+    sub_title = models.CharField('Нижній тект', max_length=132)
+
+    def __str__(self):
+        template = '{0.title} | {0.sub_title}'
+        return template.format(self)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.image = compressImage(self.image)
+        super(Slider, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'Слайдер'
+        verbose_name_plural = 'Слайдер'
 
 # Delete photo if model.object delete
 @receiver(post_delete)
