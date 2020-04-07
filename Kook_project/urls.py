@@ -32,6 +32,7 @@ urlpatterns = i18n_patterns(
     path('confirm/', views.confirmation, name='confirm'),
     path('menu/', views.menu, name='menu'),
     path('restaurant/', views.restaurant, name='restaurant'),
+    path('gallery/', views.gallery, name='gallery'),
     path('ajax_description/<id>', views.ajax_description, name='ajax_description'),
     re_path(r'^pay/$', views.PayView.as_view(), name='pay_view'),
     re_path(r'^pay-callback/$', views.PayCallbackView.as_view(), name='pay_callback'),

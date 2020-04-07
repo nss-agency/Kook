@@ -1,18 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    {% include 'includes/head_links.html' %}
-</head>
-
-<body>
-    {% include 'includes/navbar.html' %}
+{% block title %}Kook hotel{% endblock %}
+{% block content %}
     <div class="container">
         <div class="hero-slider">
             <div class="hero-elements-wrapper" id="hero-elements-wrapper">
@@ -54,7 +43,7 @@
                     neque
                     quos, repellat sapiente similique sunt temporibus!</p>
                 <br>
-                <a href="" class="btn btn-black">Детальніше</a>
+                <a href="{% url 'hotel' %}" class="btn btn-black">Детальніше</a>
             </div>
             <div class="index-info-wrapper">
                 <img src="{% static 'img/text-block-1.jpg' %}" alt="" class="index-info-img">
@@ -71,7 +60,7 @@
                     neque
                     quos, repellat sapiente similique sunt temporibus!</p>
                 <br>
-                <a href="" class="btn btn-black">Детальніше</a>
+                <a href="{% url 'restaurant' %}" class="btn btn-black">Детальніше</a>
             </div>
             <div class="index-info-wrapper">
                 <img src="{% static 'img/text-block-1.jpg' %}" alt="" class="index-info-img">
@@ -88,14 +77,13 @@
                     neque
                     quos, repellat sapiente similique sunt temporibus!</p>
                 <br>
-                <a href="" class="btn btn-black">Детальніше</a>
+                <a href="{% url 'banquet' %}" class="btn btn-black">Детальніше</a>
             </div>
             <div class="index-info-wrapper">
                 <img src="{% static 'img/text-block-1.jpg' %}" alt="" class="index-info-img">
             </div>
         </div>
     </div>
-    {% include 'includes/footer.html' %}
     <script>
         let slides_count = 5;
         /*
@@ -122,7 +110,4 @@
 
         }
     </script>
-
-</body>
-
-</html>
+{% endblock %}

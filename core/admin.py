@@ -1,11 +1,11 @@
 from django.contrib import admin
-from .models import Booking, MenuItem, RoomType, Promo, Banquet, MenuCategories, Photo, Gallery
+from .models import Booking, MenuItem, RoomType, Promo, Banquet, MenuCategories, GalleryCategory, GalleryPhoto
 from modeltranslation.admin import TabbedTranslationAdmin
 
 
-class PhotoInline(admin.StackedInline):
-    model = Photo
-    extra = 1
+# class PhotoInline(admin.StackedInline):
+#     model = Photo
+#     extra = 1
 
 
 # Register your models here.
@@ -46,7 +46,7 @@ class RoomAdmin(TabbedTranslationAdmin):
         'quantity',
         'price',
     ]
-    inlines = [PhotoInline]
+    # inlines = [PhotoInline]
 
     def save_model(self, request, obj, form, change):
         obj.save()
@@ -79,4 +79,5 @@ admin.site.register(MenuItem, MenuItemAdmin)
 admin.site.register(Promo, PromoAdmin)
 admin.site.register(Banquet, BanquetAdmin)
 admin.site.register(RoomType, RoomAdmin)
-admin.site.register(Gallery)
+admin.site.register(GalleryCategory)
+admin.site.register(GalleryPhoto)

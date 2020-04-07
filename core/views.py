@@ -4,7 +4,7 @@ from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
 from .forms import BookingForm, BanquetForm
-from .models import Booking, RoomType, Promo, Banquet, MenuItem, MenuCategories
+from .models import Booking, RoomType, Promo, Banquet, MenuItem, MenuCategories, GalleryPhoto, GalleryCategory
 from django.http import HttpResponse, HttpResponseRedirect
 from .decorators import check_recaptcha
 from datetime import datetime, date
@@ -78,6 +78,17 @@ def menu(request):
     ctx = {'menu_items': menu_items,
            'menu_categories': menu_categories}
     return render(request, 'menu.html', ctx)
+
+
+def gallery(request):
+    gallery_items = GalleryPhoto.objects.all()
+    gallery_categories = GalleryCategory.objects.all()
+    filter = request.GET.get('f', '')
+
+    ctx = {'gallery_items': gallery_items,
+           'gallery_categories': gallery_categories,
+           'filter': filter}
+    return render(request, 'gallery.html', ctx)
 
 
 def hotel(request):
