@@ -81,3 +81,48 @@
         background-color: var(--white);
     }
 }
+
+.banquet_container__additional {
+
+    .banquet-text {
+
+        .banquet-block {
+            display: flex;
+            flex-direction: row;
+            margin: 4rem 0;
+
+            .banquet-block-photo {
+                width: 55%;
+                object-fit: cover;
+            }
+
+            .banquet-block-text {
+                padding: 1rem;
+
+                .banquet-block-header {
+                    font-size: 3em;
+                    text-transform: uppercase;
+                    margin: 0;
+                    font-weight: bold;
+                }
+
+                .banquet-block-small {
+                    font-size: 15px;
+                    font-weight: 300;
+                    color: var(--accent);
+                }
+
+                .banquet-block-p {
+                    font-family: "Montserrat", sans-serif;
+                    font-size: 14px;
+                    margin-bottom: 1.5rem;
+                }
+            }
+        }
+
+        .banquet-block-reversed {
+            flex-direction: row-reverse;
+
+        }
+    }
+    }
