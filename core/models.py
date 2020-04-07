@@ -76,7 +76,7 @@ class Booking(models.Model):
     quantity = models.IntegerField('Кількість осіб')
     room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, verbose_name='Тип Кімнати')
     additional = models.CharField('Додаткові опціі', max_length=225, blank=True)
-    breakfest = models.BooleanField('Сніданок', default=True)
+    breakfast = models.BooleanField('Сніданок', default=True)
     bed_type = models.CharField(
         'Тип Ліжка', null=True, blank=True, max_length=225)
     notes = models.TextField(

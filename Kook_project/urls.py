@@ -17,15 +17,12 @@ from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include, re_path
+from django.urls import path, re_path
 from core import views
 
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('form/', views.form, name='form'),
-    path('banquet_form/', views.banquet_form, name='banquet_form'),
-    path('ajax_form/', views.form, name='ajax_form'),
     path('hotel/', views.hotel, name='hotel'),
     path('contact/', views.contact, name='contact'),
     path('banquet/', views.banquet, name='banquet'),
