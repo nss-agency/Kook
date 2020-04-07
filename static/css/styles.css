@@ -10,8 +10,8 @@
   --menu-gray: #F6F6F6;
   --contact-gray: #CFCFCF;
   --contact-gray-border: #ACACAC;
-  --error-red: #ff3f43;
-  --error-red-light: #ffa9af;
+  --error-red: #ff9597;
+  --error-red-light: #ffd9e0;
 }
 
 html,
@@ -1017,6 +1017,7 @@ footer .footer-copy .heart {
   margin: 5vh 5vw;
   position: relative;
   font-family: Montserrat, sans-serif;
+  text-align: center;
 }
 .menu-filter .checkbox-switch {
   display: none;

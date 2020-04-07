@@ -164,37 +164,45 @@ class Banquet(models.Model):
         verbose_name_plural = 'Банкет'
 
 
-class Photo(models.Model):
-    image = models.ImageField('Зображення',
-                              upload_to='img',
-                              null=True,
-                              blank=True,
-                              )
-    room = models.ForeignKey(RoomType, on_delete=models.CASCADE)
+class GalleryCategory(models.Model):
+    name = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
-        verbose_name = 'Зображення'
-        verbose_name_plural = 'Зображення'
+        verbose_name = 'Категорія Галереї'
+        verbose_name_plural = 'Категорії галереї'
 
 
-class Gallery(models.Model):
+class GalleryPhoto(models.Model):
     GALLERY_CHOICES = (
         ('Ресторан', 'Ресторан'),
         ('Банкетний Зал', 'Банкетний Зал'),
         ('Готель', 'Готель'),
     )
 
+    name = models.CharField(max_length=255)
     image = models.ImageField('Зображення',
                               upload_to='img',
                               null=True,
                               blank=True,
                               )
-    category = models.CharField('Категорія', max_length=225, choices=GALLERY_CHOICES)
+    category = models.ManyToManyField(GalleryCategory)
 
     def save(self, *args, **kwargs):
         if not self.id:
             self.image = compressImage(self.image)
-        super(Gallery, self).save(*args, **kwargs)
+        super(GalleryPhoto, self).save(*args, **kwargs)
+
+    def get_categories_class(self):
+        res = ''
+        for item in self.category.all():
+            res += f'cat_{item.id} '
+        return res
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Галерея'
