@@ -83,34 +83,17 @@ body {
   border: 3px var(--black) solid;
 }
 .btn-outline:after {
-  background-color: var(--white);
+  background-color: var(--black);
 }
 .btn-outline:hover {
-  color: var(--white);
-  background-color: var(--black);
+  color: var(--black);
+  background-color: var(--white);
 }
 
 .btn-center {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-}
-
-.btn-arrow {
-  border: 2px solid var(--gray);
-  padding: 0.2rem 1rem;
-  background-color: var(--white);
-  color: var(--black);
-  font-size: 1.5rem;
-  transition: background-color 0.3s, color 0.3s, border 0.3s;
-  cursor: pointer;
-  text-decoration: none;
-  font-family: "Arial", sans-serif;
-}
-.btn-arrow:hover {
-  border-color: var(--dark-gray);
-  background-color: var(--dark-gray);
-  color: var(--white);
 }
 
 nav {
@@ -143,6 +126,11 @@ nav .nav-buttons .nav-phone-number::before {
   width: 8.25rem;
   margin: 0 1rem;
   transform: translateY(-0.3rem);
+}
+@media only screen and (max-width: 1400px) {
+  nav .nav-buttons .nav-phone-number::after, nav .nav-buttons .nav-phone-number::before {
+    display: none;
+  }
 }
 nav .nav-buttons .nav-link {
   color: var(--black);
@@ -383,6 +371,19 @@ nav .nav-buttons .nav-link:hover {
 
 #hero-element-5 {
   background-color: #dddddd;
+}
+
+.btn-black__index {
+  color: var(--white);
+  background-color: var(--black);
+  border: 3px var(--black) solid;
+}
+.btn-black__index:after {
+  background-color: var(--black);
+}
+.btn-black__index:hover {
+  color: var(--black);
+  background-color: #ececec;
 }
 
 footer {
@@ -1073,6 +1074,7 @@ footer .footer-copy .heart {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   margin-bottom: 1.5rem;
+  margin-top: 10px;
 }
 .banquet_container__additional .banquet-text .banquet-block-reversed {
   flex-direction: row-reverse;

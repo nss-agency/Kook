@@ -10,25 +10,37 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
 
+# Image compressor
 def compressImage(uploadedImage):
     imageTemproary = Image.open(uploadedImage)
     outputIoStream = BytesIO()
     imageTemproaryResized = imageTemproary.resize((1020, 573))
-    imageTemproary.save(outputIoStream, format='JPEG', quality=85)
+    imageTemproary.save(outputIoStream,
+                        format='JPEG',
+                        quality=85)
     outputIoStream.seek(0)
-    uploadedImage = InMemoryUploadedFile(outputIoStream, 'ImageField', "%s.jpg" % uploadedImage.name.split('.')[0],
-                                         'image/jpeg', sys.getsizeof(outputIoStream), None)
+    uploadedImage = InMemoryUploadedFile(outputIoStream,
+                                         'ImageField',
+                                         "%s.jpg" % uploadedImage.name.split('.')[0],
+                                         'image/jpeg',
+                                         sys.getsizeof(outputIoStream),
+                                         None)
     return uploadedImage
 
 
 class Promo(models.Model):
     """
-    Model for promocodes
+    Model for promo codes
     """
-    name = models.CharField('Код Промокоду', max_length=60)
-    discount = models.DecimalField('Значення промокоду', max_digits=3, decimal_places=0)
-    is_percentage = models.BooleanField('Це відсоток?', default=True)
-    date_expired = models.DateField('Дата закінчення', default=datetime.now)
+    name = models.CharField('Код Промокоду',
+                            max_length=60)
+    discount = models.DecimalField('Значення промокоду',
+                                   max_digits=3,
+                                   decimal_places=0)
+    is_percentage = models.BooleanField('Це відсоток?',
+                                        default=True)
+    date_expired = models.DateField('Дата закінчення',
+                                    default=datetime.now)
 
     def __str__(self):
         return self.name
@@ -43,8 +55,11 @@ class RoomType(models.Model):
        Model for room types
     """
     image = models.ImageField(
-        'Фото кімнати', upload_to='room_types', blank=True)
-    name = models.CharField('Тип Кімнати', max_length=64)
+        'Фото кімнати',
+        upload_to='room_types',
+        blank=True)
+    name = models.CharField('Тип Кімнати',
+                            max_length=64)
     quantity = models.IntegerField('Кількість кімнат')
     color_id = models.IntegerField('Id кольору')
     price = models.PositiveIntegerField('Ціна')
@@ -72,20 +87,34 @@ class Booking(models.Model):
         ('Два Односпальних ліжка', 'Два односпальних ліжка'),
     )
 
-    pib = models.CharField('П.І.Б.', max_length=225)
+    pib = models.CharField('П.І.Б.',
+                           max_length=225)
     phone = models.CharField(
-        'Номер телефону', max_length=225, help_text='Контактний номер телефону')
+        'Номер телефону',
+        max_length=225,
+        help_text='Контактний номер телефону')
     email = models.EmailField('E-mail')
     date_entry = models.DateField('Дата заїзду')
     date_leave = models.DateField('Дата виїзду')
     quantity = models.IntegerField('Кількість осіб')
-    room_type = models.ForeignKey(RoomType, on_delete=models.CASCADE, verbose_name='Тип Кімнати')
-    additional = models.CharField('Додаткові опціі', max_length=225, blank=True)
-    breakfast = models.BooleanField('Сніданок', default=True)
+    room_type = models.ForeignKey(RoomType,
+                                  on_delete=models.CASCADE,
+                                  verbose_name='Тип Кімнати')
+    additional = models.CharField('Додаткові опціі',
+                                  max_length=225,
+                                  blank=True)
+    breakfast = models.BooleanField('Сніданок',
+                                    default=True)
     bed_type = models.CharField(
-        'Тип Ліжка', null=True, blank=True, max_length=225, choices=BED_TYPE_CHOICES)
+        'Тип Ліжка',
+        null=True,
+        blank=True,
+        max_length=225,
+        choices=BED_TYPE_CHOICES)
     notes = models.TextField(
-        'Нотатки', blank=True, help_text='Цей текст буде бачити тільки адміністратор та модератор')
+        'Нотатки',
+        blank=True,
+        help_text='Цей текст буде бачити тільки адміністратор та модератор')
     is_paid = models.BooleanField(default=False)
     discount = models.CharField(
         'Промокод', max_length=225, null=True, blank=True)
@@ -106,7 +135,11 @@ class Booking(models.Model):
 
 
 class MenuCategories(models.Model):
-    name = models.CharField('Назва Категорії', max_length=64)
+    """
+         Model for menu categories
+    """
+    name = models.CharField('Назва Категорії',
+                            max_length=64)
 
     def __str__(self):
         return self.name
@@ -121,10 +154,18 @@ class MenuItem(models.Model):
     Model for menu items
     """
     image = models.ImageField(
-        'Зображення', blank=True, upload_to='menu_images')
-    title = models.CharField('Назва страви', max_length=225)
-    description = models.TextField('Опис')
-    price = models.DecimalField('Ціна', max_digits=5, decimal_places=0)
+        'Зображення',
+        blank=True,
+        upload_to='menu_images')
+    title = models.CharField('Назва страви',
+                             max_length=24,
+                             help_text='Максимум <b>24</b> символи')
+    description = models.TextField('Опис',
+                                   max_length=128,
+                                   help_text='Максимум <b>128</b> символи')
+    price = models.DecimalField('Ціна',
+                                max_digits=5,
+                                decimal_places=0)
     category = models.ManyToManyField(MenuCategories)
 
     def get_categories_class(self):
@@ -147,13 +188,22 @@ class MenuItem(models.Model):
 
 
 class Banquet(models.Model):
-    check_in = models.DateField('Дата', default=datetime.now)
-    pib = models.CharField('П.І.Б.', max_length=225)
+    """
+         Model for Banquet Booking
+    """
+    check_in = models.DateField('Дата',
+                                default=datetime.now)
+    pib = models.CharField('П.І.Б.',
+                           max_length=225)
     phone = models.CharField(
-        'Номер телефону', max_length=225, help_text='Контактний номер телефону')
+        'Номер телефону',
+        max_length=225,
+        help_text='Контактний номер телефону')
     email = models.EmailField('E-mail')
     notes = models.TextField(
-        'Нотатки', blank=True, help_text='Цей текст буде бачити тільки адміністратор та модератор')
+        'Нотатки',
+        blank=True,
+        help_text='Цей текст буде бачити тільки адміністратор та модератор')
 
     def save(self, *args, **kwargs):
         super().save()
@@ -170,7 +220,11 @@ class Banquet(models.Model):
 
 
 class GalleryCategory(models.Model):
-    name = models.CharField('Назіва категорії', max_length=64)
+    """
+         Model for gallery categories
+    """
+    name = models.CharField('Назіва категорії',
+                            max_length=64)
 
     def __str__(self):
         return self.name
@@ -181,14 +235,20 @@ class GalleryCategory(models.Model):
 
 
 class GalleryPhoto(models.Model):
+    """
+         Model for gallery photos
+    """
     GALLERY_CHOICES = (
         ('Ресторан', 'Ресторан'),
         ('Банкетний Зал', 'Банкетний Зал'),
         ('Готель', 'Готель'),
     )
 
-    name = models.CharField('Назва', max_length=255,
-                            help_text='потрібно для відображення на комп\'ютерах зі слабким підключення до інтернету')
+    name = models.CharField('Назва',
+                            max_length=255,
+                            null=True,
+                            blank=True,
+                            help_text='Потрібно для відображення на комп\'ютерах зі слабким підключення до інтернету')
     image = models.ImageField('Зображення',
                               upload_to='img',
                               null=True,
@@ -216,12 +276,21 @@ class GalleryPhoto(models.Model):
 
 
 class Slider(models.Model):
+    """
+         Model for slider photos
+    """
     image = models.ImageField('Зображення',
                               upload_to='img',
                               null=True,
-                              blank=True,)
-    title = models.CharField('Верхній тект', max_length=64)
-    sub_title = models.CharField('Нижній тект', max_length=132)
+                              blank=True, )
+    title = models.CharField('Верхній тект',
+                             null=True,
+                             blank=True,
+                             max_length=64)
+    sub_title = models.CharField('Нижній тект',
+                                 null=True,
+                                 blank=True,
+                                 max_length=132)
 
     def __str__(self):
         template = '{0.title} | {0.sub_title}'
@@ -235,6 +304,7 @@ class Slider(models.Model):
     class Meta:
         verbose_name = 'Слайдер'
         verbose_name_plural = 'Слайдер'
+
 
 # Delete photo if model.object delete
 @receiver(post_delete)
