@@ -10,6 +10,7 @@
     <title>Contact Us</title>
 </head>
 <body>
+
 {% include "includes/navbar.html" %}
 <div class="container">
     <h1 class="header__contact">Написати нам</h1>
@@ -48,6 +49,7 @@
         </div>
         <div class="contact-form">
             <form method="post">
+                {% csrf_token %}
                 <div class="first_last_input">
                     <label for="first_name" id="first_name_label"></label>
                     <input type="text" name="first_name" id="first_name" placeholder="Ім'я">
