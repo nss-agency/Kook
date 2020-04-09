@@ -142,13 +142,13 @@ ENABLE_GOOGLE_CALENDAR = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-GOOGLE_RECAPTCHA_SECRET_KEY = '*******'
+GOOGLE_RECAPTCHA_SECRET_KEY = '******'
 
 EMAIL_USE_SSL = True
 EMAIL_HOST = 'uavip03.twinservers.net'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'noreply@kook.in.ua'
-EMAIL_HOST_PASSWORD = '******'
+EMAIL_HOST_PASSWORD = '****'
 
 LIQPAY_PUBLIC_KEY = '********'
 LIQPAY_PRIVATE_KEY = '*******'

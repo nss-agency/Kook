@@ -217,16 +217,18 @@ def banquet(request):
     return render(request, 'banquet.html', ctx)
 
 
+@check_recaptcha
 def contact(request):
     ctx = {'success': False,
            'fail': False}
     if request.method == 'POST':
-        # if request.recaptcha_is_valid:
-        send_contact(request)
-        # ctx['success'] = True
-    # else:
-    #     ctx['fail'] = True
+        if request.recaptcha_is_valid:
+            send_contact(request)
+            ctx['success'] = True
+        else:
+            ctx['fail'] = True
     return render(request, 'contacts.html', ctx)
+
 
 
 def ajax_description(request, id):
