@@ -21,7 +21,6 @@ class BookingForm(ModelForm):
             'quantity',
             'room_type',
             'additional',
-            'breakfast',
             'discount',
         )
         widgets = {
@@ -63,9 +62,6 @@ class BookingForm(ModelForm):
             'additional': forms.TextInput(attrs={
                 'placeholder': ' '
             }),
-            'breakfast': forms.HiddenInput(attrs={
-                'checked': 'checked',
-            })
         }
 
 

@@ -19,6 +19,20 @@ from django.views.generic import TemplateView
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from django.core.mail import send_mail, BadHeaderError
+
+
+def send_contact(request):
+    fname = request.POST.get('first_name', '')
+    lname = request.POST.get('last_name', '')
+    subject = 'Повідомлення з веб сайту'
+    message = request.POST.get('message', '')
+    from_email = request.POST.get('email', '')
+    messages = 'Ім\'я та Прізвище: {} {}  \nВід кого повідомлення: {}\nПовідомлення: \n{}\n\n\n\nНадіслано з ' \
+               '<a href="https://kook.in.ua">kook.in.ua</a>'.format(
+        fname, lname, from_email, message)
+    send_mail(subject, messages, 'noreply@kook.in.ua', ['setit49344@ualmail.com'], fail_silently=False)
+
 
 class PayView(TemplateView):
     template_name = 'pay.html'
@@ -203,9 +217,18 @@ def banquet(request):
     return render(request, 'banquet.html', ctx)
 
 
+@check_recaptcha
 def contact(request):
-    ctx = {}
+    ctx = {'success': False,
+           'fail': False}
+    if request.method == 'POST':
+        if request.recaptcha_is_valid:
+            send_contact(request)
+            ctx['success'] = True
+        else:
+            ctx['fail'] = True
     return render(request, 'contacts.html', ctx)
+
 
 
 def ajax_description(request, id):
