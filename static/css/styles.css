@@ -1267,16 +1267,16 @@ footer .footer-copy .heart {
   margin-bottom: 20px;
   width: calc(25% - 20px);
 }
-.gallery-container .gallery-item .gallery-item-photo {
+.gallery-container .gallery-item-photo {
   flex-grow: 1;
   object-fit: cover;
   max-height: 346px;
 }
-.gallery-container .gallery-item .gallery-item-text {
+.gallery-container .gallery-item-text {
   padding: 1rem;
   box-sizing: border-box;
 }
-.gallery-container .gallery-item .gallery-item-text .gallery-item-header {
+.gallery-container .gallery-item-header {
   font-size: 3em;
   margin: 0;
   font-weight: bold;
@@ -1286,6 +1286,15 @@ footer .footer-copy .heart {
 }
 .gallery-container .gap-size {
   width: 4%;
+}
+
+.gallery-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
 }
 
 /*# sourceMappingURL=styles.css.map */

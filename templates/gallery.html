@@ -19,12 +19,28 @@
 </div>
 <div class="gallery-container">
     {% for item in gallery_items %}
-        <div class="gallery-item {{ item.get_categories_class }} {% cycle 'gallery-item-w2' '' '' '' '' 'gallery-item-w2' %}">
+        <div onclick="showGalleryModal()"
+             class="gallery-item {{ item.get_categories_class }} {% cycle 'gallery-item-w2' '' '' '' '' 'gallery-item-w2' %}">
             <img src="{{ item.image.url }}" alt="{{ item.name }}" class="gallery-item-photo">
         </div>
     {% endfor %}
 </div>
+<div class="gallery-modal">
+
+</div>
 {% include "includes/footer.html" %}
+<script>
+    function showGalleryModal(event) {
+        console.log(event.target); // IMG
+        console.log(this); //div
+
+        
+    }
+
+    document.querySelectorAll('.gallery-item').forEach(e => {
+        e.addEventListener('click', showGalleryModal)
+    })
+</script>
 <script>
     let elem = document.querySelector('.gallery-container');
 
@@ -38,11 +54,11 @@
         }
     });
 
-    function getFilterSelector(){
+    function getFilterSelector() {
         let checks = document.querySelectorAll('.category-input');
         let result = '';
         checks.forEach((node) => {
-            if(node.checked){
+            if (node.checked) {
                 result += `.cat_${node.dataset.id}`
             }
         });
@@ -51,7 +67,7 @@
     }
 
 
-    function filter(){
+    function filter() {
         iso.arrange({filter: getFilterSelector()})
     }
 
