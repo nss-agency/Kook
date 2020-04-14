@@ -118,6 +118,7 @@ class Booking(models.Model):
     is_paid = models.BooleanField(default=False)
     discount = models.CharField(
         'Промокод', max_length=225, null=True, blank=True)
+    price = models.PositiveIntegerField('Ціна')
 
     # save event to google calendar
     def save(self, *args, **kwargs):
