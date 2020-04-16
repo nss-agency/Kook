@@ -150,5 +150,5 @@ EMAIL_PORT = 465
 EMAIL_HOST_USER = 'noreply@kook.in.ua'
 EMAIL_HOST_PASSWORD = '****'
 
-LIQPAY_PUBLIC_KEY = '********'
-LIQPAY_PRIVATE_KEY = '*******'
+LIQPAY_PUBLIC_KEY = '****'
+LIQPAY_PRIVATE_KEY = '****'

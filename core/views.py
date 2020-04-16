@@ -34,38 +34,7 @@ def send_contact(request):
     send_mail(subject, messages, 'noreply@kook.in.ua', ['setit49344@ualmail.com'], fail_silently=False)
 
 
-class PayView(TemplateView):
-    template_name = 'pay.html'
 
-    def get(self, request, *args, **kwargs):
-        liq_pay = LiqPay(settings.LIQPAY_PUBLIC_KEY, settings.LIQPAY_PRIVATE_KEY)
-        params = {
-            'action': 'pay',
-            'amount': '100',
-            'currency': 'USD',
-            'description': 'Payment for clothes',
-            'order_id': 'order_id_1',
-            'version': '3',
-            'sandbox': 1,  # sandbox mode, set to 1 to enable it
-            'server_url': 'https://test.com/billing/pay-callback/',  # url to callback view
-        }
-        signature = liq_pay.cnb_signature(params)
-        data = liq_pay.cnb_data(params)
-        return render(request, self.template_name, {'signature': signature, 'data': data})
-
-
-@method_decorator(csrf_exempt, name='dispatch')
-class PayCallbackView(View):
-    def post(self, request, *args, **kwargs):
-        liq_pay = LiqPay(settings.LIQPAY_PUBLIC_KEY, settings.LIQPAY_PRIVATE_KEY)
-        data = request.POST.get('data')
-        signature = request.POST.get('signature')
-        sign = liq_pay.str_to_sign(settings.LIQPAY_PRIVATE_KEY + data + settings.LIQPAY_PRIVATE_KEY)
-        if sign == signature:
-            print('callback is valid')
-        response = liq_pay.decode_data_from_str(data)
-        print('callback data', response)
-        return HttpResponse()
 
 
 def index(request):
@@ -172,8 +141,11 @@ def hotel(request):
                 # return HttpResponse(response)
             else:
                 booking = form.save(commit=False)
+                booking.price = new_price
                 booking.save()
                 booking_status['success'] = True
+                return redirect("/pay/{}".format(booking.id))
+
                 # response = confirmation(request, {'booking_info': booking_info })
                 # return HttpResponse(response)
         else:
@@ -272,3 +244,40 @@ def ajax_second_step(request):
            'room': room}
 
     return render(request, 'ajax_icludes/ajax_form_second_step_overview.html', ctx)
+
+
+class PayView(TemplateView):
+    template_name = 'pay.html'
+
+    def get(self, request, id, *args, **kwargs):
+        booking = Booking.objects.get(pk=id)
+        liq_pay = LiqPay(settings.LIQPAY_PUBLIC_KEY, settings.LIQPAY_PRIVATE_KEY)
+        params = {
+            'action': 'pay',
+            'amount': booking.price,
+            'currency': 'UAH',
+            'description': 'Оплата за проживання {}'.format(booking.pib),
+            'order_id': booking.id,
+            'version': '3',
+            'sandbox': 1,  # sandbox mode, set to 1 to enable it
+            'server_url': 'http://127.0.0.1:8000/pay-callback/{}'.format(booking.id),  # url to callback view
+        }
+        signature = liq_pay.cnb_signature(params)
+        data = liq_pay.cnb_data(params)
+        return render(request, self.template_name, {'signature': signature, 'data': data})
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class PayCallbackView(View):
+    def post(self, request, id,  *args, **kwargs):
+        booking = Booking.objects.get(pk=id)
+        liq_pay = LiqPay(settings.LIQPAY_PUBLIC_KEY, settings.LIQPAY_PRIVATE_KEY)
+        data = request.POST.get('data')
+        signature = request.POST.get('signature')
+        sign = liq_pay.str_to_sign(settings.LIQPAY_PRIVATE_KEY + data + settings.LIQPAY_PRIVATE_KEY)
+        if sign == signature:
+            booking.is_paid = True
+            booking.save()
+        response = liq_pay.decode_data_from_str(data)
+        print('callback data', response)
+        return HttpResponse()
