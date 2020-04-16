@@ -63,7 +63,7 @@
                 <textarea name="message" id="message" cols="30" rows="10"
                           placeholder="Ваше повідомлення тут..."></textarea>
                 <div class="g-recaptcha " data-theme="white" data-size="normal"
-                         data-sitekey="6LdkHegUAAAAAD2GdidwOhfAjB2XfP3uIlr_d8c9"></div>
+                     data-sitekey="6LdkHegUAAAAAD2GdidwOhfAjB2XfP3uIlr_d8c9"></div>
                 <button class="btn btn-black btn-center contact_btn">Надіслати</button>
             </form>
         </div>
@@ -78,8 +78,9 @@
 </div>
 <div class="additional_footer">
 </div>
-
-{% include "includes/footer.html" %}
+{% include 'ajax_icludes/ajax_form.html' %}
+{% include 'includes/footer.html' %}
+<script src="{% static 'js/hotel_room_modal_management.js' %}"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 </html>

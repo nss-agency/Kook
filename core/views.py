@@ -230,7 +230,6 @@ def contact(request):
     return render(request, 'contacts.html', ctx)
 
 
-
 def ajax_description(request, id):
     room = RoomType.objects.get(pk=id)
 

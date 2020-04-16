@@ -1,55 +1,76 @@
 nav {
-  margin: 5vh 5vw;
+	margin: 5vh 5vw;
 
-  .nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
-    margin: 0;
+	.nav-buttons {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0;
+		margin: 0;
 
-    //visuals
-    list-style: none;
+		//visuals
+		list-style: none;
 
-    .nav-phone-number {
-      color: var(--dark-gray);
-      font-size: 0.9em;
+		.nav-phone-number {
+			color: var(--dark-gray);
+			font-size: 0.9em;
 
-      &::after {
-        display: inline-block;
-        content: "";
-        border-top: 1px solid var(--dark-gray);
-        width: 8.25rem;
-        margin: 0 1rem;
-        transform: translateY(-0.3rem);
-      }
+			&::after {
+				display: inline-block;
+				content: "";
+				border-top: 1px solid var(--dark-gray);
+				width: 8.25rem;
+				margin: 0 1rem;
+				transform: translateY(-0.3rem);
+			}
 
-      &::before {
-        display: inline-block;
-        content: "";
-        border-top: 1px solid var(--dark-gray);
-        width: 8.25rem;
-        margin: 0 1rem;
-        transform: translateY(-0.3rem);
-      }
+			&::before {
+				display: inline-block;
+				content: "";
+				border-top: 1px solid var(--dark-gray);
+				width: 8.25rem;
+				margin: 0 1rem;
+				transform: translateY(-0.3rem);
+			}
 
-      @media only screen and (max-width: 1400px) {
-        &::after,
-        &::before {
-            display: none;
-        }
-      }
-    }
+			@media only screen and (max-width: 1400px) {
+				&::after,
+				&::before {
+					display: none;
+				}
+			}
+		}
 
-    .nav-link {
-      color: var(--black);
-      font-size: 1.3em;
-      text-transform: uppercase;
-      text-decoration: none;
+		.nav-link {
+			color: var(--black);
+			font-size: 1.3em;
+			text-transform: uppercase;
+			text-decoration: none;
 
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	#language-picker:checked + .languages-dropdown {
+		height: 200px;
+		transform: scaleY(1);
+	}
+
+	.languages-dropdown {
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		justify-content: space-evenly;
+		height: 0;
+		transform: scaleY(0);
+		transition: height .3s, transform .3s;
+
+		.btn {
+			box-sizing: border-box;
+			width: calc(100% - 1px);
+		}
+	}
 }

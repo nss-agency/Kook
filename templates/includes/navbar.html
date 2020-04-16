@@ -1,4 +1,9 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as current_language %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
 <nav>
     <ol class="nav-buttons">
         <li><a href="{% url 'index' %}"><img src="{% static 'svg/logo-black.svg' %}" alt="Kook logo"></a></li>
@@ -7,7 +12,21 @@
         <li><a class="nav-link" href="{% url 'restaurant' %}">Ресторан</a></li>
         <li><a class="nav-link" href="{% url 'banquet' %}">Банкетний зал</a></li>
         <li><a class="nav-link" href="{% url 'contact' %}">Контакти</a></li>
-        <li><a class="btn btn-outline" href="">ua</a></li>
-        <li><a class="btn btn-black" href="">Забронювати</a></li>
+        <li><label class="btn btn-outline" for="language-picker">{{ current_language.code }}</label>
+            <input hidden id="language-picker" type="checkbox">
+            <form action="{% url 'set_language' %}" method="post" class="languages-dropdown">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ redirect_to }}">
+                {% for language in languages %}
+                    {% if language.code != current_language.code %}
+                        <button id="language" name="language" value="{{ language.code }}"
+                                class="btn btn-outline">{{ language.code }}</button>
+                    {% endif %}
+                {% endfor %}
+            </form>
+        </li>
+        <li>
+            <button onclick="showModal(1)" class="btn btn-black">Забронювати</button>
+        </li>
     </ol>
 </nav>

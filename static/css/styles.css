@@ -141,6 +141,24 @@ nav .nav-buttons .nav-link {
 nav .nav-buttons .nav-link:hover {
   text-decoration: underline;
 }
+nav #language-picker:checked + .languages-dropdown {
+  height: 200px;
+  transform: scaleY(1);
+}
+nav .languages-dropdown {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: space-evenly;
+  height: 0;
+  transform: scaleY(0);
+  transition: height 0.3s, transform 0.3s;
+}
+nav .languages-dropdown .btn {
+  box-sizing: border-box;
+  width: calc(100% - 1px);
+}
 
 .hero-slider {
   height: 60vh;
@@ -1297,6 +1315,28 @@ footer .footer-copy .heart {
   background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 100%;
+  transform: scale(1, 1);
+  z-index: 2;
+  transition: background-color 0.3s, transform 0s, z-index 0s 0s;
+}
+.gallery-modal-image {
+  max-height: 100%;
+  max-width: 100%;
+  transform: translate(-50%, -50%);
+  position: relative;
+  left: 50%;
+  top: 50%;
+  opacity: 1;
+  transition: opacity 0.3s 0.3s;
+}
+.gallery-modal-inactive {
+  transform: scale(0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  transition: transform 0s 0.6s, background-color 0.3s 0.3s;
+}
+.gallery-modal-inactive .gallery-modal-image {
+  opacity: 0;
+  transition: opacity 0.3s 0.3s, z-index 0s 0.6s;
 }
 
 /*# sourceMappingURL=styles.css.map */
