@@ -115,13 +115,16 @@ class Booking(models.Model):
         'Нотатки',
         blank=True,
         help_text='Цей текст буде бачити тільки адміністратор та модератор')
-    is_paid = models.BooleanField(default=False)
+    is_paid = models.BooleanField('Оплата',default=False)
     discount = models.CharField(
         'Промокод', max_length=225, null=True, blank=True)
-    price = models.PositiveIntegerField('Ціна')
+    price = models.PositiveIntegerField('Ціна', null=False, blank=True)
 
-    # save event to google calendar
+    # save event to google calendar + preload price
     def save(self, *args, **kwargs):
+        day = self.date_leave - self.date_entry
+        self.price = self.room_type.price * day.days
+
         super().save()
         if settings.ENABLE_GOOGLE_CALENDAR:
             create_event_from_booking(self)

@@ -445,13 +445,6 @@ footer .footer-flex .footer-block .footer-link-list .footer-list-element {
   font-weight: lighter;
   margin: 0.5rem 0;
 }
-footer .footer-flex .footer-block .footer-link-list .footer-list-element .footer-link {
-  text-decoration: none;
-  color: inherit;
-}
-footer .footer-flex .footer-block .footer-link-list .footer-list-element .footer-link:hover {
-  text-decoration: underline;
-}
 footer .footer-flex .footer-block .footer-circle-links-block {
   width: 100%;
   display: flex;
@@ -484,6 +477,14 @@ footer .footer-copy .heart {
   color: #ff000c;
   font-size: 1rem;
   margin: 0 0.3rem;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: inherit;
+}
+.footer-link:hover {
+  text-decoration: underline;
 }
 
 .hero-container__hotel {
@@ -1290,7 +1291,8 @@ footer .footer-copy .heart {
 .gallery-container .gallery-item-photo {
   flex-grow: 1;
   object-fit: cover;
-  max-height: 346px;
+  max-height: 340px;
+  cursor: pointer;
 }
 .gallery-container .gallery-item-text {
   padding: 1rem;

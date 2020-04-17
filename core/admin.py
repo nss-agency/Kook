@@ -1,4 +1,6 @@
 from django.contrib import admin
+
+from Kook_project.actions import export_as_csv_action
 from .models import Booking, MenuItem, RoomType, Promo, Banquet, MenuCategories, GalleryCategory, GalleryPhoto
 from modeltranslation.admin import TabbedTranslationAdmin
 
@@ -21,11 +23,13 @@ class BookingAdmin(admin.ModelAdmin):
         'room_type',
         'additional',
         'discount',
+        'price',
         'is_paid']
     list_filter = ['room_type', 'date_entry', 'date_leave']
     search_fields = ('phone', 'pib', 'email')
     list_per_page = 10
     date_hierarchy = 'date_entry'
+    actions = [export_as_csv_action("Експорт обрані Замовлення в CSV", fields=list_display)]
 
 
 class BanquetAdmin(admin.ModelAdmin):
@@ -47,14 +51,6 @@ class RoomAdmin(TabbedTranslationAdmin):
         'quantity',
         'price',
     ]
-
-    # inlines = [PhotoInline]
-
-    def save_model(self, request, obj, form, change):
-        obj.save()
-
-        for afile in request.FILES.getlist('photos_multiple'):
-            obj.photos.create(image=afile)
 
 
 class PromoAdmin(admin.ModelAdmin):
