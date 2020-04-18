@@ -151,10 +151,13 @@ def hotel(request):
         else:
             BookingForm()
 
+    room_types = RoomType.objects.all()
+
     ctx = {
         'form': BookingForm,
         'booking_status': booking_status,
-        'booking_info': booking_info
+        'booking_info': booking_info,
+        'room_types': room_types
     }
 
     return render(request, 'hotel_rooms.html', ctx)
@@ -281,3 +284,30 @@ class PayCallbackView(View):
         response = liq_pay.decode_data_from_str(data)
         print('callback data', response)
         return HttpResponse()
+
+
+def room_availability_check(request, id, date_start, date_end):
+    date_entry = date.fromisoformat(date_start)
+    date_leave = date.fromisoformat(date_end)
+    room_type = RoomType.objects.get(pk=id)
+
+    case_1 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,
+                                    date_leave__gte=date_entry)
+
+    case_2 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_leave,
+                                    date_leave__gte=date_leave)
+
+    case_3 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,
+                                    date_leave__gte=date_leave)
+
+    case_4 = Booking.objects.filter(room_type=room_type, date_entry__gte=date_entry,
+                                    date_leave__lte=date_leave)
+
+    case = (case_1.union(case_2).union(case_3).union(case_4)).count()
+
+    if (case_1 or case_2 or case_3 or case_4) and case >= room_type.quantity:
+        is_available = False
+    else:
+        is_available = True
+
+    return HttpResponse(f'{is_available}')

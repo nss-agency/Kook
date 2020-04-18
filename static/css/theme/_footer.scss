@@ -46,6 +46,8 @@ footer {
 					.footer-link {
 						text-decoration: none;
 						color: inherit;
+						display: block;
+						position: relative;
 
 						&:hover {
 							text-decoration: underline;

@@ -137,9 +137,30 @@ nav .nav-buttons .nav-link {
   font-size: 1.3em;
   text-transform: uppercase;
   text-decoration: none;
+  display: block;
+  position: relative;
+  --aniamtion_time: .15s;
 }
-nav .nav-buttons .nav-link:hover {
-  text-decoration: underline;
+nav .nav-buttons .nav-link:before, nav .nav-buttons .nav-link:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: var(--black);
+  left: 0;
+  bottom: 0;
+  transform: rotate(0);
+  transition: bottom var(--aniamtion_time) 0s ease-in-out, transform var(--aniamtion_time) ease-in-out;
+}
+nav .nav-buttons .nav-link:hover:before {
+  bottom: 50%;
+  transform: rotate(45deg);
+  transition: bottom var(--aniamtion_time) 0s ease-in-out, transform var(--aniamtion_time) 0s ease-in-out;
+}
+nav .nav-buttons .nav-link:hover:after {
+  bottom: 50%;
+  transform: rotate(-45deg);
+  transition: bottom var(--aniamtion_time) 0s ease-in-out, transform var(--aniamtion_time) 0s ease-in-out;
 }
 nav #language-picker:checked + .languages-dropdown {
   height: 200px;
@@ -448,6 +469,8 @@ footer .footer-flex .footer-block .footer-link-list .footer-list-element {
 footer .footer-flex .footer-block .footer-link-list .footer-list-element .footer-link {
   text-decoration: none;
   color: inherit;
+  display: block;
+  position: relative;
 }
 footer .footer-flex .footer-block .footer-link-list .footer-list-element .footer-link:hover {
   text-decoration: underline;
@@ -524,7 +547,7 @@ footer .footer-copy .heart {
 .rooms-container {
   display: grid;
   margin: 5rem;
-  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
   row-gap: 5rem;
 }
@@ -535,6 +558,7 @@ footer .footer-copy .heart {
 .rooms-container .room-wrapper .room-image {
   height: 30vh;
   object-fit: cover;
+  width: 100%;
 }
 .rooms-container .room-wrapper .room-description {
   margin-top: 25px;
@@ -661,12 +685,16 @@ footer .footer-copy .heart {
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
 }
+.form-modal .form-modal-room-type #room_availability {
+  color: var(--error-red);
+}
 .form-modal input[type=text],
 .form-modal input[type=tel],
 .form-modal input[type=number],
 .form-modal input[type=date],
 .form-modal input[type=email],
-.form-modal input:not([type=hidden]) {
+.form-modal input:not([type=hidden]),
+.form-modal select {
   width: 100%;
   padding: 1rem;
   border: 1px var(--dark-gray) solid;
@@ -692,7 +720,10 @@ footer .footer-copy .heart {
 .form-modal input[type=email]:active ~ label,
 .form-modal input:not([type=hidden]):focus ~ label,
 .form-modal input:not([type=hidden]):not(:placeholder-shown) ~ label,
-.form-modal input:not([type=hidden]):active ~ label {
+.form-modal input:not([type=hidden]):active ~ label,
+.form-modal select:focus ~ label,
+.form-modal select:not(:placeholder-shown) ~ label,
+.form-modal select:active ~ label {
   opacity: 0;
 }
 .form-modal input[type=text]:invalid:not(:focus):not(:placeholder-shown):not([type=date]),
@@ -700,7 +731,8 @@ footer .footer-copy .heart {
 .form-modal input[type=number]:invalid:not(:focus):not(:placeholder-shown):not([type=date]),
 .form-modal input[type=date]:invalid:not(:focus):not(:placeholder-shown):not([type=date]),
 .form-modal input[type=email]:invalid:not(:focus):not(:placeholder-shown):not([type=date]),
-.form-modal input:not([type=hidden]):invalid:not(:focus):not(:placeholder-shown):not([type=date]) {
+.form-modal input:not([type=hidden]):invalid:not(:focus):not(:placeholder-shown):not([type=date]),
+.form-modal select:invalid:not(:focus):not(:placeholder-shown):not([type=date]) {
   border-color: var(--error-red);
   background-color: var(--error-red-light);
 }
