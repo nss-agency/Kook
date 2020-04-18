@@ -34,6 +34,7 @@ urlpatterns = i18n_patterns(
     path('pay/<id>', views.PayView.as_view(), name='pay_view'),
     path('pay-callback/<id>', views.PayCallbackView.as_view(), name='pay_callback'),
     path('ajax_second_step/', views.ajax_second_step, name='ajax_second_step'),
+    path('room_availability_check/<id>/<date_start>/<date_end>/', views.room_availability_check, name='room_availability_check'),
     prefix_default_language=False
 )
 

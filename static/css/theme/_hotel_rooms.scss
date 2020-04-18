@@ -40,7 +40,7 @@
 .rooms-container {
     display: grid;
     margin: 5rem;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    grid-template-columns: 1fr 1fr;
     grid-gap: 2rem;
     row-gap: 5rem;
 
@@ -51,6 +51,7 @@
         .room-image {
             height: 30vh;
             object-fit: cover;
+            width: 100%;
         }
 
         .room-description {

@@ -22,6 +22,7 @@ class BookingForm(ModelForm):
             'room_type',
             'additional',
             'discount',
+            'bed_type'
         )
         widgets = {
             'pib': forms.TextInput(attrs={
@@ -62,6 +63,12 @@ class BookingForm(ModelForm):
             'additional': forms.TextInput(attrs={
                 'placeholder': ' '
             }),
+            'bed_type': forms.Select(attrs={
+                'placeholder': ' ',
+                # 'type': 'text',
+                # 'onfocus': "(this.type='date')",
+                # 'onblur': "(this.type='text')",
+            })
         }
 
 

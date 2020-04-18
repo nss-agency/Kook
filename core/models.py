@@ -107,8 +107,7 @@ class Booking(models.Model):
                                     default=True)
     bed_type = models.CharField(
         'Тип Ліжка',
-        null=True,
-        blank=True,
+        default='Двохспальне ліжко',
         max_length=225,
         choices=BED_TYPE_CHOICES)
     notes = models.TextField(

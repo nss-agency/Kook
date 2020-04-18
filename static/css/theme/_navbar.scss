@@ -46,9 +46,40 @@ nav {
 			font-size: 1.3em;
 			text-transform: uppercase;
 			text-decoration: none;
+			display: block;
+			position: relative;
+
+			--aniamtion_time: .15s;
+
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 1px;
+				background-color: var(--black);
+				left: 0;
+				bottom: 0;
+				transform: rotate(0);
+
+				transition: bottom var(--aniamtion_time) 0s ease-in-out, transform var(--aniamtion_time)  ease-in-out;
+			}
 
 			&:hover {
-				text-decoration: underline;
+
+				&:before {
+					bottom: 50%;
+					transform: rotate(45deg);
+					transition: bottom var(--aniamtion_time) 0s ease-in-out, transform var(--aniamtion_time) 0s ease-in-out;
+
+				}
+
+				&:after {
+					bottom: 50%;
+					transform: rotate(-45deg);
+					transition: bottom var(--aniamtion_time) 0s ease-in-out, transform var(--aniamtion_time) 0s ease-in-out;
+
+				}
 			}
 		}
 	}

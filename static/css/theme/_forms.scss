@@ -1,316 +1,321 @@
 .form-modal-wrapper {
-  background-color: rgba(00, 00, 00, .5);
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: block;
-  z-index: 20;
-  transition: background-color .3s;
-  width: 100%;
-  height: 100%;
-  transform: scale(1, 1);
+	background-color: rgba(00, 00, 00, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: block;
+	z-index: 20;
+	transition: background-color .3s;
+	width: 100%;
+	height: 100%;
+	transform: scale(1, 1);
 }
 
 .modal-inactive {
-  background-color: rgba(66, 66, 66, 0);
-  transform: scale(0, 0);
-  transition: transform 0s linear .6s, background-color .3s .3s;
+	background-color: rgba(66, 66, 66, 0);
+	transform: scale(0, 0);
+	transition: transform 0s linear .6s, background-color .3s .3s;
 
-  .form-modal {
-    opacity: 0;
-  }
+	.form-modal {
+		opacity: 0;
+	}
 }
 
 .decorated-header-confirm {
-  background-color: var(--white);
-  color: var(--black);
-  text-transform: uppercase;
-  border: 1.4px solid var(--black);
-  box-sizing: border-box;
-  width: 70%;
-  text-align: center;
-  padding: 1rem 1rem;
-  position: relative;
-  margin: 1rem 15% 0;
-  font-size: 1.8rem;
+	background-color: var(--white);
+	color: var(--black);
+	text-transform: uppercase;
+	border: 1.4px solid var(--black);
+	box-sizing: border-box;
+	width: 70%;
+	text-align: center;
+	padding: 1rem 1rem;
+	position: relative;
+	margin: 1rem 15% 0;
+	font-size: 1.8rem;
 
 
-  &:before,
-  &:after {
-    content: "";
-    width: 20px;
-    height: 1px;
-    background-color: black;
-    position: absolute;
-    display: block;
-    top: 50%
-  }
+	&:before,
+	&:after {
+		content: "";
+		width: 20px;
+		height: 1px;
+		background-color: black;
+		position: absolute;
+		display: block;
+		top: 50%
+	}
 
-  &:before {
-    left: -15%;
-  }
+	&:before {
+		left: -15%;
+	}
 
-  &:after {
-    right: -15%;
-  }
+	&:after {
+		right: -15%;
+	}
 }
 
 
 .form-modal {
-  width: 70%;
-  background: var(--white);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem;
-  flex-direction: row;
-  justify-content: space-around;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 2rem;
-  opacity: 1;
-  transition: opacity .3s .3s, transform 0s .3s;
+	width: 70%;
+	background: var(--white);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 2rem;
+	flex-direction: row;
+	justify-content: space-around;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 2rem;
+	opacity: 1;
+	transition: opacity .3s .3s, transform 0s .3s;
 
-  .form-modal-field-wrapper {
-    position: relative;
-    margin: 1rem 0;
-  }
+	.form-modal-field-wrapper {
+		position: relative;
+		margin: 1rem 0;
+	}
 
-  .form-modal-room-type {
-    .form-modal-room-image {
-      width: 100%;
-      height: 50%;
-      object-fit: contain;
-    }
+	.form-modal-room-type {
+		.form-modal-room-image {
+			width: 100%;
+			height: 50%;
+			object-fit: contain;
+		}
 
-    .form-modal-room-type-header {
-      font-size: 2rem;
-      text-align: center;
-    }
+		.form-modal-room-type-header {
+			font-size: 2rem;
+			text-align: center;
+		}
 
-    p {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-    }
-  }
+		p {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 1rem;
+		}
 
-  input[type="text"],
-  input[type="tel"],
-  input[type="number"],
-  input[type="date"],
-  input[type="email"],
-  input:not([type="hidden"]) {
-    width: 100%;
-    padding: 1rem;
-    border: 1px var(--dark-gray) solid;
-    text-align: center;
-    font-size: 1rem;
-    font-family: "Montserrat", sans-serif;
-    margin-bottom: .2em;
-    box-sizing: border-box;
-    transition: border-color .3s, background-color .3s;
+		#room_availability{
+			color: var(--error-red)
+		}
+	}
 
-    &:focus, &:not(:placeholder-shown), &:active {
+	input[type="text"],
+	input[type="tel"],
+	input[type="number"],
+	input[type="date"],
+	input[type="email"],
+	input:not([type="hidden"]),
+	select{
+		width: 100%;
+		padding: 1rem;
+		border: 1px var(--dark-gray) solid;
+		text-align: center;
+		font-size: 1rem;
+		font-family: "Montserrat", sans-serif;
+		margin-bottom: .2em;
+		box-sizing: border-box;
+		transition: border-color .3s, background-color .3s;
 
-      & ~ label {
-        opacity: 0;
-      }
-    }
+		&:focus, &:not(:placeholder-shown), &:active {
 
-    &:invalid:not(:focus):not(:placeholder-shown):not([type="date"]) {
-      border-color: var(--error-red);
-      background-color: var(--error-red-light);
-    }
-  }
+			& ~ label {
+				opacity: 0;
+			}
+		}
 
-  input[type="checkbox"] {
-    display: none;
+		&:invalid:not(:focus):not(:placeholder-shown):not([type="date"]) {
+			border-color: var(--error-red);
+			background-color: var(--error-red-light);
+		}
+	}
 
-    &:checked {
+	input[type="checkbox"] {
+		display: none;
 
-      & ~ .checkbox-label {
+		&:checked {
 
-        .checkbox-label-check-mark {
-          background-color: var(--black);
-        }
-      }
-    }
-  }
+			& ~ .checkbox-label {
 
-  .checkbox-label {
-    margin: 0 .5rem;
-    width: 1rem;
-    height: 1rem;
-    border: 1px solid var(--black);
-    display: inline-block;
-    position: relative;
+				.checkbox-label-check-mark {
+					background-color: var(--black);
+				}
+			}
+		}
+	}
 
-    .checkbox-label-check-mark {
-      width: .5rem;
-      height: .5rem;
-      background-color: var(--white);
-      transition: background-color .3s;
-      display: inline-block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
+	.checkbox-label {
+		margin: 0 .5rem;
+		width: 1rem;
+		height: 1rem;
+		border: 1px solid var(--black);
+		display: inline-block;
+		position: relative;
 
-  .default-label {
-    color: var(--dark-gray);
-    font-family: "Oswald", sans-serif;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
+		.checkbox-label-check-mark {
+			width: .5rem;
+			height: .5rem;
+			background-color: var(--white);
+			transition: background-color .3s;
+			display: inline-block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	.default-label {
+		color: var(--dark-gray);
+		font-family: "Oswald", sans-serif;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
 }
 
 
 .form-confirmation {
-  background-color: var(--white);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1, 1);
-  padding: 2rem;
-  opacity: 1;
-  transition: opacity .3s .3s;
-  max-width: 500px;
+	background-color: var(--white);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(1, 1);
+	padding: 2rem;
+	opacity: 1;
+	transition: opacity .3s .3s;
+	max-width: 500px;
 
-  .form-confirmation-image {
-    width: 100%;
-    max-height: 30%;
-    object-fit: cover;
-  }
+	.form-confirmation-image {
+		width: 100%;
+		max-height: 30%;
+		object-fit: cover;
+	}
 
-  .form-confirmation-header {
-    text-align: center;
-    font-size: 2rem;
-  }
+	.form-confirmation-header {
+		text-align: center;
+		font-size: 2rem;
+	}
 
-  .form-confirmation-field {
-    width: 100%;
-    padding: 1rem;
-    border: 1px var(--dark-gray) solid;
-    text-align: center;
-    font-size: 1rem;
-    font-family: "Montserrat", sans-serif;
-    margin-bottom: .2em;
-    box-sizing: border-box;
-  }
+	.form-confirmation-field {
+		width: 100%;
+		padding: 1rem;
+		border: 1px var(--dark-gray) solid;
+		text-align: center;
+		font-size: 1rem;
+		font-family: "Montserrat", sans-serif;
+		margin-bottom: .2em;
+		box-sizing: border-box;
+	}
 
-  .form-confirmation-room-type-header {
-    text-align: center;
-    font-size: 1.8rem;
-  }
+	.form-confirmation-room-type-header {
+		text-align: center;
+		font-size: 1.8rem;
+	}
 
-  .form-confirmation-price {
+	.form-confirmation-price {
 
-  }
+	}
 }
 
 .confirmation-inactive {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0, 0);
+	opacity: 0;
+	transform: translate(-50%, -50%) scale(0, 0);
 }
 
 .decorated-header {
-  background-color: var(--black);
-  color: var(--white);
-  text-transform: uppercase;
-  box-sizing: border-box;
-  width: 70%;
-  text-align: center;
-  padding: 1rem 1rem;
-  position: relative;
-  margin: 1rem 15% 0;
-  font-size: 1.8rem;
+	background-color: var(--black);
+	color: var(--white);
+	text-transform: uppercase;
+	box-sizing: border-box;
+	width: 70%;
+	text-align: center;
+	padding: 1rem 1rem;
+	position: relative;
+	margin: 1rem 15% 0;
+	font-size: 1.8rem;
 
 
-  &:before,
-  &:after {
-    content: "";
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    position: absolute;
-    display: block;
-    top: 50%
-  }
+	&:before,
+	&:after {
+		content: "";
+		width: 20px;
+		height: 2px;
+		background-color: black;
+		position: absolute;
+		display: block;
+		top: 50%
+	}
 
-  &:before {
-    left: -15%;
-  }
+	&:before {
+		left: -15%;
+	}
 
-  &:after {
-    right: -15%;
-  }
+	&:after {
+		right: -15%;
+	}
 }
 
 .form-modal_banquet {
-  width: 25%;
-  background: var(--white);
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-content: space-around;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 2rem;
-  opacity: 1;
-  transition: opacity .3s .3s, transform 0s .3s;
+	width: 25%;
+	background: var(--white);
+	display: grid;
+	grid-template-columns: 1fr;
+	justify-content: space-around;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 2rem;
+	opacity: 1;
+	transition: opacity .3s .3s, transform 0s .3s;
 
-  .form-modal-fields {
-  }
+	.form-modal-fields {
+	}
 
-  .form-modal-room-type {
-    .form-modal-room-image {
-      width: 100%;
-      height: 50%;
-      object-fit: contain;
-    }
+	.form-modal-room-type {
+		.form-modal-room-image {
+			width: 100%;
+			height: 50%;
+			object-fit: contain;
+		}
 
-    .form-modal-room-type-header {
-      font-size: 2rem;
-      text-align: center;
-    }
+		.form-modal-room-type-header {
+			font-size: 2rem;
+			text-align: center;
+		}
 
-    p {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-    }
-  }
+		p {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 1rem;
+		}
+	}
 
-  input[type="text"],
-  input[type="tel"],
-  input[type="number"],
-  input[type="date"],
-  input[type="email"] {
-    width: 100%;
-    padding: 1rem;
-    border: 1px var(--dark-gray) solid;
-    text-align: center;
-    font-size: 1rem;
-    font-family: "Montserrat", sans-serif;
-    margin-bottom: .2em;
-    box-sizing: border-box;
-  }
+	input[type="text"],
+	input[type="tel"],
+	input[type="number"],
+	input[type="date"],
+	input[type="email"] {
+		width: 100%;
+		padding: 1rem;
+		border: 1px var(--dark-gray) solid;
+		text-align: center;
+		font-size: 1rem;
+		font-family: "Montserrat", sans-serif;
+		margin-bottom: .2em;
+		box-sizing: border-box;
+	}
 
 
-  .default-label {
-    display: block;
-    color: var(--dark-gray);
-    width: 100%;
-    font-family: "Oswald", sans-serif;
-  }
+	.default-label {
+		display: block;
+		color: var(--dark-gray);
+		width: 100%;
+		font-family: "Oswald", sans-serif;
+	}
 }
 
 .form-modal-inactive {
-  transform: translate(-50%, -50%) scale(0, 0);
-  opacity: 0;
+	transform: translate(-50%, -50%) scale(0, 0);
+	opacity: 0;
 }
