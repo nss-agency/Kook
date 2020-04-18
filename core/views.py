@@ -45,6 +45,20 @@ def booking_element(request):
         date_entry = form.cleaned_data['date_entry']
         date_leave = form.cleaned_data['date_leave']
         room_type = form.cleaned_data['room_type']
+        entry_promo = form.cleaned_data['discount']
+        day = date_leave - date_entry
+        price = room_type.price * day.days
+        new_price = price
+
+        if Promo.objects.filter(name=entry_promo):
+            exist_promo = Promo.objects.get(name=entry_promo)
+            if exist_promo.date_expired >= datetime.now().date():
+                if entry_promo == str(exist_promo) and exist_promo.is_percentage == False:
+                    new_price = price - exist_promo.discount
+                elif entry_promo == str(exist_promo) and exist_promo.is_percentage:
+                    new_price = price - (price * (exist_promo.discount / 100))
+                else:
+                    new_price = price
 
         case_1 = Booking.objects.filter(room_type=room_type, date_entry__lte=date_entry,
                                         date_leave__gte=date_entry)
@@ -63,12 +77,14 @@ def booking_element(request):
         if (case_1 or case_2 or case_3 or case_4) and case >= room_type.quantity:
             print('Zanyato')
             booking_status['fail'] = True
+            return None
         else:
             booking = form.save(commit=False)
             booking.price = new_price
             booking.save()
             booking_status['success'] = True
-            return redirect("/pay/{}".format(booking.id))
+            print('Vil`no')
+            return booking.id
     else:
         BookingForm()
 
@@ -77,7 +93,9 @@ def index(request):
     booking_status = {}
 
     if request.method == 'POST':
-        booking_element(request)
+        booking_id = booking_element(request)
+        if booking_id != None:
+            return HttpResponseRedirect(f'/pay/{booking_id}')
 
     ctx = {
         'form': BookingForm,
@@ -129,7 +147,9 @@ def hotel(request):
     booking_status = {}
 
     if request.method == 'POST':
-        booking_element(request)
+        booking_id = booking_element(request)
+        if booking_id != None:
+            return HttpResponseRedirect(f'/pay/{booking_id}')
 
     ctx = {
         'form': BookingForm,
@@ -173,7 +193,9 @@ def contact(request):
     booking_status = {}
 
     if request.method == 'POST':
-        booking_element(request)
+        booking_id = booking_element(request)
+        if booking_id != None:
+            return HttpResponseRedirect(f'/pay/{booking_id}')
         if request.recaptcha_is_valid:
             send_contact(request)
             ctx['success'] = True
