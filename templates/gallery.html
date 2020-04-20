@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>Gallery</title>
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
     {% include 'includes/head_links.html' %}
 </head>
 <body>
@@ -19,78 +22,16 @@
 </div>
 <div class="gallery-container">
     {% for item in gallery_items %}
-        <div onclick="showGalleryModal()"
-             class="gallery-item {{ item.get_categories_class }} {% cycle 'gallery-item-w2' '' '' '' '' 'gallery-item-w2' %}">
-            <img src="{{ item.image.url }}" alt="{{ item.name }}" class="gallery-item-photo">
-        </div>
+        <div class="gallery"></div>
+        <a class="{{ item.get_categories_class }}" href="{{ item.image.url }}">
+            <div class="gallery-item {{ item.get_categories_class }} {% cycle 'gallery-item-w2' '' '' '' '' 'gallery-item-w2' %}">
+                <img src="{{ item.image.url }}" alt="{{ item.name }}" class="gallery-item-photo">
+            </div>
+        </a>
     {% endfor %}
-</div>
-<div id="gallery-modal" class="gallery-modal gallery-modal-inactive">
-    <img class="gallery-modal-image" src="" alt="">
 </div>
 {% include 'ajax_icludes/ajax_form.html' %}
 {% include 'includes/footer.html' %}
 <script src="{% static 'js/hotel_room_modal_management.js' %}"></script>
-<script>
-    function showGalleryModal(event) {
-        let modal = document.querySelector('#gallery-modal');
-        console.log(this.firstElementChild);
-        modal.firstElementChild.src = this.firstElementChild.src;
-        modal.classList.remove('gallery-modal-inactive')
-    }
-
-    function getNextImage(){
-        console.log(this.nextElementSibling)
-    }
-
-    function hideGalleryModal(){
-        document.querySelector('#gallery-modal').classList.add('gallery-modal-inactive')
-    }
-
-    function backgroundModalClick(e){
-        if(e.target === this){
-            hideGalleryModal()
-        }
-    }
-
-    document.querySelectorAll('.gallery-item').forEach(e => {
-        e.addEventListener('click', showGalleryModal)
-    });
-    document.querySelector('#gallery-modal').addEventListener('click', backgroundModalClick)
-</script>
-<script>
-    let elem = document.querySelector('.gallery-container');
-
-    let iso = new Isotope(elem, {
-        // options
-        itemSelector: '.gallery-item',
-        layoutMode: 'fitRows',
-        percentPosition: true,
-        fitRows: {
-            gutter: 20
-        }
-    });
-
-    function getFilterSelector() {
-        let checks = document.querySelectorAll('.category-input');
-        let result = '';
-        checks.forEach((node) => {
-            if (node.checked) {
-                result += `.cat_${node.dataset.id}`
-            }
-        });
-
-        return result
-    }
-
-
-    function filter() {
-        iso.arrange({filter: getFilterSelector()})
-    }
-
-    if ('{{ filter }}' !== '') {
-        document.querySelector('input[data-id="{{ filter }}"]').checked = true;
-        filter()
-    }
-</script>
+<script src="{% static 'js/gallery.js' %}"></script>
 </body>
