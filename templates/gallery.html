@@ -22,7 +22,6 @@
 </div>
 <div class="gallery-container">
     {% for item in gallery_items %}
-        <div class="gallery"></div>
         <a class="{{ item.get_categories_class }}" href="{{ item.image.url }}">
             <div class="gallery-item {{ item.get_categories_class }} {% cycle 'gallery-item-w2' '' '' '' '' 'gallery-item-w2' %}">
                 <img src="{{ item.image.url }}" alt="{{ item.name }}" class="gallery-item-photo">
