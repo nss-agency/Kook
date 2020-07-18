@@ -8,10 +8,10 @@
     <ol class="nav-buttons">
         <li><a href="{% url 'index' %}"><img src="{% static 'svg/logo-black.svg' %}" alt="Kook logo"></a></li>
         <li class="nav-phone-number">Call Us Free: +38 032 247-45-19</li>
-        <li><a class="nav-link" href="{% url 'hotel' %}">Готель</a></li>
-        <li><a class="nav-link" href="{% url 'restaurant' %}">Ресторан</a></li>
-        <li><a class="nav-link" href="{% url 'banquet' %}">Банкетний зал</a></li>
-        <li><a class="nav-link" href="{% url 'contact' %}">Контакти</a></li>
+        <li class="nav-fw-btn"><a class="nav-link" href="{% url 'hotel' %}">Готель</a></li>
+        <li class="nav-fw-btn"><a class="nav-link" href="{% url 'restaurant' %}">Ресторан</a></li>
+        <li class="nav-fw-btn"><a class="nav-link" href="{% url 'banquet' %}">Банкетний зал</a></li>
+        <li class="nav-fw-btn"><a class="nav-link" href="{% url 'contact' %}">Контакти</a></li>
         <li><label class="btn btn-outline" for="language-picker">{{ current_language.code }}</label>
             <input hidden id="language-picker" type="checkbox">
             <form action="{% url 'set_language' %}" method="post" class="languages-dropdown">
@@ -27,6 +27,11 @@
         </li>
         <li>
             <button onclick="showModal(1)" class="btn btn-black">Забронювати</button>
+        </li>
+        <li>
+            <button class="btn btn-outline">
+                <img src="{% static 'svg/icon-menu.svg' %}" alt="">
+            </button>
         </li>
     </ol>
 </nav>

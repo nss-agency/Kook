@@ -1,128 +1,150 @@
 .hero-container__banquet {
-  height: 50vh;
-  position: relative;
-  background: #000000;
-  overflow: hidden;
+	height: 50vh;
+	position: relative;
+	background: #000000;
+	overflow: hidden;
 
-  .hero-image {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
+	.hero-image {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
 
-  .header-container {
-    background: var(--white);
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 2rem;
+	.header-container {
+		background: var(--white);
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 2rem;
+		width: fit-content;
+		width: -moz-fit-content;
 
-    .hero-header__banquet {
-      font-family: Ubuntu, sans-serif;
-      font-weight: bold;
-      font-size: 35px;
-      color: var(--black);
-      text-align: center;
-      margin-bottom: 0;
-      margin-top: 0;
-    }
 
-    .hero-small__banquet {
-      font-size: 12px;
-      display: block;
-      font-family: "Montserrat", sans-serif;
-      text-align: center;
-    }
-  }
+		.hero-header__banquet {
+			font-family: Ubuntu, sans-serif;
+			font-weight: bold;
+			font-size: 35px;
+			color: var(--black);
+			text-align: center;
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+
+		.hero-small__banquet {
+			font-size: 12px;
+			display: block;
+			font-family: "Montserrat", sans-serif;
+			text-align: center;
+		}
+	}
 }
 
 .banquet_container {
-  position: relative;
-  background: #fff;
-  overflow: hidden;
-  margin: 0 24vh;
+	position: relative;
+	background: #fff;
+	overflow: hidden;
+	margin: 0 12vw;
 
-  h2 {
-    font-size: 20px;
-    margin: 6vh 0 0 0;
-  }
+	@media only screen and (max-width: 900px) {
+		margin: 0;
+	}
 
-  p {
-    margin: 0;
-    font-family: Montserrat, sans-serif;
-    font-weight: 500;
-  }
+	h2 {
+		font-size: 20px;
+		margin: 6vh 0 0 0;
+	}
+
+	p {
+		margin: 0;
+		font-family: Montserrat, sans-serif;
+		font-weight: 500;
+	}
 }
 
 .btn__wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
 }
 
 .btn-black__banquet {
-  color: var(--white);
-  background-color: var(--black);
-  border: 3px var(--black) solid;
-  display: inline-flex;
-  margin-top: 3.5vh;
-  padding-left: 6vw;
-  padding-right: 6vw;
-  margin-left: 1.5vh;
+	color: var(--white);
+	background-color: var(--black);
+	border: 3px var(--black) solid;
+	display: inline-flex;
+	margin-top: 3.5vh;
+	padding-left: 6vw;
+	padding-right: 6vw;
+	margin-left: 1.5vh;
 
-  &:after {
-    background-color: var(--black);
-  }
+	&:after {
+		background-color: var(--black);
+	}
 
-  &:hover {
-    color: var(--black);
-    background-color: var(--white);
-  }
+	&:hover {
+		color: var(--black);
+		background-color: var(--white);
+	}
 }
 
 .banquet_container__additional {
-  .banquet-text {
+	.banquet-text {
 
-    .banquet-block {
-      display: flex;
-      flex-direction: row;
-      margin: 4rem 0;
+		.banquet-block {
+			display: flex;
+			flex-direction: row;
+			margin: 4rem 0;
 
-      .banquet-block-photo {
-        width: 55%;
-        object-fit: cover;
-      }
+			@media only screen and (max-width: 900px) {
+				flex-direction: column;
+			}
 
-      .banquet-block-text {
-        padding: 1rem;
+			.banquet-block-photo {
+				width: 55%;
+				object-fit: cover;
 
-        .banquet-block-header {
-          font-size: 3em;
-          text-transform: uppercase;
-          margin: 0;
-          font-weight: bold;
-        }
+				@media only screen and (max-width: 900px) {
+					width: 100%;
+				}
+			}
 
-        .banquet-block-small {
-          font-size: 15px;
-          font-weight: 300;
-          color: var(--accent);
-        }
+			.banquet-block-text {
+				width: 45%;
+				padding: 1rem;
+				@media only screen and (max-width: 900px) {
+					text-align: center;
+				}
 
-        .banquet-block-p {
-          font-family: "Montserrat", sans-serif;
-          font-size: 14px;
-          margin-bottom: 1.5rem;
-          margin-top: 10px;
-        }
-      }
-    }
+				.banquet-block-header {
+					font-size: 3em;
+					text-transform: uppercase;
+					margin: 0;
+					font-weight: bold;
+				}
 
-    .banquet-block-reversed {
-      flex-direction: row-reverse;
+				.banquet-block-small {
+					font-size: 15px;
+					font-weight: 300;
+					color: var(--accent);
+				}
 
-    }
-  }
+				.banquet-block-p {
+					font-family: "Montserrat", sans-serif;
+					font-size: 14px;
+					margin-bottom: 1.5rem;
+					margin-top: 10px;
+				}
+			}
+		}
+
+		.banquet-block-reversed {
+			flex-direction: row-reverse;
+
+			@media only screen and (max-width: 900px) {
+				flex-direction: column;
+			}
+		}
+	}
 }

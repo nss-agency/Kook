@@ -11,6 +11,19 @@ nav {
 		//visuals
 		list-style: none;
 
+		.nav-fw-btn {
+			@media only screen and (max-width: 800px) {
+				display: none;
+			}
+		}
+
+		.nav-phone-btn{
+			display: none;
+			@media only screen and (max-width: 800px) {
+				display: block;
+			}
+		}
+
 		.nav-phone-number {
 			color: var(--dark-gray);
 			font-size: 0.9em;
@@ -31,6 +44,10 @@ nav {
 				width: 8.25rem;
 				margin: 0 1rem;
 				transform: translateY(-0.3rem);
+			}
+
+			@media only screen and (max-width: 1000px) {
+				display: none;
 			}
 
 			@media only screen and (max-width: 1400px) {
@@ -62,7 +79,7 @@ nav {
 				bottom: 0;
 				transform: rotate(0);
 
-				transition: bottom var(--aniamtion_time) 0s ease-in-out, transform var(--aniamtion_time)  ease-in-out;
+				transition: bottom var(--aniamtion_time) 0s ease-in-out, transform var(--aniamtion_time) ease-in-out;
 			}
 
 			&:hover {

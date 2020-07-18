@@ -12,14 +12,14 @@
 <body>
 {% include 'includes/navbar.html' %}
 <div class="container">
-<div class="hero-container__banquet">
-<div class="header-container">
+    <div class="hero-container__banquet">
+        <div class="header-container">
             <h1 class="hero-header__banquet">Lorem Ipsum dolor</h1>
             <span class="hero-small__banquet">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem
                     accusantium</span>
         </div>
         <img class="hero-image" src="{% static 'img/placeholder.jpg' %}" alt=""/>
-</div>
+    </div>
 </div>
 <div class="restaurant-container">
     <div class="restaurant-text">
@@ -33,7 +33,7 @@
                     consequuntur corporis deleniti deserunt enim error est excepturi facere id inventore minus nemo
                     neque
                     quos, repellat sapiente similique sunt temporibus!</p>
-                <a href="{% url 'gallery' %}" class="btn btn-black">Галерея</a>
+                <a href="{% url 'gallery' %}" class="btn btn-black display-inline">Галерея</a>
             </div>
         </div>
         <div class="restaurant-block restaurant-block-reversed">
@@ -46,7 +46,7 @@
                     consequuntur corporis deleniti deserunt enim error est excepturi facere id inventore minus nemo
                     neque
                     quos, repellat sapiente similique sunt temporibus!</p>
-                <a href="{% url 'gallery' %}" class="btn btn-black">Галерея</a>
+                <a href="{% url 'gallery' %}" class="btn btn-black display-inline">Галерея</a>
             </div>
         </div>
         <div class="restaurant-block">
@@ -59,23 +59,24 @@
                     consequuntur corporis deleniti deserunt enim error est excepturi facere id inventore minus nemo
                     neque
                     quos, repellat sapiente similique sunt temporibus!</p>
-                <a href="{% url 'gallery' %}" class="btn btn-black">Галерея</a>
+                <a href="{% url 'gallery' %}" class="btn btn-black display-inline">Галерея</a>
             </div>
         </div>
     </div>
     <div class="menu-sidebar">
         <h3 class="decorated-header">Меню</h3>
         <h4 class="simple-header">Рекомендації</h4>
-        {%  for item in menu_items %}
-        <div class="menu-item">
-            <a href="{% url 'menu' %}" target="_blank"><img class="menu-item-image" src="{{ item.image.url }}" alt=""></a>
-            <h6 class="menu-item-header">{{ item.title }}</h6>
-            <p class="menu-item-text">{{ item.description }}
-            </p>
+        <div class="menu-flex">
+            {% for item in menu_items %}
+                <div class="menu-item">
+                    <a href="{% url 'menu' %}" target="_blank"><img class="menu-item-image" src="{{ item.image.url }}"
+                                                                    alt=""></a>
+                    <h6 class="menu-item-header">{{ item.title }}</h6>
+                    <p class="menu-item-text">{{ item.description }}
+                    </p>
+                </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-
-
     </div>
 </div>
 {% include 'ajax_icludes/ajax_form.html' %}
