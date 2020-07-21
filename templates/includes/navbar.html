@@ -4,6 +4,15 @@
 {% get_language_info for LANGUAGE_CODE as current_language %}
 {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as languages %}
+<script>
+    function showNavbar() {
+        document.querySelector('#mobile-navbar').classList.add('mobile-navbar-active')
+    }
+
+    function hideNavbar() {
+        document.querySelector('#mobile-navbar').classList.remove('mobile-navbar-active')
+    }
+</script>
 <nav>
     <ol class="nav-buttons">
         <li><a href="{% url 'index' %}"><img src="{% static 'svg/logo-black.svg' %}" alt="Kook logo"></a></li>
@@ -12,7 +21,7 @@
         <li class="nav-fw-btn"><a class="nav-link" href="{% url 'restaurant' %}">Ресторан</a></li>
         <li class="nav-fw-btn"><a class="nav-link" href="{% url 'banquet' %}">Банкетний зал</a></li>
         <li class="nav-fw-btn"><a class="nav-link" href="{% url 'contact' %}">Контакти</a></li>
-        <li><label class="btn btn-outline" for="language-picker">{{ current_language.code }}</label>
+        <li class="sm-ml-auto"><label class="btn btn-outline" for="language-picker">{{ current_language.code }}</label>
             <input hidden id="language-picker" type="checkbox">
             <form action="{% url 'set_language' %}" method="post" class="languages-dropdown">
                 {% csrf_token %}
@@ -25,13 +34,35 @@
                 {% endfor %}
             </form>
         </li>
-        <li>
-            <button onclick="showModal(1)" class="btn btn-black">Забронювати</button>
+        <li class="sm-ml-1">
+            <button onclick="showModal(1)" class="btn btn-black desktop-only">Забронювати</button>
         </li>
         <li>
-            <button class="btn btn-outline">
+            <button onclick="showNavbar()" class="btn btn-outline mobile-only">
                 <img src="{% static 'svg/icon-menu.svg' %}" alt="">
             </button>
         </li>
     </ol>
+
+    <div class="mobile-navbar active" id="mobile-navbar">
+        <div class="mobile-navbar-flex">
+            <a href="{% url 'index' %}"><img src="{% static 'svg/logo-black.svg' %}" alt="Kook logo"></a>
+            <div class="sm-ml-auto">
+                <button onclick="hideNavbar()" class="btn btn-black mobile-only">
+                    <img src="{% static 'svg/icon-menu-white.svg' %}" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="">
+            <button onclick="showModal(1)" class="btn btn-black mx-auto">Забронювати</button>
+        </div>
+        <ol class="mobile-navbar-list">
+            <li class="nav-phone-number">Call Us Free: +38 032 247-45-19</li>
+            <li class="nav-fw-btn"><a class="nav-link" href="{% url 'hotel' %}">Готель</a></li>
+            <li class="nav-fw-btn"><a class="nav-link" href="{% url 'restaurant' %}">Ресторан</a></li>
+            <li class="nav-fw-btn"><a class="nav-link" href="{% url 'banquet' %}">Банкетний зал</a></li>
+            <li class="nav-fw-btn"><a class="nav-link" href="{% url 'contact' %}">Контакти</a></li>
+        </ol>
+
+    </div>
 </nav>
