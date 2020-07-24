@@ -14,6 +14,10 @@
   --error-red-light: #ffd9e0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
@@ -561,6 +565,7 @@ footer .footer-flex {
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr;
   padding: 4em 0;
+  align-items: center;
 }
 @media only screen and (max-width: 1150px) {
   footer .footer-flex {
@@ -619,6 +624,7 @@ footer .footer-flex .footer-block .footer-circle-links-block {
   display: flex;
   justify-content: space-evenly;
   margin: 1rem 0;
+  align-items: center;
 }
 footer .footer-flex .footer-block .footer-circle-links-block .footer-circle-link {
   border-radius: 50%;
@@ -626,6 +632,7 @@ footer .footer-flex .footer-block .footer-circle-links-block .footer-circle-link
   transition: background-color 0.3s;
   cursor: pointer;
   text-decoration: none;
+  width: 50px;
 }
 footer .footer-flex .footer-block .footer-circle-links-block .footer-circle-link .footer-circle-link-icon {
   width: 100%;
@@ -792,6 +799,25 @@ footer .footer-copy .heart {
   transform: scale(1, 1);
 }
 
+.form-modal-close-button {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background: var(--gray);
+  color: var(--black);
+  opacity: 0.3;
+  transition: opacity 0.3s ease-in-out;
+  font-size: 6rem;
+  text-align: center;
+  line-height: 50px;
+  z-index: 100;
+}
+.form-modal-close-button:hover, .form-modal-close-button:active {
+  opacity: 0.5;
+}
+
 .modal-inactive {
   background-color: rgba(66, 66, 66, 0);
   transform: scale(0, 0);
@@ -845,14 +871,29 @@ footer .footer-copy .heart {
   padding: 2rem;
   opacity: 1;
   transition: opacity 0.3s 0.3s, transform 0s 0.3s;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 900px) {
+  .form-modal {
+    grid-template-columns: 1fr;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+  }
 }
 .form-modal .form-modal-field-wrapper {
   position: relative;
   margin: 1rem 0;
 }
+@media only screen and (max-width: 900px) {
+  .form-modal .form-modal-room-type {
+    display: none;
+  }
+}
 .form-modal .form-modal-room-type .form-modal-room-image {
   width: 100%;
   height: 50%;
+  max-height: 50vh;
   object-fit: contain;
 }
 .form-modal .form-modal-room-type .form-modal-room-type-header {
@@ -958,6 +999,14 @@ footer .footer-copy .heart {
   opacity: 1;
   transition: opacity 0.3s 0.3s;
   max-width: 500px;
+}
+@media only screen and (max-width: 900px) {
+  .form-confirmation {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
 }
 .form-confirmation .form-confirmation-image {
   width: 100%;
@@ -1276,6 +1325,7 @@ footer .footer-copy .heart {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin: 2rem 0;
 }
 
 .btn-black__banquet {
@@ -1283,7 +1333,6 @@ footer .footer-copy .heart {
   background-color: var(--black);
   border: 3px var(--black) solid;
   display: inline-flex;
-  margin-top: 3.5vh;
   padding-left: 6vw;
   padding-right: 6vw;
   margin-left: 1.5vh;
@@ -1322,6 +1371,7 @@ footer .footer-copy .heart {
 @media only screen and (max-width: 900px) {
   .banquet_container__additional .banquet-text .banquet-block .banquet-block-text {
     text-align: center;
+    width: 100%;
   }
 }
 .banquet_container__additional .banquet-text .banquet-block .banquet-block-text .banquet-block-header {

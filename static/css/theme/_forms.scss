@@ -11,6 +11,27 @@
 	transform: scale(1, 1);
 }
 
+.form-modal-close-button{
+	position: fixed;
+	top:0;
+	right: 0;
+	width: 50px;
+	height: 50px;
+	background: var(--gray);
+	color: var(--black);
+	opacity: 0.3;
+	transition: opacity .3s ease-in-out;
+	font-size: 6rem;
+	text-align: center;
+	line-height: 50px;
+	z-index: 100;
+
+	&:hover,
+	&:active{
+		opacity: .5;
+	}
+}
+
 .modal-inactive {
 	background-color: rgba(66, 66, 66, 0);
 	transform: scale(0, 0);
@@ -71,6 +92,14 @@
 	padding: 2rem;
 	opacity: 1;
 	transition: opacity .3s .3s, transform 0s .3s;
+	box-sizing: border-box;
+
+	@media only screen and (max-width: 900px) {
+		grid-template-columns: 1fr;
+		width: 100vw;
+		height: 100vh;
+		overflow-y: auto;
+	}
 
 	.form-modal-field-wrapper {
 		position: relative;
@@ -78,9 +107,14 @@
 	}
 
 	.form-modal-room-type {
+		@media only screen and (max-width: 900px) {
+			display: none;
+		}
+
 		.form-modal-room-image {
 			width: 100%;
 			height: 50%;
+			max-height: 50vh;
 			object-fit: contain;
 		}
 
@@ -94,7 +128,7 @@
 			font-size: 1rem;
 		}
 
-		#room_availability{
+		#room_availability {
 			color: var(--error-red)
 		}
 	}
@@ -105,7 +139,7 @@
 	input[type="date"],
 	input[type="email"],
 	input:not([type="hidden"]),
-	select{
+	select {
 		width: 100%;
 		padding: 1rem;
 		border: 1px var(--dark-gray) solid;
@@ -185,6 +219,13 @@
 	opacity: 1;
 	transition: opacity .3s .3s;
 	max-width: 500px;
+
+	@media only screen and (max-width: 900px){
+		width: 100%;
+		height: 100vh;
+		overflow-y: auto;
+		box-sizing: border-box;
+	}
 
 	.form-confirmation-image {
 		width: 100%;

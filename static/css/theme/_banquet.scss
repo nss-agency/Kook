@@ -67,6 +67,7 @@
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
+	margin: 2rem 0;
 }
 
 .btn-black__banquet {
@@ -74,7 +75,6 @@
 	background-color: var(--black);
 	border: 3px var(--black) solid;
 	display: inline-flex;
-	margin-top: 3.5vh;
 	padding-left: 6vw;
 	padding-right: 6vw;
 	margin-left: 1.5vh;
@@ -115,6 +115,7 @@
 				padding: 1rem;
 				@media only screen and (max-width: 900px) {
 					text-align: center;
+					width: 100%;
 				}
 
 				.banquet-block-header {

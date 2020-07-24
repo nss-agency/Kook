@@ -1,5 +1,6 @@
 {% load static %}
 <div class="form-modal-wrapper modal-inactive" id="form-modal-wrapper">
+<div class="form-modal-close-button" onclick="hideModal()">×</div>
     <div id="form-modal" class="form-modal" onclick="">
 
         <div class="form-modal-fields">
@@ -18,12 +19,12 @@
                 <span>*Сніданок включений в ціну номера</span>
 
 
-                {% if booking_status.success %}
-                    <h1>Congrats</h1>
-                {% endif %}
-                {% if booking_status.fail %}
-                    <h1>Sorry</h1>
-                {% endif %}
+{#                {% if booking_status.success %}#}
+{#                    <h1>Congrats</h1>#}
+{#                {% endif %}#}
+{#                {% if booking_status.fail %}#}
+{#                    <h1>Sorry</h1>#}
+{#                {% endif %}#}
                 <button class="btn btn-black btn-center" id="submitContactForm">Submit</button>
             </form>
         </div>

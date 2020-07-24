@@ -14,6 +14,7 @@ footer {
 
 		//height: 200px;
 		padding: 4em 0;
+		align-items: center;
 
 		@media only screen and (max-width: 1150px) {
 			grid-template-columns: repeat(4, 1fr);
@@ -73,6 +74,7 @@ footer {
 				display: flex;
 				justify-content: space-evenly;
 				margin: 1rem 0;
+				align-items: center;
 
 				.footer-circle-link {
 					border-radius: 50%;
@@ -80,6 +82,7 @@ footer {
 					transition: background-color .3s;
 					cursor: pointer;
 					text-decoration: none;
+					width: 50px;
 
 					.footer-circle-link-icon {
 						width: 100%;
