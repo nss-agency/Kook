@@ -311,6 +311,10 @@
 	opacity: 1;
 	transition: opacity .3s .3s, transform 0s .3s;
 
+	@media only screen and (max-width: 900px) {
+		width: 90%;
+	}
+
 	.form-modal-fields {
 	}
 

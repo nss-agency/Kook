@@ -43,12 +43,20 @@
 	display: grid;
 	margin: 5rem;
 	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "room1 room2" "room3 room4" "room5 room5";
 	grid-gap: 2rem;
 	row-gap: 5rem;
 
 	@media only screen and (max-width: 900px) {
 		grid-template-columns: 1fr;
 		margin: 0;
+		grid-template-areas: "room1" "room2" "room3" "room4" "room5";
+	}
+
+	@for $i from 1 through 5 {
+		.r-#{$i} {
+			grid-area: room#{$i};
+		}
 	}
 
 	.room-wrapper {
@@ -61,13 +69,22 @@
 			width: 100%;
 		}
 
+		.room-image-flex {
+			width: calc(50% - 1rem);
+		}
+
+		.big-room-photo-flex {
+			display: flex;
+			justify-content: space-between;
+		}
+
 		.room-description {
 			margin-top: 25px;
-			@media only screen and (max-width: 900px){
+			@media only screen and (max-width: 900px) {
 				margin: 25px 1vw 0 1vw;
 			}
 
-			@media only screen and (max-width: 900px){
+			@media only screen and (max-width: 900px) {
 				text-align: center;
 			}
 
@@ -90,14 +107,13 @@
 	}
 }
 
-.hotel-decor-1 {
+.hotel-decor {
 	display: block;
 	//box-sizing: border-box;
 	border: 10px var(--gray) solid;
 	position: absolute;
 	width: 95%;
-	height: 29%;
-	top: 36%;
+	height: 55vh;
 	left: 50%;
 	transform: translateX(-50%);
 	z-index: -1;
@@ -105,22 +121,17 @@
 	@media only screen and (max-width: 900px) {
 		display: none;
 	}
+}
+
+.hotel-decor-1 {
+	top: 65vh;
 
 }
 
 .hotel-decor-2 {
-	display: block;
-	//box-sizing: border-box;
-	border: 10px var(--gray) solid;
-	position: absolute;
-	width: 95%;
-	height: 29%;
-	top: 72%;
-	left: 50%;
-	transform: translateX(-50%);
-	z-index: -1;
+	top: 138vh
+}
 
-	@media only screen and (max-width: 900px) {
-		display: none;
-	}
+.hotel-decor-3{
+	top: 207vh;
 }

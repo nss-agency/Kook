@@ -22,10 +22,11 @@
         </div>
         <img class="hero-image" src="{% static 'img/hero-image-hotel-rooms.jpg' %}" alt="">
     </div>
-    <span class="hotel-decor-1"></span>
 
     <div class="rooms-container">
-        <div class="room-wrapper">
+        <span class="hotel-decor hotel-decor-1"></span>
+
+        <div class="room-wrapper r-1">
             <img src="{% static 'img/placeholder.jpg' %}" alt="" class="room-image">
             <div class="room-description">
                 <small>Кількість номерів: 5</small>
@@ -39,7 +40,7 @@
             </div>
         </div>
 
-        <div class="room-wrapper">
+        <div class="room-wrapper r-2">
             <img src="{% static 'img/placeholder.jpg' %}" alt="" class="room-image">
             <div class="room-description">
                 <small>Кількість номерів: 5</small>
@@ -52,8 +53,8 @@
                 <button onclick="showModal(2)" class="btn btn-black display-inline" href="">бронь</button>
             </div>
         </div>
-        <span class="hotel-decor-2"></span>
-        <div class="room-wrapper">
+        <span class="hotel-decor hotel-decor-2"></span>
+        <div class="room-wrapper r-3">
             <img src="{% static 'img/placeholder.jpg' %}" alt="" class="room-image">
             <div class="room-description">
                 <small>Кількість номерів: 5</small>
@@ -67,7 +68,7 @@
             </div>
         </div>
 
-        <div class="room-wrapper">
+        <div class="room-wrapper r-4">
             <img src="{% static 'img/placeholder.jpg' %}" alt="" class="room-image">
             <div class="room-description">
                 <small>Кількість номерів: 5</small>
@@ -80,6 +81,24 @@
                 <button onclick="showModal()" class="btn btn-black display-inline">бронь</button>
             </div>
         </div>
+
+        <div class="room-wrapper r-5">
+            <div class="big-room-photo-flex">
+                <img src="{% static 'img/placeholder.jpg' %}" alt="" class="room-image room-image-flex">
+                <img src="{% static 'img/placeholder.jpg' %}" alt="" class="room-image room-image-flex">
+            </div>
+            <div class="room-description">
+                <small>Кількість номерів: 5</small>
+                <h2 class="room-header">Номер Стандарт</h2>
+                <p>
+                    <b>Комплектація Номеру:</b> Однокімнатний номер, 2 ліжка, стіл, 2 крісла, LED
+                    телевізор, шафа. санвузол суміщений (душова кабінка), внутрішній телефон. <br>
+                    <b>Номер обладнаний:</b> супутниковим телебаченням, доступом до мережі Інтернет (Wi-Fi).
+                </p>
+                <button onclick="showModal()" class="btn btn-black display-inline">бронь</button>
+            </div>
+        </div>
+        <span class="hotel-decor hotel-decor-3"></span>
         {#        {% for room in room_types %}#}
         {#            <div class="room-wrapper">#}
         {#                <img src="{{ room.image.url }}" alt="" class="room-image">#}
