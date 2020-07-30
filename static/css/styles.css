@@ -1590,6 +1590,7 @@ footer .footer-copy .heart {
 @media only screen and (max-width: 900px) {
   .restaurant-container .restaurant-text .restaurant-block .restaurant-block-text {
     text-align: center;
+    width: 100%;
   }
 }
 .restaurant-container .restaurant-text .restaurant-block .restaurant-block-text .restaurant-block-header {
