@@ -62,6 +62,8 @@
 	.room-wrapper {
 		display: flex;
 		flex-direction: column;
+		text-align: center;
+		margin: 10px;
 
 		.room-image {
 			height: 30vh;
@@ -76,6 +78,7 @@
 		.big-room-photo-flex {
 			display: flex;
 			justify-content: space-between;
+			margin-top: 20px;
 		}
 
 		.room-description {
@@ -129,9 +132,9 @@
 }
 
 .hotel-decor-2 {
-	top: 138vh
+	top: 130vh
 }
 
 .hotel-decor-3{
-	top: 207vh;
+	top: 195vh;
 }

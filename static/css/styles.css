@@ -395,7 +395,7 @@ nav .languages-dropdown .btn {
 .index-info-block .index-info-wrapper {
   width: calc(60% - 2em);
   box-sizing: border-box;
-  background: lightblue;
+  background: #ececec;
 }
 @media only screen and (max-width: 900px) {
   .index-info-block .index-info-wrapper {
@@ -736,6 +736,8 @@ footer .footer-copy .heart {
 .rooms-container .room-wrapper {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  margin: 10px;
 }
 .rooms-container .room-wrapper .room-image {
   height: 30vh;
@@ -748,6 +750,7 @@ footer .footer-copy .heart {
 .rooms-container .room-wrapper .big-room-photo-flex {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 .rooms-container .room-wrapper .room-description {
   margin-top: 25px;
@@ -797,11 +800,11 @@ footer .footer-copy .heart {
 }
 
 .hotel-decor-2 {
-  top: 138vh;
+  top: 130vh;
 }
 
 .hotel-decor-3 {
-  top: 207vh;
+  top: 195vh;
 }
 
 .form-modal-wrapper {
@@ -1371,7 +1374,7 @@ footer .footer-copy .heart {
 .banquet_container__additional .banquet-text .banquet-block {
   display: flex;
   flex-direction: row;
-  margin: 4rem 0;
+  margin: 4rem 20px;
 }
 @media only screen and (max-width: 900px) {
   .banquet_container__additional .banquet-text .banquet-block {
