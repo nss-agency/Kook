@@ -17,9 +17,12 @@
 {% include "includes/navbar.html" %}
 <h1 class="header__contact">Галерея</h1>
 <div class="menu-filter">
+    <input checked class="category-input checkbox-switch" id="filter_category_all"
+           name="filter_category" data-id="*" type="radio">
+    <label for="filter_category_all" class="menu-filter-item">All</label>
     {% for category in gallery_categories %}
-        <input onclick="filter()" class="category-input checkbox-switch" id="filter_category_{{ category.id }}"
-               name="filter_category_{{ category.id }}" data-id="{{ category.id }}" type="checkbox">
+        <input class="category-input checkbox-switch" id="filter_category_{{ category.id }}"
+               name="filter_category" data-id=".cat_{{ category.id }}" type="radio">
         <label for="filter_category_{{ category.id }}" class="menu-filter-item">{{ category.name }}</label>
     {% endfor %}
 </div>

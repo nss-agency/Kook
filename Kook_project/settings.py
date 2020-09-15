@@ -138,7 +138,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-ENABLE_GOOGLE_CALENDAR = False
+ENABLE_GOOGLE_CALENDAR = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
